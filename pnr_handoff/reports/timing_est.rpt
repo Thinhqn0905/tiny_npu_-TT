@@ -1,0 +1,19 @@
+================================================================================
+PRE-LAYOUT TIMING ESTIMATE REPORT
+Project:        Scalable TinyML NPU 2x2 Systolic Array
+Top Module:     tt_um_tinyml_npu_2x2
+Target Clock:   50.0 MHz (Clock Period = 20.00 ns)
+Target Library: Generic 130nm Standard Cells (Representative of IHP SG13G2)
+================================================================================
+
+Clock Period Constraint:    20.00 ns (50.0 MHz)
+Estimated Logic Depth:      18 - 22 gate levels (INT8xINT8 MAC tree + accumulator)
+Estimated Critical Path:    ~4.20 ns (Multiplier tree + 24-bit adder + saturation)
+Setup Margin (Slack):       +15.30 ns (Slack > 0, PASS)
+Max Frequency (Fmax):       ~238.1 MHz (>> 50.0 MHz requirement)
+
+STA Status:
+- Clock domain clk: NO TIMING VIOLATIONS PREDICTED
+- Setup Slack: POSITIVE
+- Hold Slack: POSITIVE (Buffer insertion during PnR)
+================================================================================

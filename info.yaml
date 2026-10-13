@@ -1,28 +1,26 @@
 # Tiny Tapeout project information
 project:
-  title:        "Scalable TinyML NPU 1x1 (ECG & CNN/MLP)"
+  title:        "Scalable TinyML NPU 2x2 (ECG & CNN/MLP)"
   author:       "Thinh Pham"
   discord:      ""
-  description:  "Scalable 1x1 tile TinyML NPU accelerator for ECG arrhythmia classification"
+  description:  "2x2 systolic array TinyML NPU accelerator for ECG arrhythmia classification"
   language:     "Verilog"
   clock_hz:     50000000  # 50 MHz
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"
+  tiles: "2x1"
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_tinyml_npu_1x1"
+  top_module:  "tt_um_tinyml_npu_2x2"
 
   # List your project's source files here.
   # Source files must be in ./src and you must list each source file separately, one per line.
   source_files:
-    - "tt_um_tinyml_npu_1x1.v"
-    - "npu_top.v"
-    - "npu_array.v"
     - "npu_pe.v"
-    - "npu_controller.v"
     - "npu_activation.v"
-    - "npu_argmax.v"
+    - "npu_array.v"
+    - "npu_top_2x2.v"
+    - "tt_um_tinyml_npu_2x2.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
@@ -37,24 +35,24 @@ pinout:
   ui[7]: "data_in[7]"
 
   # Outputs
-  uo[0]: "data_out[0] / class[0]"
-  uo[1]: "data_out[1] / class[1]"
-  uo[2]: "data_out[2] / class[2]"
-  uo[3]: "data_out[3] / class[3]"
-  uo[4]: "data_out[4] / layer_done"
-  uo[5]: "data_out[5] / out_valid"
-  uo[6]: "data_out[6] / npu_busy"
-  uo[7]: "data_out[7] / overflow"
+  uo[0]: "data_out[0] / status[0]"
+  uo[1]: "data_out[1] / status[1]"
+  uo[2]: "data_out[2] / status[2]"
+  uo[3]: "data_out[3] / status[3]"
+  uo[4]: "data_out[4] / status[4]"
+  uo[5]: "data_out[5] / status[5]"
+  uo[6]: "data_out[6] / status[6]"
+  uo[7]: "data_out[7] / status[7]"
 
   # Bidirectional pins
-  uio[0]: "host_valid"
-  uio[1]: "npu_ready"
-  uio[2]: "cmd_mode"
-  uio[3]: "weight_stream"
-  uio[4]: "out_sel"
-  uio[5]: "out_valid"
-  uio[6]: "layer_done"
-  uio[7]: "npu_busy"
+  uio[0]: "host_valid (in)"
+  uio[1]: "npu_ready (out)"
+  uio[2]: "cmd_mode (in)"
+  uio[3]: "stream_sel (in)"
+  uio[4]: "out_sel (in)"
+  uio[5]: "out_valid (out)"
+  uio[6]: "layer_done (out)"
+  uio[7]: "npu_busy (out)"
 
 # Do not change!
 yaml_version: 6

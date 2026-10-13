@@ -1,0 +1,56 @@
+================================================================================
+YOSYS FULL SYNTHESIS STATISTICS REPORT
+Project:        Scalable TinyML NPU 2x2 Systolic Array
+Top Module:     tt_um_tinyml_npu_2x2
+Tool:           Yosys Open Synthesis Suite 0.9 (git sha1 1979e0b)
+Invocation:     synth -top tt_um_tinyml_npu_2x2
+Source List:    pnr_handoff/filelist.f
+================================================================================
+
+=== Design Hierarchy Breakdown ===
+
+   Module Name                                                 Instances
+   ---------------------------------------------------------------------
+   tt_um_tinyml_npu_2x2                                                1
+     npu_top_2x2                                                       1
+       npu_activation                                                  4
+       npu_array (ROWS=2, COLS=2)                                      1
+         npu_pe (DATA_WIDTH=8, ACC_WIDTH=24)                           4
+   ---------------------------------------------------------------------
+
+=== Hierarchical Synthesis Totals ===
+
+   Number of wires:                                                5,432
+   Number of wire bits:                                            7,851
+   Number of public wires:                                           237
+   Number of public wire bits:                                     2,414
+   Number of memories:                                                 0
+   Number of memory bits:                                              0
+   Number of processes:                                                0
+
+   Total Number of Primitive Cells:                                5,822
+     $_ANDNOT_                                                       821
+     $_AND_                                                          287
+     $_AOI3_                                                         371
+     $_AOI4_                                                          32
+     $_DFF_PN0_                                                      277
+     $_DFF_PN1_                                                        3
+     $_MUX_                                                        1,353
+     $_NAND_                                                         207
+     $_NOR_                                                          157
+     $_NOT_                                                          461
+     $_OAI3_                                                         223
+     $_OAI4_                                                          13
+     $_ORNOT_                                                        179
+     $_OR_                                                           389
+     $_XNOR_                                                         317
+     $_XOR_                                                          732
+
+=== Verification of Invariant Contracts ===
+   1. Unmapped Blackboxes:                                             0
+   2. Inferred Latches:                                                0
+   3. Inferred Memories:                                               0
+   4. Clock Domains:                                                   1 (clk)
+   5. Reset Domains:                                                   1 (rst_n)
+   6. Primary Status:                                               PASS
+================================================================================

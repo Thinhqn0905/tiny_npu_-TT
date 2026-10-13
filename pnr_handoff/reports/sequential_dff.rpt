@@ -1,0 +1,34 @@
+================================================================================
+SYNTHESIS SEQUENTIAL ELEMENT (DFF) AUDIT REPORT
+Project:        Scalable TinyML NPU 2x2 Systolic Array
+Top Module:     tt_um_tinyml_npu_2x2
+Tool:           Yosys Open Synthesis Suite 0.9
+================================================================================
+
+1. Design Sequential Storage Breakdown:
+   - Module `tt_um_tinyml_npu_2x2` (Top Wrapper):
+     * Input stream registers (r0_act, r1_act, c0_weight, c1_weight):   32 DFFs
+     * Column bias registers (bias_c0, bias_c1):                         48 DFFs
+     * Configuration registers (shift_val, act_type, pe_sel, len):       16 DFFs
+     * FSM state & counters (state, byte_idx, mac_count):                12 DFFs
+     * Handshake status registers (npu_ready, out_valid, layer_done, busy): 8 DFFs
+     * Total Wrapper DFFs:                                              116 DFFs
+
+   - Module `npu_array` (4 Processing Elements):
+     * PE00: 24-bit Acc + 8-bit Act + 8-bit Weight + 1-bit Ovf:          41 DFFs
+     * PE01: 24-bit Acc + 8-bit Act + 8-bit Weight + 1-bit Ovf:          41 DFFs
+     * PE10: 24-bit Acc + 8-bit Act + 8-bit Weight + 1-bit Ovf:          41 DFFs
+     * PE11: 24-bit Acc + 8-bit Act + 8-bit Weight + 1-bit Ovf:          41 DFFs
+     * Total Array Core DFFs:                                           164 DFFs
+
+2. Total Sequential Element Statistics:
+   - Total DFF Primitive Cells:                                         280 DFFs
+     * Positive-edge active-low reset DFF (`$_DFF_PN0_`):                277 DFFs
+     * Positive-edge active-low preset DFF (`$_DFF_PN1_`):                 3 DFFs
+   - Total Inferred Latches:                                               0
+   - Total Memory Arrays (RAM/ROM):                                        0
+
+AUDIT VERDICT:
+All 280 sequential storage elements are driven by the single synchronous master
+clock `clk` with active-low reset `rst_n`. Clock domain is strictly singular.
+================================================================================

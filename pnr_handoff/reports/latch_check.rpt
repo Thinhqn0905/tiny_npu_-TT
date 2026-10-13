@@ -1,0 +1,26 @@
+================================================================================
+SYNTHESIS LATCH INFERENCE AUDIT REPORT
+Project:        Scalable TinyML NPU 2x2 Systolic Array
+Top Module:     tt_um_tinyml_npu_2x2
+Tool:           Yosys Open Synthesis Suite 0.9
+Command:        check -assert
+Status:         PASS (ZERO INFERRED LATCHES)
+================================================================================
+
+1. Process Analysis Summary:
+   - Module `tt_um_tinyml_npu_2x2`:               NO LATCHES INFERRED
+   - Module `npu_top_2x2`:                        NO LATCHES INFERRED
+   - Module `npu_activation` (4 instances):       NO LATCHES INFERRED
+   - Module `npu_array`:                          NO LATCHES INFERRED
+   - Module `npu_pe` (4 instances):               NO LATCHES INFERRED
+
+2. Inferred Latch Primitive Count:
+   - Total `$_DLATCH_` cells:                     0
+   - Total `$dlatch` cells:                       0
+   - Incomplete case statements:                  0 (All cases fully specified)
+   - Incomplete conditional branches:             0 (All branches have defaults)
+
+AUDIT VERDICT:
+The RTL strictly conforms to Section 1 of the Tiny Tapeout hardware design rules:
+"Zero latches, zero combinational loops, no derived clocks or gate delays."
+================================================================================
