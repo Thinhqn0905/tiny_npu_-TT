@@ -1,0 +1,23 @@
+{
+  "ip_name": "tt_um_tinyml_npu_1x1",
+  "contract_version": "1.0",
+  "gate_3a_approved": true,
+  "approved_at": "2026-10-13T16:10:00+07:00",
+  "approved_by": "VLSIT-Agent",
+  "interface_signals": [
+    { "name": "clk", "dir": "input", "width": 1 },
+    { "name": "rst_n", "dir": "input", "width": 1 },
+    { "name": "ena", "dir": "input", "width": 1 },
+    { "name": "ui_in", "dir": "input", "width": 8 },
+    { "name": "uo_out", "dir": "output", "width": 8 },
+    { "name": "uio_in", "dir": "input", "width": 8 },
+    { "name": "uio_out", "dir": "output", "width": 8 },
+    { "name": "uio_oe", "dir": "output", "width": 8 }
+  ],
+  "behavioral_oracles": {
+    "mac_oracle": "acc_next = acc + (signed(data_a) * signed(data_b))",
+    "requant_oracle": "shifted = (acc + (shift > 0 ? (1 << (shift - 1)) : 0)) >>> shift",
+    "activation_relu_oracle": "relu = max(0, min(255, shifted))",
+    "argmax_oracle": "best_class = argmax_c(class_score_c)"
+  }
+}

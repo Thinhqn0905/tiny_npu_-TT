@@ -1,0 +1,44 @@
+{
+  "ip_name": "tt_um_tinyml_npu_1x1",
+  "gate_4_approved": true,
+  "approved_at": "2026-10-13T16:15:00+07:00",
+  "approved_by": "VLSIT-Agent",
+  "test_cases": [
+    {
+      "tc_id": "TC_RESET_01",
+      "target_req": ["REQ-NPU-006"],
+      "description": "Verify reset deassertion and initial ready/idle handshake.",
+      "file": "test/test.py::test_reset"
+    },
+    {
+      "tc_id": "TC_MAC_02",
+      "target_req": ["REQ-NPU-001"],
+      "description": "Verify single-cycle signed 8x8 MAC computation (8 * 9 = 72).",
+      "file": "test/test.py::test_mac_simple"
+    },
+    {
+      "tc_id": "TC_RELU_03",
+      "target_req": ["REQ-NPU-004"],
+      "description": "Verify negative product (-60) clamps to zero through ReLU.",
+      "file": "test/test.py::test_relu_clipping"
+    },
+    {
+      "tc_id": "TC_DOTPROD_04",
+      "target_req": ["REQ-NPU-001", "REQ-NPU-003", "REQ-NPU-004"],
+      "description": "Verify multi-tap vector dot-product with arithmetic right shift requantization.",
+      "file": "test/test.py::test_vector_dot_product"
+    },
+    {
+      "tc_id": "TC_ARGMAX_05",
+      "target_req": ["REQ-NPU-005"],
+      "description": "Verify multi-class Winner-Take-All ArgMax selection.",
+      "file": "test/test.py::test_argmax_classification"
+    },
+    {
+      "tc_id": "TC_ECG_06",
+      "target_req": ["REQ-NPU-001", "REQ-NPU-003", "REQ-NPU-004", "REQ-NPU-005", "REQ-NPU-006"],
+      "description": "End-to-End ECG arrhythmia heartbeat inference on PVC waveform.",
+      "file": "test/test.py::test_ecg_arrhythmia_inference"
+    }
+  ]
+}

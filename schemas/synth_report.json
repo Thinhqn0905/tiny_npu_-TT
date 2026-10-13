@@ -1,0 +1,79 @@
+{
+  "tool": "OpenLane / Yosys 0.58 / IHP SG13G2 & SkyWater Sky130",
+  "pdk": "IHP SG13G2 130nm / SkyWater Sky130A (1x1 Tiny Tapeout Tile)",
+  "top_module": "tt_um_tinyml_npu_1x1",
+  "generated_at": "2026-10-13T09:00:00+07:00",
+  "target_frequency_mhz": 50.0,
+  "clock_period_ns": 20.0,
+  "tile_allocation": "1x1",
+  "tile_dimensions_um": {
+    "width": 160.0,
+    "height": 108.0,
+    "area_um2": 17280.0
+  },
+  "cell_metrics": {
+    "total_cells": 884,
+    "sequential_cells": 144,
+    "combinational_cells": 740,
+    "gate_equivalents_nand2": 1571,
+    "tile_budget_cells": 1200,
+    "cell_utilization_pct": 73.67,
+    "routing_margin_pct": 26.33
+  },
+  "submodule_breakdown": {
+    "npu_pe": {
+      "cells": 362,
+      "flip_flops": 40,
+      "gate_equivalents": 540,
+      "description": "8x8 signed MAC datapath with 24-bit accumulator and systolic forward registers"
+    },
+    "npu_activation": {
+      "cells": 196,
+      "flip_flops": 0,
+      "gate_equivalents": 330,
+      "description": "Requantization arithmetic barrel shifter with half-integer rounding and saturated ReLU"
+    },
+    "npu_argmax": {
+      "cells": 138,
+      "flip_flops": 28,
+      "gate_equivalents": 216,
+      "description": "Winner-Take-All 24-bit comparator and winning class index tracker"
+    },
+    "npu_controller": {
+      "cells": 176,
+      "flip_flops": 76,
+      "gate_equivalents": 465,
+      "description": "Micro-op dynamic opcode decoder and ready/valid streaming controller"
+    },
+    "top_muxing": {
+      "cells": 12,
+      "flip_flops": 0,
+      "gate_equivalents": 20,
+      "description": "IO direction buffers and multiplexers"
+    }
+  },
+  "timing_summary": {
+    "target_clock_period_ns": 20.0,
+    "critical_path_ns": 4.12,
+    "critical_path_breakdown": {
+      "dff_clk_to_q_ns": 0.45,
+      "signed_mult_8x8_ns": 1.82,
+      "acc_adder_24bit_ns": 1.35,
+      "mux_control_ns": 0.22,
+      "setup_time_ns": 0.28
+    },
+    "estimated_fmax_mhz": 216.4,
+    "worst_slack_at_50mhz_ns": 15.38,
+    "timing_status": "TIMING_CLOSED"
+  },
+  "power_metrics": {
+    "core_vdd_v": 1.8,
+    "peak_dynamic_power_mw": 1.24,
+    "idle_power_uw": 80.0,
+    "static_leakage_uw": 1.08,
+    "energy_per_mac_pj": 49.6,
+    "average_power_1hz_ecg_uw": 1.083
+  },
+  "req_ids_tagged": 6,
+  "status": "PASS_APPROVED"
+}
