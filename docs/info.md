@@ -1,13 +1,13 @@
 # Scalable TinyML NPU 2x2 Systolic Array (ECG & CNN/MLP Accelerator)
 
-A parameterized, streaming 2D systolic neural processing unit designed for ultra-low-power TinyML inference on 130nm ASIC (IHP SG13G2 / SkyWater Sky130A) allocating **2x1 tiles** ($320\,\mu\text{m} \times 108\,\mu\text{m}$) on the Tiny Tapeout shuttle.
+A parameterized, streaming 2D systolic neural processing unit designed for ultra-low-power TinyML inference on 130nm ASIC (IHP SG13G2 / SkyWater Sky130A) allocating **1x2 tiles** ($202\,\mu\text{m} \times 314\,\mu\text{m}$) on the Tiny Tapeout shuttle.
 
 ## How it works
 
 The NPU features a 4-PE 2D Systolic Array grid ($2 \times 2$) capable of executing concurrent signed INT8 Multiply-Accumulate (MAC) operations, hardware requantization (arithmetic right-shift with rounding), programmable activation functions (Linear, ReLU, Saturated Clip), and multi-channel readout multiplexing.
 
 ### Architecture Highlights:
-- **2x1 Tile Footprint**: Synthesizes to ~2,350 standard cells (5,822 primitive logic gates), fitting comfortably in a 2x1 tile allocation.
+- **1x2 Tile Footprint**: Synthesizes to ~2,350 standard cells (5,822 primitive logic gates), fitting comfortably in a standard 1x2 tile allocation.
 - **Concurrent 4-PE Parallel Throughput**: Delivers up to 200 MMAC/s peak throughput at nominal 50.0 MHz.
 - **Dual Dataflow Execution**:
   - `SYSTOLIC_MODE = 0`: Fold-SIMD Parallel Broadcast for concurrent matrix dot products.

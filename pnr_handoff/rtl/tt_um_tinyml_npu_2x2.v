@@ -8,7 +8,7 @@
 // Description: Standard Tiny Tapeout Top Wrapper for the 2x2 Systolic Array NPU.
 //              Integrates streaming operand deserializer, runtime configuration,
 //              and multi-channel PE readout multiplexing.
-//              Allocates 2x1 tiles (320 um x 108 um) on Tiny Tapeout shuttle.
+//              Allocates 1x2 tiles (202 um x 314 um) on Tiny Tapeout shuttle.
 //==============================================================================
 
 module tt_um_tinyml_npu_2x2 (

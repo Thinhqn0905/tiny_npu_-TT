@@ -18,7 +18,7 @@ module tb ();
     wire [7:0] uio_out;
     wire [7:0] uio_oe;
 
-    tt_um_tinyml_npu_1x1 dut (
+    tt_um_tinyml_npu_2x2 dut (
         .ui_in   (ui_in),
         .uo_out  (uo_out),
         .uio_in  (uio_in),

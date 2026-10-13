@@ -4,7 +4,7 @@
 **Top Module:** `tt_um_tinyml_npu_2x2`  
 **Core Datapath:** `npu_top_2x2`  
 **Target Platform:** Tiny Tapeout Shuttle (IHP SG13G2 130nm / SkyWater Sky130A)  
-**Tile Allocation:** 2x1 Tiles ($320\,\mu\text{m} \times 108\,\mu\text{m}$)  
+**Tile Allocation:** 1x2 Tiles ($202\,\mu\text{m} \times 314\,\mu\text{m}$)  
 **Target Clock:** 50.0 MHz ($T = 20.0\,\text{ns}$)  
 **Sign-off Status:** **FROZEN FOR PNR**  
 
@@ -58,8 +58,8 @@ The module `tt_um_tinyml_npu_2x2` conforms strictly to the standard Tiny Tapeout
 ## 3. Physical Design & Floorplan Rules
 
 1. **Tile Allocation & Footprint:**
-   - Shuttle Allocation: **2x1 Tiles** (equivalent to two adjacent standard Tiny Tapeout tiles).
-   - Bounding Box Dimensions: $X = 320.0\,\mu\text{m}$, $Y = 108.0\,\mu\text{m}$.
+   - Shuttle Allocation: **1x2 Tiles** (standard vertical 2-tile allocation on Tiny Tapeout shuttle).
+   - Bounding Box Dimensions: $X = 202.08\,\mu\text{m}$, $Y = 313.74\,\mu\text{m}$.
    - Pin placement conforms to the standardized Tiny Tapeout frame.
 
 2. **Standard Cell & Macro Budget:**

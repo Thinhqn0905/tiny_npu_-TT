@@ -2,7 +2,7 @@
 
 **Project:** Scalable TinyML Neural Processing Unit (NPU) for Arrhythmia ECG Detection  
 **Target Platform:** Tiny Tapeout Shuttle (IHP SG13G2 130nm / SkyWater Sky130A / GF180MCU)  
-**Tile Allocation:** 2x1 Tiles ($320\,\mu\text{m} \times 108\,\mu\text{m}$) or 2x2 Tiles  
+**Tile Allocation:** 1x2 Tiles ($202\,\mu\text{m} \times 314\,\mu\text{m}$) or 2x2 Tiles  
 **Frozen Top Module:** `tt_um_tinyml_npu_2x2`  
 **Core Module:** `npu_top_2x2`  
 **Git Baseline Commit:** `906bdcf` (branch `main`)  
@@ -111,6 +111,6 @@ $$\text{Requant}(Acc, S) = \text{clip}\left(\left(\text{Acc} + 2^{S-1}\right) \g
 
 ## 6. Known Limitations
 
-1. **Tile Allocation Requirement:** Requires a 2-tile footprint on Tiny Tapeout (`tiles: "2x1"` or `"2x2"`), as standard cell count (~2,350 cells) exceeds a single $160\,\mu\text{m} \times 108\,\mu\text{m}$ tile.
+1. **Tile Allocation Requirement:** Requires a 2-tile footprint on Tiny Tapeout (`tiles: "1x2"` or `"2x2"`), as standard cell count (~2,350 cells) exceeds a single $160\,\mu\text{m} \times 108\,\mu\text{m}$ tile.
 2. **Host Serialization:** Ingesting 4 parallel operands over an 8-bit input port requires 4 cycles of time-multiplexed host streaming per parallel MAC step.
 3. **ArgMax Processing:** Winner-Take-All ArgMax across 4 PEs is performed via host multiplexing or external compare pulse.

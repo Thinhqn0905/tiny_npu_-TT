@@ -4,8 +4,9 @@
 # defaults
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
+PWD := $(CURDIR)
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = tt_um_tinyml_npu_1x1.v npu_top.v npu_array.v npu_pe.v npu_controller.v npu_activation.v npu_argmax.v
+PROJECT_SOURCES = npu_pe.v npu_activation.v npu_array.v npu_top_2x2.v tt_um_tinyml_npu_2x2.v
 
 ifneq ($(GATES),yes)
 
@@ -39,10 +40,10 @@ TOPLEVEL = tb
 # MODULE is the basename of the Python test file
 MODULE = test
 
-.PHONY: sim_standalone
-sim_standalone:
-	iverilog -g2012 -o sim_standalone.vvp $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES)) tb_npu_standalone.v
-	vvp sim_standalone.vvp
-
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
+
+.PHONY: sim_standalone
+sim_standalone:
+	iverilog -g2012 -o sim_standalone.vvp $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES)) tb_tt_um_2x2.v
+	vvp sim_standalone.vvp

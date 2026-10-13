@@ -4,7 +4,7 @@
 **Target Platform:** Tiny Tapeout Shuttle (IHP SG13G2 130nm / SkyWater Sky130A)  
 **Top Module:** `tt_um_tinyml_npu_2x2`  
 **Core Module:** `npu_top_2x2`  
-**Tile Allocation:** 2x1 Tiles ($320\,\mu\text{m} \times 108\,\mu\text{m}$)  
+**Tile Allocation:** 1x2 Tiles ($202\,\mu\text{m} \times 314\,\mu\text{m}$)  
 **Target Clock:** 50.0 MHz ($T = 20.0\,\text{ns}$)  
 **Author:** Thinh Pham  
 **Handoff Date:** October 13, 2026  
@@ -28,9 +28,9 @@ Every file included in this production release has been hashed using SHA-256 to 
 | Relative Path | Size (Bytes) | SHA-256 Checksum | Description |
 | :--- | :---: | :--- | :--- |
 | `filelist.f` | 925 | `742C165613C1F3A083BF8AE6B803ABA1876454836E0BEA1A9023B6394A891BB7` | Dependency-ordered synthesis RTL filelist |
-| `config/config.json` | 567 | `6AEBD62C3ED920DCD91CE7AE1D525734678ADFFCC1A8C6A047B9A29AF80F5408` | OpenLane/LibreLane PnR configuration file |
+| `config/config.json` | 741 | `10701F37F7D46E5480A0626D047846C2128451809D6AE1FB3980C64310A1DCEB` | OpenLane/LibreLane PnR configuration file |
 | `constraints/design.sdc` | 2,756 | `17A249FA25BFDE78CFECDFA7F0924B210A64DF9BFD653C340DC14734511A6985` | SDC timing constraints (50 MHz, I/O budgets) |
-| `docs/PNR_INTERFACE.md` | 4,286 | `4F471E8F999777A307783157759ED2F492F17182BDF80E91AD4238DCF53787C7` | Physical design interface contract & rules |
+| `docs/PNR_INTERFACE.md` | 5,436 | `F7BF95C5D737607B3405976AC7192707A6957F519F7A9EBC1312639D6D6C429C` | Physical design interface contract & rules |
 | `reports/cell_count.rpt` | 1,872 | `F1739AB05F513194C5B142C7BC703CC3E8225AD1FFBCA0CE3600C5DD589EFED4` | Synthesis gate-level primitive breakdown |
 | `reports/latch_check.rpt` | 2,267 | `93E85CE5BF4DEA838E4AE034E49505E94A38C33FE22C0EA888F8C72D4BC2B78C` | Zero-latch verification sign-off report |
 | `reports/sequential_dff.rpt` | 3,470 | `5F64626E136BFDDD6B86207BAC3579BCFCA662D8B7B7D07C8AB23BBF53922239` | Sequential storage & DFF register report |
@@ -42,7 +42,7 @@ Every file included in this production release has been hashed using SHA-256 to 
 | `rtl/npu_array.v` | 5,618 | `5635EC7E2C1CAD12A8443BC386009BE30618709921EFD7FE11CCB4BAD05FF6D8` | 2D Systolic Array grid (ROWS=2, COLS=2) |
 | `rtl/npu_pe.v` | 3,922 | `CC50D98C113715A54A14C8BB4377E6A49B7E4524F9143E6E9F1D512D7E8B431D` | Processing Element (INT8 MAC + 24-bit Acc) |
 | `rtl/npu_top_2x2.v` | 6,554 | `4056A209EBFCEECFD32828BB30E125CE3FF3C08FE4B109771C7DA5BC8DB05DE3` | 2x2 Core Datapath & parallel requantizers |
-| `rtl/tt_um_tinyml_npu_2x2.v` | 8,924 | `61346303590F2AD9B1A3828E633B42A0AFD8EDF26950A6670DA70C13C153DCBE` | Frozen Tiny Tapeout top wrapper |
+| `rtl/tt_um_tinyml_npu_2x2.v` | 9,990 | `436CD98F296174D69C2149E479F61F1AD71B72ACCF5806B4F983667DDD829F00` | Frozen Tiny Tapeout top wrapper |
 
 ---
 
@@ -70,7 +70,7 @@ Every file included in this production release has been hashed using SHA-256 to 
 ## Section D: Physical Design Contract & Pinout Specification
 
 - **Module Name:** `tt_um_tinyml_npu_2x2`
-- **Tile Footprint:** 2x1 Tiles ($320\,\mu\text{m} \times 108\,\mu\text{m}$).
+- **Tile Footprint:** 1x2 Tiles ($202\,\mu\text{m} \times 314\,\mu\text{m}$).
 - **Target Density:** 55% placement density.
 
 ### Tiny Tapeout 24-Pin Assignment:
@@ -171,7 +171,7 @@ The Physical Design team MUST NOT alter:
 ================================================================================
 Release Target:        tt_um_tinyml_npu_2x2 (2x2 Systolic Array NPU)
 Target Platform:       Tiny Tapeout Shuttle (IHP SG13G2 / SkyWater Sky130A)
-Tile Allocation:       2x1 Tiles (320 um x 108 um)
+Tile Allocation:       1x2 Tiles (202 um x 314 um)
 Master Clock:          50.0 MHz (20.0 ns)
 Synthesis Filelist:    pnr_handoff/filelist.f
 Verification Suite:    test/tb_tt_um_2x2.v (PASS, 0 Errors)
