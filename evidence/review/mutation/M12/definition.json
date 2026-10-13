@@ -1,0 +1,10 @@
+{
+  "id": "M12",
+  "req_id": "REQ-NPU-004",
+  "kind": "unit",
+  "test_case": "rounding_boundaries",
+  "source": "npu_activation.v",
+  "old": "? 8'sd127 :",
+  "new": "? 8'sd126 :",
+  "mutated_sha256": "84cf2f00f7e916ea332a8c80d4beb175edfbebe084201c666183f97deb7f9702"
+}

@@ -1,58 +1,16 @@
-================================================================================
-SYNTHESIS CELL COUNT & PRIMITIVE BREAKDOWN REPORT
-Project:        Scalable TinyML NPU 2x2 Systolic Array
-Top Module:     tt_um_tinyml_npu_2x2
-Tool:           Yosys Open Synthesis Suite 0.9
-Target:         Generic Gate-Level Mapping (130nm ASIC Equivalent)
-================================================================================
-
-1. Design Entity Hierarchy:
-   tt_um_tinyml_npu_2x2 (Top Level)
-     └── npu_top_2x2 (2x2 Core Datapath)
-           ├── npu_activation (PE00 Requantizer)
-           ├── npu_activation (PE01 Requantizer)
-           ├── npu_activation (PE10 Requantizer)
-           ├── npu_activation (PE11 Requantizer)
-           └── npu_array (2x2 Systolic Grid)
-                 ├── npu_pe (PE [0,0])
-                 ├── npu_pe (PE [0,1])
-                 ├── npu_pe (PE [1,0])
-                 └── npu_pe (PE [1,1])
-
-2. Interconnect & Wire Counts:
-   - Total Wires:                   5,432
-   - Total Wire Bits:               7,851
-   - Total Public Wires:              237
-   - Total Public Wire Bits:        2,414
-
-3. Memory Primitive Count:
-   - Total Inferred Memories:           0
-   - Total Inferred Memory Bits:        0
-
-4. Gate-Level Cell Breakdown (Total: 5,822 cells):
-   -------------------------------------------------------------------------
-   Cell Primitive Type               Count      Description
-   -------------------------------------------------------------------------
-   $_MUX_                            1,353      Multiplexers (Requant, readout, array)
-   $_ANDNOT_                           821      AND-NOT compound gates
-   $_XOR_                              732      Exclusive-OR gates (Adders/Multipliers)
-   $_NOT_                              461      Inverters
-   $_OR_                               389      OR gates
-   $_AOI3_                             371      AND-OR-Invert 3-input compound gates
-   $_XNOR_                             317      Exclusive-NOR gates
-   $_DFF_PN0_                          277      D-type Flip-Flops (Active-low reset)
-   $_AND_                              287      AND gates
-   $_OAI3_                             223      OR-AND-Invert 3-input compound gates
-   $_NAND_                             207      NAND gates
-   $_ORNOT_                            179      OR-NOT compound gates
-   $_NOR_                              157      NOR gates
-   $_AOI4_                              32      AND-OR-Invert 4-input compound gates
-   $_OAI4_                              13      OR-AND-Invert 4-input compound gates
-   $_DFF_PN1_                            3      D-type Flip-Flops (Active-low preset)
-   -------------------------------------------------------------------------
-   TOTAL GATE-LEVEL CELLS:           5,822
-   TOTAL SEQUENTIAL DFFs:              280
-   TOTAL COMBINATIONAL CELLS:        5,542
-   ESTIMATED ASIC STD CELLS:        ~2,350 cells (after AOI/OAI/complex mapping)
-   -------------------------------------------------------------------------
-================================================================================
+$_ANDNOT_: 843
+$_AND_: 266
+$_AOI3_: 374
+$_AOI4_: 36
+$_DFF_PN0_: 277
+$_DFF_PN1_: 2
+$_MUX_: 1497
+$_NAND_: 218
+$_NOR_: 162
+$_NOT_: 491
+$_OAI3_: 207
+$_OAI4_: 11
+$_ORNOT_: 146
+$_OR_: 527
+$_XNOR_: 321
+$_XOR_: 716

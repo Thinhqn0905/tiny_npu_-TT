@@ -1,0 +1,85 @@
+$ make -f /tmp/npu_frontend_27ht807y/release/Makefile
+rm -f results.xml
+mkdir -p sim_build
+/usr/bin/iverilog -o sim_build/sim.vvp -s tb -g2012 -f sim_build/cmds.f  /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_pe.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_array.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_top_2x2.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v
+rm -f results.xml
+COCOTB_TEST_MODULES=test_release COCOTB_TESTCASE=  COCOTB_TOPLEVEL=tb TOPLEVEL_LANG=verilog       \
+	 /usr/bin/vvp -m /home/hacker/.local/lib/python3.10/site-packages/cocotb/libs/libcocotbvpi_icarus.so   sim_build/sim.vvp   
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:242  in gpi_load_users                  Loaded entry library: '/usr/lib/x86_64-linux-gnu/libpython3.10.so.1.0'
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:233  in gpi_load_users                  Running entry func 'initialize' from loaded library '/home/hacker/.local/lib/python3.10/site-packages/cocotb/simulator.cpython-310-x86_64-linux-gnu.so'
+     -.--ns INFO     pygpi                              ..ib/pygpi/embed.cpp:114  in initialize                      Using Python 3.10.19 interpreter at /usr/bin/python3
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: VPI support registered
+     0.00ns INFO     cocotb.initialize                  Seeding Python random module with 1791890847
+     0.00ns WARNING  gpi                                vpi_iterate returned NULL for type vpiInstance for object NULL
+     0.00ns INFO     cocotb.initialize                  Initialized cocotb v2.1.0 from /home/hacker/.local/lib/python3.10/site-packages/cocotb
+     0.00ns INFO     cocotb.initialize                  Running on Icarus Verilog version 11.0 (stable)
+     0.00ns INFO     cocotb.regression                  Running tests
+     0.00ns INFO     cocotb.regression                  running test_release.ready_back_to_back (1/5)
+   167.00ns WARNING  cocotb.regression                  test_release.ready_back_to_back failed
+                                                        Traceback (most recent call last):
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 69, in ready_back_to_back
+                                                            assert not (int(d.uio_out.value)&2), "ready asserted while POST_MAC ignores input"
+                                                        AssertionError: ready asserted while POST_MAC ignores input
+                                                        assert not (130 & 2)
+                                                         +  where 130 = int(LogicArray('10000010', Range(7, 'downto', 0)))
+                                                         +    where LogicArray('10000010', Range(7, 'downto', 0)) = PackedObject(tb.uio_out).value
+                                                         +      where PackedObject(tb.uio_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uio_out
+   167.00ns INFO     cocotb.regression                  running test_release.randomized_signed_transactions (2/5)
+   457.00ns WARNING  cocotb.regression                  test_release.randomized_signed_transactions failed
+                                                        Traceback (most recent call last):
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 97, in randomized_signed_transactions
+                                                            await h.outputs([requant(s,shift,mode) for s in sums])
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 59, in outputs
+                                                            assert int(self.d.uo_out.value)==(value & 255),(pe,value,int(self.d.uo_out.value))
+                                                        AssertionError: (1, 127, 128)
+                                                        assert 128 == (127 & 255)
+                                                         +  where 128 = int(LogicArray('10000000', Range(7, 'downto', 0)))
+                                                         +    where LogicArray('10000000', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value
+                                                         +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out
+                                                         +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = <test_release.Host object at 0x7a0d3e73e470>.d
+   457.00ns INFO     cocotb.regression                  running test_release.reset_and_enable_recovery (3/5)
+   706.00ns WARNING  cocotb.regression                  test_release.reset_and_enable_recovery failed
+                                                        Traceback (most recent call last):
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 116, in reset_and_enable_recovery
+                                                            await h.finish(); await h.outputs([3,4,6,8])
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 59, in outputs
+                                                            assert int(self.d.uo_out.value)==(value & 255),(pe,value,int(self.d.uo_out.value))
+                                                        AssertionError: (1, 4, 3)
+                                                        assert 3 == (4 & 255)
+                                                         +  where 3 = int(LogicArray('00000011', Range(7, 'downto', 0)))
+                                                         +    where LogicArray('00000011', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value
+                                                         +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out
+                                                         +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = <test_release.Host object at 0x7a0d3e73efe0>.d
+   706.00ns INFO     cocotb.regression                  running test_release.bias_snapshot_contract (4/5)
+   893.00ns WARNING  cocotb.regression                  test_release.bias_snapshot_contract failed
+                                                        Traceback (most recent call last):
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 134, in bias_snapshot_contract
+                                                            await h.outputs([-64,-64,8,10])
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 59, in outputs
+                                                            assert int(self.d.uo_out.value)==(value & 255),(pe,value,int(self.d.uo_out.value))
+                                                        AssertionError: (0, -64, 8)
+                                                        assert 8 == (-64 & 255)
+                                                         +  where 8 = int(LogicArray('00001000', Range(7, 'downto', 0)))
+                                                         +    where LogicArray('00001000', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value
+                                                         +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out
+                                                         +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = <test_release.Host object at 0x7a0d3e73f340>.d
+   893.00ns INFO     cocotb.regression                  running test_release.synthetic_dual_dot_product (5/5)
+  4777.00ns WARNING  cocotb.regression                  test_release.synthetic_dual_dot_product failed
+                                                        Traceback (most recent call last):
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 157, in synthetic_dual_dot_product
+                                                            assert elapsed==226,elapsed
+                                                        AssertionError: 180
+                                                        assert 180 == 226
+  4777.00ns INFO     cocotb.regression                  *****************************************************************************************************
+                                                        ** TEST                                         STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        *****************************************************************************************************
+                                                        ** test_release.ready_back_to_back               FAIL         167.00           0.00      84722.50  **
+                                                        ** test_release.randomized_signed_transactions   FAIL         290.00           0.00     157315.52  **
+                                                        ** test_release.reset_and_enable_recovery        FAIL         249.00           0.00     126562.08  **
+                                                        ** test_release.bias_snapshot_contract           FAIL         187.00           0.00     109782.69  **
+                                                        ** test_release.synthetic_dual_dot_product       FAIL        3884.00           0.03     150610.49  **
+                                                        *****************************************************************************************************
+                                                        ** TESTS=5 PASS=0 FAIL=5 SKIP=0                              4777.00           0.05      94172.41  **
+                                                        *****************************************************************************************************
+VCD info: dumpfile tb.vcd opened for output.
+make: *** [/home/hacker/.local/lib/python3.10/site-packages/cocotb_tools/makefiles/simulators/Makefile.icarus:69: results.xml] Error 5

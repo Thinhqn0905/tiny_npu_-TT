@@ -1,0 +1,291 @@
+{
+  "status": "target_met",
+  "tool": "Verilator 4.038",
+  "scope": [
+    "pnr_handoff/rtl/npu_activation.v",
+    "pnr_handoff/rtl/npu_array.v",
+    "pnr_handoff/rtl/npu_pe.v",
+    "pnr_handoff/rtl/npu_top_2x2.v",
+    "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v"
+  ],
+  "aggregation": "Verilator merged hierarchical points (h field retained)",
+  "exclusions": [
+    "testbench",
+    "SVA"
+  ],
+  "dut_exclusions": "25 exact points approved by user; docs/COVERAGE_REVIEW.md and schemas/review_approvals.json",
+  "target_percent": 100,
+  "metrics": {
+    "v_branch": {
+      "covered": 16,
+      "coverable": 16,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    "v_line": {
+      "covered": 30,
+      "coverable": 33,
+      "percent": 90.9090909090909,
+      "uncovered": [
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "139",
+          "n": "33",
+          "page": "v_line/tt_um_tinyml_npu_2x2",
+          "o": "case",
+          "S": "139",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "163",
+          "n": "33",
+          "page": "v_line/tt_um_tinyml_npu_2x2",
+          "o": "case",
+          "S": "163",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "187",
+          "n": "17",
+          "page": "v_line/tt_um_tinyml_npu_2x2",
+          "o": "case",
+          "S": "187-188",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        }
+      ]
+    },
+    "v_toggle": {
+      "covered": 1650,
+      "coverable": 1672,
+      "percent": 98.6842105263158,
+      "uncovered": [
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[15]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[16]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[17]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[18]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[19]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[20]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[21]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[22]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[23]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_activation.v",
+          "l": "30",
+          "n": "31",
+          "page": "v_toggle/npu_activation",
+          "o": "round_offset[24]",
+          "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/npu_top_2x2.v",
+          "l": "42",
+          "n": "34",
+          "page": "v_toggle/npu_top_2x2",
+          "o": "out_acc_sel",
+          "h": "TOP.coverage_top.dut.u_core_2x2",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "18",
+          "n": "23",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "uio_out[0]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "18",
+          "n": "23",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "uio_out[2]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "18",
+          "n": "23",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "uio_out[3]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "18",
+          "n": "23",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "uio_out[4]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "19",
+          "n": "23",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "uio_oe[0]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "19",
+          "n": "23",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "uio_oe[2]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "19",
+          "n": "23",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "uio_oe[3]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "19",
+          "n": "23",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "uio_oe[4]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "70",
+          "n": "26",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "cfg_vector_len[7]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "71",
+          "n": "26",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "mac_count[6]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        },
+        {
+          "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+          "l": "71",
+          "n": "26",
+          "page": "v_toggle/tt_um_tinyml_npu_2x2",
+          "o": "mac_count[7]",
+          "h": "TOP.coverage_top.dut",
+          "count": 0
+        }
+      ]
+    }
+  },
+  "branch_metric": "v_branch: native Verilator branch points; denominator retained separately from v_line and v_toggle",
+  "functional_checks": "PASS TC-COVERAGE-BASE; public-pin integer oracle",
+  "raw_database": "evidence/review/coverage/merged.dat",
+  "eligible_metrics": {
+    "v_line": {
+      "covered": 30,
+      "coverable": 30,
+      "percent": 100.0,
+      "excluded": 3
+    },
+    "v_toggle": {
+      "covered": 1650,
+      "coverable": 1650,
+      "percent": 100.0,
+      "excluded": 22
+    },
+    "v_branch": {
+      "covered": 16,
+      "coverable": 16,
+      "percent": 100.0,
+      "excluded": 0
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "M02",
+  "req_id": "REQ-NPU-001",
+  "kind": "unit",
+  "test_case": "exhaustive_products_and_overflow",
+  "source": "npu_pe.v",
+  "old": "{(ACC_WIDTH-16){prod[15]}}",
+  "new": "{(ACC_WIDTH-16){1'b0}}",
+  "mutated_sha256": "f584eb70b3216c64d36e3d8d3791b4094e099a7a60048d12d44751b29b39e55c"
+}

@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "ports": {
+    "ui_in": [
+      "input",
+      8
+    ],
+    "uo_out": [
+      "output",
+      8
+    ],
+    "uio_in": [
+      "input",
+      8
+    ],
+    "uio_out": [
+      "output",
+      8
+    ],
+    "uio_oe": [
+      "output",
+      8
+    ],
+    "clk": [
+      "input",
+      1
+    ],
+    "rst_n": [
+      "input",
+      1
+    ],
+    "ena": [
+      "input",
+      1
+    ]
+  },
+  "uio_oe": "0xE2",
+  "limits": "Structural metadata/port boundary only; official hardening/precheck NOT VERIFIED"
+}

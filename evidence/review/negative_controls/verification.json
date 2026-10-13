@@ -1,0 +1,65 @@
+[
+  {
+    "test": "arithmetic",
+    "count": 3,
+    "passed": 2,
+    "failed": 1,
+    "status": "FAIL",
+    "evidence": "evidence/review/negative_controls/arithmetic.log"
+  },
+  {
+    "test": "release",
+    "count": 5,
+    "passed": 0,
+    "failed": 5,
+    "status": "FAIL",
+    "evidence": "evidence/review/negative_controls/release.log"
+  },
+  {
+    "test": "existing",
+    "count": 4,
+    "passed": 4,
+    "failed": 0,
+    "status": "PASS",
+    "evidence": "evidence/review/negative_controls/existing.log"
+  },
+  {
+    "test": "legacy",
+    "count": 0,
+    "passed": 0,
+    "failed": 1,
+    "status": "FAIL"
+  },
+  {
+    "test": "tb_npu_standalone",
+    "count": 6,
+    "passed": 6,
+    "failed": 0,
+    "status": "PASS",
+    "evidence": "evidence/review/negative_controls/tb_npu_standalone.log"
+  },
+  {
+    "test": "tb_npu_2x2_standalone",
+    "count": 6,
+    "passed": 6,
+    "failed": 0,
+    "status": "PASS",
+    "evidence": "evidence/review/negative_controls/tb_npu_2x2_standalone.log"
+  },
+  {
+    "test": "tb_tt_um_2x2",
+    "count": 8,
+    "passed": 8,
+    "failed": 0,
+    "status": "PASS",
+    "evidence": "evidence/review/negative_controls/tb_tt_um_2x2.log"
+  },
+  {
+    "test": "Verilator lint",
+    "count": 1,
+    "passed": 1,
+    "failed": 0,
+    "status": "PASS",
+    "evidence": "evidence/review/negative_controls/verilator.log"
+  }
+]

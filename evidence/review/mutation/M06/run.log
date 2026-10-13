@@ -1,0 +1,25 @@
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:242  in gpi_load_users                  Loaded entry library: '/usr/lib/x86_64-linux-gnu/libpython3.10.so.1.0'
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:233  in gpi_load_users                  Running entry func 'initialize' from loaded library '/home/hacker/.local/lib/python3.10/site-packages/cocotb/simulator.cpython-310-x86_64-linux-gnu.so'
+     -.--ns INFO     pygpi                              ..ib/pygpi/embed.cpp:114  in initialize                      Using Python 3.10.19 interpreter at /usr/bin/python3
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: VPI support registered
+     0.00ns INFO     cocotb.initialize                  Seeding Python random module with 784736294
+     0.00ns WARNING  gpi                                vpi_iterate returned NULL for type vpiInstance for object NULL
+     0.00ns INFO     cocotb.initialize                  Initialized cocotb v2.1.0 from /home/hacker/.local/lib/python3.10/site-packages/cocotb
+     0.00ns INFO     cocotb.initialize                  Running on Icarus Verilog version 11.0 (stable)
+     0.00ns INFO     cocotb.regression                  Running tests
+     0.00ns INFO     cocotb.regression                  running test_arithmetic.systolic_and_broadcast (1/1)
+    50.00ns WARNING  cocotb.regression                  test_arithmetic.systolic_and_broadcast failed
+                                                        Traceback (most recent call last):
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_arithmetic.py", line 123, in systolic_and_broadcast
+                                                            assert grid(d.grid1)==exp,(k,t,grid(d.grid1),exp)
+                                                        AssertionError: (1, 1, [-4494, 0, -588, 0], [-4494, 8453, -588, 0])
+                                                        assert [-4494, 0, -588, 0] == [-4494, 8453, -588, 0]
+                                                         +  where [-4494, 0, -588, 0] = grid(PackedObject(tb_review.grid1))
+                                                         +    where PackedObject(tb_review.grid1) = HierarchyObject(tb_review with definition tb_review (at test/tb_review.v)).grid1
+    50.00ns INFO     cocotb.regression                  ************************************************************************************************
+                                                        ** TEST                                    STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        ************************************************************************************************
+                                                        ** test_arithmetic.systolic_and_broadcast   FAIL          50.00           0.00      42281.55  **
+                                                        ************************************************************************************************
+                                                        ** TESTS=1 PASS=0 FAIL=1 SKIP=0                           50.00           0.01       6308.20  **
+                                                        ************************************************************************************************

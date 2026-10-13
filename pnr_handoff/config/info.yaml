@@ -1,0 +1,58 @@
+# Tiny Tapeout project information
+project:
+  title:        "TinyML NPU 2x2 signed MAC array"
+  author:       "Thinh Pham"
+  discord:      ""
+  description:  "Four signed INT8 MACs with host streaming and saturating requantization"
+  language:     "Verilog"
+  clock_hz:     50000000  # 50 MHz
+
+  # Planning allocation approved 2026-10-13; fit requires physical design.
+  tiles: "2x2"
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_tinyml_npu_2x2"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  source_files:
+    - "npu_pe.v"
+    - "npu_activation.v"
+    - "npu_array.v"
+    - "npu_top_2x2.v"
+    - "tt_um_tinyml_npu_2x2.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+pinout:
+  # Inputs
+  ui[0]: "data_in[0]"
+  ui[1]: "data_in[1]"
+  ui[2]: "data_in[2]"
+  ui[3]: "data_in[3]"
+  ui[4]: "data_in[4]"
+  ui[5]: "data_in[5]"
+  ui[6]: "data_in[6]"
+  ui[7]: "data_in[7]"
+
+  # Outputs
+  uo[0]: "data_out[0] / status[0]"
+  uo[1]: "data_out[1] / status[1]"
+  uo[2]: "data_out[2] / status[2]"
+  uo[3]: "data_out[3] / status[3]"
+  uo[4]: "data_out[4] / status[4]"
+  uo[5]: "data_out[5] / status[5]"
+  uo[6]: "data_out[6] / status[6]"
+  uo[7]: "data_out[7] / status[7]"
+
+  # Bidirectional pins
+  uio[0]: "host_valid (in)"
+  uio[1]: "npu_ready (out)"
+  uio[2]: "cmd_mode (in)"
+  uio[3]: "reserved, ignored (in)"
+  uio[4]: "out_sel (in)"
+  uio[5]: "out_valid (out)"
+  uio[6]: "layer_done (out)"
+  uio[7]: "npu_busy (out)"
+
+# Do not change!
+yaml_version: 6

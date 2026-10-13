@@ -34,6 +34,7 @@ COMPILE_ARGS 		+= -I$(SRC_DIR)
 
 # Include the testbench sources:
 VERILOG_SOURCES += $(PWD)/tb.v
+VERILOG_SOURCES += $(PWD)/../src/sva/npu_protocol_properties.sv
 
 TOPLEVEL = tb
 

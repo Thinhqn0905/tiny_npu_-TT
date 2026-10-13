@@ -1,0 +1,40 @@
+$ make -f /tmp/npu_frontend_0gbuem0f/release/Makefile
+rm -f results.xml
+mkdir -p sim_build
+/usr/bin/iverilog -o sim_build/sim.vvp -s tb -g2012 -f sim_build/cmds.f  /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_pe.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_array.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_top_2x2.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v
+rm -f results.xml
+COCOTB_TEST_MODULES=test_release COCOTB_TESTCASE=  COCOTB_TOPLEVEL=tb TOPLEVEL_LANG=verilog COCOTB_RANDOM_SEED=784736294      \
+	 /usr/bin/vvp -m /home/hacker/.local/lib/python3.10/site-packages/cocotb/libs/libcocotbvpi_icarus.so   sim_build/sim.vvp   
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:242  in gpi_load_users                  Loaded entry library: '/usr/lib/x86_64-linux-gnu/libpython3.10.so.1.0'
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:233  in gpi_load_users                  Running entry func 'initialize' from loaded library '/home/hacker/.local/lib/python3.10/site-packages/cocotb/simulator.cpython-310-x86_64-linux-gnu.so'
+     -.--ns INFO     pygpi                              ..ib/pygpi/embed.cpp:114  in initialize                      Using Python 3.10.19 interpreter at /usr/bin/python3
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: VPI support registered
+     0.00ns INFO     cocotb.initialize                  Seeding Python random module with 784736294
+     0.00ns WARNING  gpi                                vpi_iterate returned NULL for type vpiInstance for object NULL
+     0.00ns INFO     cocotb.initialize                  Initialized cocotb v2.1.0 from /home/hacker/.local/lib/python3.10/site-packages/cocotb
+     0.00ns INFO     cocotb.initialize                  Running on Icarus Verilog version 11.0 (stable)
+     0.00ns INFO     cocotb.regression                  Running tests
+     0.00ns INFO     cocotb.regression                  running test_release.ready_back_to_back (1/5)
+   652.00ns INFO     cocotb.regression                  test_release.ready_back_to_back passed
+   652.00ns INFO     cocotb.regression                  running test_release.randomized_signed_transactions (2/5)
+660749.00ns INFO     cocotb.tb                          ORACLE_CASES wrapper=512 transactions=128 seed=784736294
+660749.00ns INFO     cocotb.regression                  test_release.randomized_signed_transactions passed
+660749.00ns INFO     cocotb.regression                  running test_release.reset_and_enable_recovery (3/5)
+662777.00ns INFO     cocotb.regression                  test_release.reset_and_enable_recovery passed
+662777.00ns INFO     cocotb.regression                  running test_release.bias_snapshot_contract (4/5)
+663319.00ns INFO     cocotb.regression                  test_release.bias_snapshot_contract passed
+663319.00ns INFO     cocotb.regression                  running test_release.synthetic_dual_dot_product (5/5)
+668253.00ns INFO     cocotb.tb                          WORKLOAD 90 useful MACs / 226 cycles = 19.911504 MMAC/s at 50MHz
+668253.00ns INFO     cocotb.regression                  test_release.synthetic_dual_dot_product passed
+668253.00ns INFO     cocotb.regression                  *****************************************************************************************************
+                                                        ** TEST                                         STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        *****************************************************************************************************
+                                                        ** test_release.ready_back_to_back               PASS         652.00           0.00     133708.37  **
+                                                        ** test_release.randomized_signed_transactions   PASS      660097.00           3.31     199447.39  **
+                                                        ** test_release.reset_and_enable_recovery        PASS        2028.00           0.02     117887.60  **
+                                                        ** test_release.bias_snapshot_contract           PASS         542.00           0.00     172420.59  **
+                                                        ** test_release.synthetic_dual_dot_product       PASS        4934.00           0.03     154768.25  **
+                                                        *****************************************************************************************************
+                                                        ** TESTS=5 PASS=5 FAIL=0 SKIP=0                            668253.00           3.37     198347.26  **
+                                                        *****************************************************************************************************
+VCD info: dumpfile tb.vcd opened for output.

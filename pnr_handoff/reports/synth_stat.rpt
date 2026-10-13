@@ -1,56 +1,71 @@
-================================================================================
-YOSYS FULL SYNTHESIS STATISTICS REPORT
-Project:        Scalable TinyML NPU 2x2 Systolic Array
-Top Module:     tt_um_tinyml_npu_2x2
-Tool:           Yosys Open Synthesis Suite 0.9 (git sha1 1979e0b)
-Invocation:     synth -top tt_um_tinyml_npu_2x2
-Source List:    pnr_handoff/filelist.f
-================================================================================
-
-=== Design Hierarchy Breakdown ===
-
-   Module Name                                                 Instances
-   ---------------------------------------------------------------------
-   tt_um_tinyml_npu_2x2                                                1
-     npu_top_2x2                                                       1
-       npu_activation                                                  4
-       npu_array (ROWS=2, COLS=2)                                      1
-         npu_pe (DATA_WIDTH=8, ACC_WIDTH=24)                           4
-   ---------------------------------------------------------------------
-
-=== Hierarchical Synthesis Totals ===
-
-   Number of wires:                                                5,432
-   Number of wire bits:                                            7,851
-   Number of public wires:                                           237
-   Number of public wire bits:                                     2,414
-   Number of memories:                                                 0
-   Number of memory bits:                                              0
-   Number of processes:                                                0
-
-   Total Number of Primitive Cells:                                5,822
-     $_ANDNOT_                                                       821
-     $_AND_                                                          287
-     $_AOI3_                                                         371
-     $_AOI4_                                                          32
-     $_DFF_PN0_                                                      277
-     $_DFF_PN1_                                                        3
-     $_MUX_                                                        1,353
-     $_NAND_                                                         207
-     $_NOR_                                                          157
-     $_NOT_                                                          461
-     $_OAI3_                                                         223
-     $_OAI4_                                                          13
-     $_ORNOT_                                                        179
-     $_OR_                                                           389
-     $_XNOR_                                                         317
-     $_XOR_                                                          732
-
-=== Verification of Invariant Contracts ===
-   1. Unmapped Blackboxes:                                             0
-   2. Inferred Latches:                                                0
-   3. Inferred Memories:                                               0
-   4. Clock Domains:                                                   1 (clk)
-   5. Reset Domains:                                                   1 (rst_n)
-   6. Primary Status:                                               PASS
-================================================================================
+{
+  "tool": "Yosys 0.9 (git sha1 1979e0b)",
+  "top": "tt_um_tinyml_npu_2x2",
+  "status": "PASS",
+  "generic_primitives": 6094,
+  "sequential_bits": 279,
+  "combinational_primitives": 5815,
+  "generic_cell_types": {
+    "$_ANDNOT_": 843,
+    "$_AND_": 266,
+    "$_AOI3_": 374,
+    "$_AOI4_": 36,
+    "$_DFF_PN0_": 277,
+    "$_DFF_PN1_": 2,
+    "$_MUX_": 1497,
+    "$_NAND_": 218,
+    "$_NOR_": 162,
+    "$_NOT_": 491,
+    "$_OAI3_": 207,
+    "$_OAI4_": 11,
+    "$_ORNOT_": 146,
+    "$_OR_": 527,
+    "$_XNOR_": 321,
+    "$_XOR_": 716
+  },
+  "mapped_standard_cells": 4091,
+  "mapped_sequential_cells": 215,
+  "mapped_combinational_cells": 3876,
+  "mapped_cell_types": {
+    "sg13g2_a21o_1": 112,
+    "sg13g2_a21oi_1": 447,
+    "sg13g2_a221oi_1": 39,
+    "sg13g2_a22oi_1": 89,
+    "sg13g2_and2_1": 124,
+    "sg13g2_and3_1": 37,
+    "sg13g2_and4_1": 32,
+    "sg13g2_dfrbpq_1": 215,
+    "sg13g2_inv_1": 124,
+    "sg13g2_mux2_1": 116,
+    "sg13g2_nand2_1": 511,
+    "sg13g2_nand2b_1": 154,
+    "sg13g2_nand3_1": 130,
+    "sg13g2_nand3b_1": 8,
+    "sg13g2_nand4_1": 41,
+    "sg13g2_nor2_1": 335,
+    "sg13g2_nor2b_1": 77,
+    "sg13g2_nor3_1": 75,
+    "sg13g2_nor4_1": 28,
+    "sg13g2_o21ai_1": 595,
+    "sg13g2_or2_1": 138,
+    "sg13g2_or3_1": 49,
+    "sg13g2_or4_1": 1,
+    "sg13g2_xnor2_1": 423,
+    "sg13g2_xor2_1": 191
+  },
+  "mapped_cell_area_um2": 49527.9414,
+  "memories": 0,
+  "latches": 0,
+  "unresolved_modules": 0,
+  "unmapped_generic_cells": 0,
+  "warnings": [],
+  "mapped_warnings": [
+    "Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.",
+    "Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.",
+    "Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.",
+    "Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping."
+  ],
+  "mapped_warning_review": "Unsupported scan functions belong to unused library cells; no scan-cell instances.",
+  "library_sha256": "7677a8918689f452e80405ad16a83e744709342574f2aedcc507c2758986b396",
+  "nand2_equivalents": null
+}

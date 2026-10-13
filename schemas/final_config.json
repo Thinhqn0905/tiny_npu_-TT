@@ -1,33 +1,19 @@
 {
-  "ip_name": "tt_um_tinyml_npu_1x1",
-  "spec_ref": "spec/tinyml_npu_1x1_spec.md",
-  "structured_spec_ref": "schemas/structured_spec.json",
+  "ip_name": "tt_um_tinyml_npu_2x2",
+  "version": "FE-REVIEW-20261013",
   "gate_2_approved": true,
-  "approved_at": "2026-10-13T16:05:00+07:00",
-  "approved_by": "VLSIT-Agent (autoflow Phase 2)",
   "parameters": {
-    "ROWS":       { "value": 1, "default": 1, "changed": false, "description": "PE Array Rows (1 for 1x1 tile, M for scalable array)" },
-    "COLS":       { "value": 1, "default": 1, "changed": false, "description": "PE Array Columns (1 for 1x1 tile, N for scalable array)" },
-    "DATA_WIDTH": { "value": 8, "default": 8, "changed": false, "description": "INT8 weights and activations" },
-    "ACC_WIDTH":  { "value": 24, "default": 24, "changed": false, "description": "24-bit signed accumulator" }
+    "ROWS": 2,
+    "COLS": 2,
+    "DATA_WIDTH": 8,
+    "ACC_WIDTH": 24,
+    "SYSTOLIC_MODE": 0
   },
-  "constraints": {
-    "1x1_tile_budget": {
-      "expression": "ROWS * COLS == 1",
-      "status": "PASS",
-      "note": "Fits inside 1x1 Tiny Tapeout tile (<1,000 std cells)"
-    },
-    "clock_timing": {
-      "expression": "CLOCK_PERIOD == 20",
-      "status": "PASS",
-      "note": "50 MHz target clock"
-    }
-  },
-  "naming_decisions": {
-    "port_standard": "Tiny Tapeout 8-in, 8-out, 8-uio interface",
-    "reset_scheme": "Active-low asynchronous assert (rst_n)"
-  },
-  "features_enabled": {
-    "mandatory": ["REQ-NPU-001", "REQ-NPU-002", "REQ-NPU-003", "REQ-NPU-004", "REQ-NPU-005", "REQ-NPU-006"]
-  }
+  "clock_period_ns": 20,
+  "pdk": "ihp-sg13g2",
+  "tiles": "2x2",
+  "tile_user_approved": true,
+  "rtl_rule_source": "workspace Tiny_NPU/TinyTapeout_CNN_Tapeout_Spec/03_RTL_Design_Rules.md",
+  "style_note": "Preserve existing Verilog names/interfaces; no unrelated VLSIT-style rewrite",
+  "physical_fit": "NOT VERIFIED"
 }

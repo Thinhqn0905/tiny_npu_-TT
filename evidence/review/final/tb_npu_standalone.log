@@ -1,0 +1,15 @@
+VCD info: dumpfile tb_npu.vcd opened for output.
+=========================================================
+  STARTING SCALABLE 1x1 TINYML NPU TESTBENCH VERIFICATION
+=========================================================
+[PASS] Test 1: NPU Reset and ready state verified.
+[PASS] Test 2: Single MAC (7 * 9 = 63) verified.
+[PASS] Test 3: Negative product clamped to 0 by ReLU verified.
+[PASS] Test 4: 4-Tap Dot-Product with Requantization (result=23) verified.
+[PASS] Test 5: ArgMax Winner-Take-All classified winning Class 1 correctly.
+---------------------------------------------------------
+  Running ECG Arrhythmia Beat Classification Test...
+[PASS] Test 6: ECG Arrhythmia correctly identified as Class 1 (PVC Arrhythmia).
+=========================================================
+  ALL 6 TESTS PASSED! NPU 1x1 FULL FLOW VERIFIED.
+=========================================================

@@ -1,79 +1,103 @@
 {
-  "tool": "OpenLane / Yosys 0.58 / IHP SG13G2 & SkyWater Sky130",
-  "pdk": "IHP SG13G2 130nm / SkyWater Sky130A (1x1 Tiny Tapeout Tile)",
-  "top_module": "tt_um_tinyml_npu_1x1",
-  "generated_at": "2026-10-13T09:00:00+07:00",
-  "target_frequency_mhz": 50.0,
-  "clock_period_ns": 20.0,
-  "tile_allocation": "1x1",
-  "tile_dimensions_um": {
-    "width": 160.0,
-    "height": 108.0,
-    "area_um2": 17280.0
+  "tool": "Yosys 0.9 (git sha1 1979e0b)",
+  "top": "tt_um_tinyml_npu_2x2",
+  "status": "PASS",
+  "generic_primitives": 6094,
+  "sequential_bits": 279,
+  "combinational_primitives": 5815,
+  "generic_cell_types": {
+    "$_ANDNOT_": 843,
+    "$_AND_": 266,
+    "$_AOI3_": 374,
+    "$_AOI4_": 36,
+    "$_DFF_PN0_": 277,
+    "$_DFF_PN1_": 2,
+    "$_MUX_": 1497,
+    "$_NAND_": 218,
+    "$_NOR_": 162,
+    "$_NOT_": 491,
+    "$_OAI3_": 207,
+    "$_OAI4_": 11,
+    "$_ORNOT_": 146,
+    "$_OR_": 527,
+    "$_XNOR_": 321,
+    "$_XOR_": 716
   },
-  "cell_metrics": {
-    "total_cells": 884,
-    "sequential_cells": 144,
-    "combinational_cells": 740,
-    "gate_equivalents_nand2": 1571,
-    "tile_budget_cells": 1200,
-    "cell_utilization_pct": 73.67,
-    "routing_margin_pct": 26.33
+  "mapped_standard_cells": 4091,
+  "mapped_sequential_cells": 215,
+  "mapped_combinational_cells": 3876,
+  "mapped_cell_types": {
+    "sg13g2_a21o_1": 112,
+    "sg13g2_a21oi_1": 447,
+    "sg13g2_a221oi_1": 39,
+    "sg13g2_a22oi_1": 89,
+    "sg13g2_and2_1": 124,
+    "sg13g2_and3_1": 37,
+    "sg13g2_and4_1": 32,
+    "sg13g2_dfrbpq_1": 215,
+    "sg13g2_inv_1": 124,
+    "sg13g2_mux2_1": 116,
+    "sg13g2_nand2_1": 511,
+    "sg13g2_nand2b_1": 154,
+    "sg13g2_nand3_1": 130,
+    "sg13g2_nand3b_1": 8,
+    "sg13g2_nand4_1": 41,
+    "sg13g2_nor2_1": 335,
+    "sg13g2_nor2b_1": 77,
+    "sg13g2_nor3_1": 75,
+    "sg13g2_nor4_1": 28,
+    "sg13g2_o21ai_1": 595,
+    "sg13g2_or2_1": 138,
+    "sg13g2_or3_1": 49,
+    "sg13g2_or4_1": 1,
+    "sg13g2_xnor2_1": 423,
+    "sg13g2_xor2_1": 191
   },
-  "submodule_breakdown": {
-    "npu_pe": {
-      "cells": 362,
-      "flip_flops": 40,
-      "gate_equivalents": 540,
-      "description": "8x8 signed MAC datapath with 24-bit accumulator and systolic forward registers"
-    },
-    "npu_activation": {
-      "cells": 196,
-      "flip_flops": 0,
-      "gate_equivalents": 330,
-      "description": "Requantization arithmetic barrel shifter with half-integer rounding and saturated ReLU"
-    },
-    "npu_argmax": {
-      "cells": 138,
-      "flip_flops": 28,
-      "gate_equivalents": 216,
-      "description": "Winner-Take-All 24-bit comparator and winning class index tracker"
-    },
-    "npu_controller": {
-      "cells": 176,
-      "flip_flops": 76,
-      "gate_equivalents": 465,
-      "description": "Micro-op dynamic opcode decoder and ready/valid streaming controller"
-    },
-    "top_muxing": {
-      "cells": 12,
-      "flip_flops": 0,
-      "gate_equivalents": 20,
-      "description": "IO direction buffers and multiplexers"
-    }
+  "mapped_cell_area_um2": 49527.9414,
+  "memories": 0,
+  "latches": 0,
+  "unresolved_modules": 0,
+  "unmapped_generic_cells": 0,
+  "warnings": [],
+  "mapped_warnings": [
+    "Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.",
+    "Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.",
+    "Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.",
+    "Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping."
+  ],
+  "mapped_warning_review": "Unsupported scan functions belong to unused library cells; no scan-cell instances.",
+  "library_sha256": "7677a8918689f452e80405ad16a83e744709342574f2aedcc507c2758986b396",
+  "nand2_equivalents": null,
+  "source_identity": "evidence/review/final/run_identity.json",
+  "timing": {
+    "status": "PASS",
+    "tool": "OpenSTA 2.0.17",
+    "boundary": "PRE-LAYOUT / SYNTHESIS ESTIMATE; typ_1p20V_25C, ideal clock, Liberty wire-load model, no extracted RC",
+    "clock_period_ns": 20,
+    "setup_uncertainty_ns": 0.5,
+    "worst_setup_slack_ns": 4.3904,
+    "worst_reported_data_arrival_ns": 11.1096,
+    "period_minus_slack_ns": 15.6096,
+    "naive_period_minus_slack_fmax_mhz": 64.06314063140631,
+    "unconstrained_constant_endpoints": [
+      "uio_oe[0]",
+      "uio_oe[1]",
+      "uio_oe[2]",
+      "uio_oe[3]",
+      "uio_oe[4]",
+      "uio_oe[5]",
+      "uio_oe[6]",
+      "uio_oe[7]",
+      "uio_out[0]",
+      "uio_out[2]",
+      "uio_out[3]",
+      "uio_out[4]"
+    ],
+    "warning_review": "All 12 untimed endpoints independently verified as constant netlist outputs.",
+    "caution": "The period-minus-slack budget includes IO delay and uncertainty; it is not the cell data delay or routed Fmax."
   },
-  "timing_summary": {
-    "target_clock_period_ns": 20.0,
-    "critical_path_ns": 4.12,
-    "critical_path_breakdown": {
-      "dff_clk_to_q_ns": 0.45,
-      "signed_mult_8x8_ns": 1.82,
-      "acc_adder_24bit_ns": 1.35,
-      "mux_control_ns": 0.22,
-      "setup_time_ns": 0.28
-    },
-    "estimated_fmax_mhz": 216.4,
-    "worst_slack_at_50mhz_ns": 15.38,
-    "timing_status": "TIMING_CLOSED"
-  },
-  "power_metrics": {
-    "core_vdd_v": 1.8,
-    "peak_dynamic_power_mw": 1.24,
-    "idle_power_uw": 80.0,
-    "static_leakage_uw": 1.08,
-    "energy_per_mac_pj": 49.6,
-    "average_power_1hz_ecg_uw": 1.083
-  },
-  "req_ids_tagged": 6,
-  "status": "PASS_APPROVED"
+  "pdk": "ihp-sg13g2",
+  "tiles": "2x2",
+  "physical_fit": "NOT VERIFIED",
+  "routed_timing": "NOT VERIFIED"
 }

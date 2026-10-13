@@ -3,12 +3,12 @@
 
 //==============================================================================
 // Module:      tt_um_tinyml_npu_2x2
-// Project:     Scalable TinyML NPU for 2x2 Systolic Array (Tiny Tapeout Top)
+// Project:     TinyML NPU 2x2 broadcast MAC array (Tiny Tapeout Top)
 // Author:      Thinh Pham
-// Description: Standard Tiny Tapeout Top Wrapper for the 2x2 Systolic Array NPU.
+// Description: Standard Tiny Tapeout Top Wrapper for the 2x2 broadcast MAC core.
 //              Integrates streaming operand deserializer, runtime configuration,
 //              and multi-channel PE readout multiplexing.
-//              Allocates 1x2 tiles (202 um x 314 um) on Tiny Tapeout shuttle.
+//              Planning allocation 2x2 IHP tiles; physical fit is not verified.
 //==============================================================================
 
 module tt_um_tinyml_npu_2x2 (
@@ -37,7 +37,7 @@ module tt_um_tinyml_npu_2x2 (
     wire stream_sel = uio_in[3];
     wire out_sel    = uio_in[4];
 
-    reg  npu_ready;
+    wire npu_ready;
     reg  out_valid;
     reg  layer_done;
     reg  npu_busy;
@@ -77,11 +77,14 @@ module tt_um_tinyml_npu_2x2 (
 
     reg [1:0] state;
 
+    // A byte is accepted only on an enabled IDLE edge. POST_MAC and FINISH
+    // consume internal control cycles, so they must exert host backpressure.
+    assign npu_ready = rst_n && ena && (state == S_IDLE);
+
     // FSM & Streaming Sequencer
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             state          <= S_IDLE;
-            npu_ready      <= 1'b1;
             out_valid      <= 1'b0;
             layer_done     <= 1'b0;
             npu_busy       <= 1'b0;
@@ -109,7 +112,6 @@ module tt_um_tinyml_npu_2x2 (
 
             case (state)
                 S_IDLE: begin
-                    npu_ready <= 1'b1;
                     if (host_valid) begin
                         if (cmd_mode) begin
                             // Command Decode
@@ -128,7 +130,7 @@ module tt_um_tinyml_npu_2x2 (
                                     if (ui_in[1]) load_bias <= 1'b1;
                                     pe_sel <= ui_in[5:4];
                                 end
-                                2'b11: begin // CMD_LOAD_BIAS (8-bit signed broadcast to bias_c0, c1)
+                                2'b11: begin // Signed opcode (-64..-1); top-row bias, lower-row cascade snapshot
                                     load_bias <= 1'b1;
                                     bias_c0   <= {{(16){ui_in[7]}}, ui_in};
                                     bias_c1   <= {{(16){ui_in[7]}}, ui_in};
@@ -189,7 +191,7 @@ module tt_um_tinyml_npu_2x2 (
         end
     end
 
-    // Core Instantiation: 2x2 Systolic Array NPU
+    // Core Instantiation: fixed 2x2 row/column broadcast
     wire signed [7:0]  core_data_out;
     wire signed [23:0] acc_out_selected;
     wire signed [23:0] pe00_acc, pe01_acc, pe10_acc, pe11_acc;

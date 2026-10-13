@@ -1,7 +1,7 @@
 name: gds
 
 on:
-  push:
+  # Physical PnR is a separately authorized step, not part of front-end push.
   workflow_dispatch:
 
 jobs:

@@ -1,58 +1,33 @@
 {
-  "ip_name": "tt_um_tinyml_npu_1x1",
-  "document_id": "TINYML-NPU-1X1-SPEC",
-  "version": "1.0",
+  "ip_name": "tt_um_tinyml_npu_2x2",
+  "version": "FE-REVIEW-20261013",
+  "spec_ref": "docs/FRONTEND_SPEC.md",
   "gate_1_approved": true,
-  "approved_at": "2026-10-13T16:00:00+07:00",
-  "approved_by": "VLSIT-Agent",
+  "approval_status": "PASS",
   "requirements": [
     {
       "id": "REQ-NPU-001",
-      "clause": "Sec 5.1",
-      "title": "Single-Cycle Signed INT8 MAC",
-      "text": "The NPU shall compute signed 8-bit x 8-bit multiplication and accumulate into a 24-bit signed accumulator in a single clock cycle.",
-      "type": "functional",
-      "verification_method": "simulation"
+      "title": "Signed four-PE MAC arithmetic"
     },
     {
       "id": "REQ-NPU-002",
-      "clause": "Sec 5.2",
-      "title": "Systolic Array Scalability",
-      "text": "The PE datapath shall provide systolic forward registers (data_a_out, data_b_out, cascade_acc_in) to enable parameterization across M x N grids.",
-      "type": "architectural",
-      "verification_method": "parameter_sweep"
+      "title": "Broadcast and generic neighbor dataflow"
     },
     {
       "id": "REQ-NPU-003",
-      "clause": "Sec 6.2",
-      "title": "Micro-Op Dynamic Configuration",
-      "text": "The controller shall decode runtime opcodes (CMD_SET_LEN, CMD_SET_POST, CMD_ACC_OPS, CMD_LOAD_BIAS) when cmd_mode = 1.",
-      "type": "control",
-      "verification_method": "simulation"
+      "title": "Byte protocol and configuration"
     },
     {
       "id": "REQ-NPU-004",
-      "clause": "Sec 5.3",
-      "title": "Requantization, Rounding and Activation",
-      "text": "The activation unit shall compute (Acc + 2^(S-1)) >> S with half-integer rounding and saturation to [-128, 127] or [0, 255] and ReLU.",
-      "type": "arithmetic",
-      "verification_method": "bit_exact_check"
+      "title": "Requantization and activation"
     },
     {
       "id": "REQ-NPU-005",
-      "clause": "Sec 5.4",
-      "title": "Winner-Take-All ArgMax Unit",
-      "text": "The ArgMax unit shall record the maximum signed class score and report the winning 4-bit class index upon comparison strobe.",
-      "type": "classification",
-      "verification_method": "simulation"
+      "title": "Complete trained quantized network"
     },
     {
       "id": "REQ-NPU-006",
-      "clause": "Sec 4.1",
-      "title": "Tiny Tapeout 1x1 Standard Pinout",
-      "text": "The top module shall map to Tiny Tapeout standard pins (ui_in[7:0], uo_out[7:0], uio[7:0]) and operate at 50 MHz.",
-      "type": "interface",
-      "verification_method": "harness_check"
+      "title": "TinyTapeout clock/reset/ports"
     }
   ]
 }

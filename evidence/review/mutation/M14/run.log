@@ -1,0 +1,2 @@
+FATAL: src/tb/tests/tc_trained_network.sv:174: TC-TRAINED-E2E batch0 layer0 row1 neuron0: got -8
+       Time: 2251000 Scope: tb_trained_network

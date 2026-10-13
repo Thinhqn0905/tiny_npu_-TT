@@ -1,0 +1,8 @@
+# Preserve exact evidence and frozen-copy bytes across Windows/Linux checkouts.
+# Automatic newline conversion would invalidate the reviewed SHA-256 manifest.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Preserve tool output and upstream sources verbatim, including whitespace.
+evidence/** -whitespace
+pnr_handoff/reports/** -whitespace
+models/CardioEdgeAI/upstream/** -whitespace
+pnr_handoff/config/*.lib -whitespace

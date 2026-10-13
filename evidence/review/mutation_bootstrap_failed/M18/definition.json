@@ -1,0 +1,10 @@
+{
+  "id": "M18",
+  "req_id": "REQ-NPU-006",
+  "kind": "network",
+  "test_case": "none",
+  "source": "tt_um_tinyml_npu_2x2.v",
+  "old": "npu_busy       <= 1'b0;",
+  "new": "npu_busy       <= 1'b1;",
+  "mutated_sha256": "0dac86e187459c1ef83d2d616dd6baf3734ba589ab42056957c088c3d414c6bd"
+}

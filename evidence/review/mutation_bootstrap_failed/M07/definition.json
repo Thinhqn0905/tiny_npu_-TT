@@ -1,0 +1,10 @@
+{
+  "id": "M07",
+  "req_id": "REQ-NPU-003",
+  "kind": "release",
+  "test_case": "ready_back_to_back",
+  "source": "tt_um_tinyml_npu_2x2.v",
+  "old": "assign npu_ready = rst_n && ena && (state == S_IDLE);",
+  "new": "assign npu_ready = 1'b1;",
+  "mutated_sha256": "7ca6d53d5c9ff90d70eb617cec2610a4d5a29820ad75328a931fcf5f428b7d7d"
+}

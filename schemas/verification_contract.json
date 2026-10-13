@@ -1,23 +1,18 @@
 {
-  "ip_name": "tt_um_tinyml_npu_1x1",
-  "contract_version": "1.0",
+  "ip_name": "tt_um_tinyml_npu_2x2",
+  "contract_version": "FE-REVIEW-20261013",
   "gate_3a_approved": true,
-  "approved_at": "2026-10-13T16:10:00+07:00",
-  "approved_by": "VLSIT-Agent",
-  "interface_signals": [
-    { "name": "clk", "dir": "input", "width": 1 },
-    { "name": "rst_n", "dir": "input", "width": 1 },
-    { "name": "ena", "dir": "input", "width": 1 },
-    { "name": "ui_in", "dir": "input", "width": 8 },
-    { "name": "uo_out", "dir": "output", "width": 8 },
-    { "name": "uio_in", "dir": "input", "width": 8 },
-    { "name": "uio_out", "dir": "output", "width": 8 },
-    { "name": "uio_oe", "dir": "output", "width": 8 }
+  "golden_sources": [
+    "docs/FRONTEND_SPEC.md",
+    "schemas/final_config.json"
   ],
+  "independent_integer_oracle": "test/oracle.py",
   "behavioral_oracles": {
-    "mac_oracle": "acc_next = acc + (signed(data_a) * signed(data_b))",
-    "requant_oracle": "shifted = (acc + (shift > 0 ? (1 << (shift - 1)) : 0)) >>> shift",
-    "activation_relu_oracle": "relu = max(0, min(255, shifted))",
-    "argmax_oracle": "best_class = argmax_c(class_score_c)"
-  }
+    "mac": "signed24(acc + signed8(a)*signed8(b))",
+    "requant": "clamp(floor((acc + (shift ? 2**(shift-1) : 0))/2**shift))",
+    "ready": "rst_n && ena && transaction accepts a byte",
+    "bias": "top-row bias; lower row prior-top snapshot"
+  },
+  "complete_network_status": "PASS",
+  "human_review": "explicit approval ledger in schemas/review_approvals.json"
 }

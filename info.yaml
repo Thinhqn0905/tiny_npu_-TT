@@ -1,14 +1,14 @@
 # Tiny Tapeout project information
 project:
-  title:        "Scalable TinyML NPU 2x2 (ECG & CNN/MLP)"
+  title:        "TinyML NPU 2x2 signed MAC array"
   author:       "Thinh Pham"
   discord:      ""
-  description:  "2x2 systolic array TinyML NPU accelerator for ECG arrhythmia classification"
+  description:  "Four signed INT8 MACs with host streaming and saturating requantization"
   language:     "Verilog"
   clock_hz:     50000000  # 50 MHz
 
-  # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x2"
+  # Planning allocation approved 2026-10-13; fit requires physical design.
+  tiles: "2x2"
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_tinyml_npu_2x2"
@@ -48,7 +48,7 @@ pinout:
   uio[0]: "host_valid (in)"
   uio[1]: "npu_ready (out)"
   uio[2]: "cmd_mode (in)"
-  uio[3]: "stream_sel (in)"
+  uio[3]: "reserved, ignored (in)"
   uio[4]: "out_sel (in)"
   uio[5]: "out_valid (out)"
   uio[6]: "layer_done (out)"

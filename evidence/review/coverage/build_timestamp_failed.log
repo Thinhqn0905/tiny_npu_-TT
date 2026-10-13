@@ -1,0 +1,20 @@
+make[1]: Entering directory '/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/work/coverage/obj'
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TRACE=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow      -Os -c -o coverage_driver.o /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/coverage_driver.cpp
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TRACE=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow      -Os -c -o verilated.o /usr/share/verilator/include/verilated.cpp
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TRACE=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow      -Os -c -o verilated_cov.o /usr/share/verilator/include/verilated_cov.cpp
+/usr/bin/perl /usr/share/verilator/bin/verilator_includer -DVL_INCLUDE_OPT=include Vcoverage_top.cpp Vcoverage_top_npu_activation.cpp Vcoverage_top_npu_pe.cpp Vcoverage_top__Slow.cpp Vcoverage_top_npu_activation__Slow.cpp Vcoverage_top_npu_pe__Slow.cpp Vcoverage_top__Syms.cpp > Vcoverage_top__ALL.cpp
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=1 -DVM_SC=0 -DVM_TRACE=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow      -Os -c -o Vcoverage_top__ALL.o Vcoverage_top__ALL.cpp
+ar -cr Vcoverage_top__ALL.a Vcoverage_top__ALL.o
+ranlib Vcoverage_top__ALL.a
+g++    coverage_driver.o verilated.o verilated_cov.o Vcoverage_top__ALL.a      -o Vcoverage_top
+/usr/bin/ld: Vcoverage_top__ALL.a(Vcoverage_top__ALL.o): in function `Vcoverage_top::_sequent__TOP__4(Vcoverage_top__Syms*)':
+Vcoverage_top__ALL.cpp:(.text+0x3ab): undefined reference to `sc_time_stamp()'
+/usr/bin/ld: Vcoverage_top__ALL.cpp:(.text+0x424): undefined reference to `sc_time_stamp()'
+/usr/bin/ld: Vcoverage_top__ALL.cpp:(.text+0x4af): undefined reference to `sc_time_stamp()'
+/usr/bin/ld: Vcoverage_top__ALL.cpp:(.text+0x52f): undefined reference to `sc_time_stamp()'
+/usr/bin/ld: Vcoverage_top__ALL.cpp:(.text+0x5b3): undefined reference to `sc_time_stamp()'
+collect2: error: ld returned 1 exit status
+make[1]: *** [Vcoverage_top.mk:63: Vcoverage_top] Error 1
+make[1]: Leaving directory '/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/work/coverage/obj'
+%Error: make -C /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/work/coverage/obj -f Vcoverage_top.mk exitted with 2
+%Error: Command Failed /usr/bin/verilator_bin --cc --exe --build --coverage --assert --top-module coverage_top --Mdir /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/work/coverage/obj pnr_handoff/rtl/npu_pe.v pnr_handoff/rtl/npu_activation.v pnr_handoff/rtl/npu_array.v pnr_handoff/rtl/npu_top_2x2.v pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v src/sva/npu_protocol_properties.sv src/tb/tests/tc_coverage_baseline.sv /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/coverage_driver.cpp

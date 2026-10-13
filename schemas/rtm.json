@@ -1,68 +1,54 @@
 {
-  "ip_name": "tt_um_tinyml_npu_1x1",
+  "ip_name": "tt_um_tinyml_npu_2x2",
   "gate_5_approved": true,
-  "approved_at": "2026-10-13T16:20:00+07:00",
-  "approved_by": "VLSIT-Agent",
   "traceability_matrix": [
     {
       "req_id": "REQ-NPU-001",
-      "clause": "Sec 5.1",
-      "oracle": "acc_next = acc + (signed(A) * signed(B))",
-      "sva_id": "SVA_MAC_ACCUM",
-      "test_cases": ["TC_MAC_02", "TC_DOTPROD_04", "TC_ECG_06"],
+      "title": "Signed four-PE MAC arithmetic",
       "status": "PASS",
-      "evidence": "tb_npu_standalone.v (Test 2, Test 4) + test.py::test_mac_simple",
-      "sign_off": "APPROVED"
+      "evidence": "evidence/review/final/",
+      "human_signoff": "user Gate5 approved",
+      "mutation_score": 1.0
     },
     {
       "req_id": "REQ-NPU-002",
-      "clause": "Sec 5.2",
-      "oracle": "npu_array parameterizable across ROWS x COLS with systolic data forwarding",
-      "sva_id": "SVA_ARRAY_CASCADE",
-      "test_cases": ["TC_DOTPROD_04", "TC_2X2_PARALLEL_MAC", "TC_2X2_MATMUL", "TC_2X2_DUAL_ECG"],
+      "title": "Broadcast and generic neighbor dataflow",
       "status": "PASS",
-      "evidence": "npu_array.v parameter verification (ROWS=1, COLS=1 in tb_npu_standalone.v) and 2x2 systolic matrix multiplication (ROWS=2, COLS=2 in tb_npu_2x2_standalone.v)",
-      "sign_off": "APPROVED"
+      "evidence": "evidence/review/final/",
+      "human_signoff": "user Gate5 approved",
+      "mutation_score": 1.0
     },
     {
       "req_id": "REQ-NPU-003",
-      "clause": "Sec 6.2",
-      "oracle": "Controller decodes runtime opcodes when cmd_mode=1",
-      "sva_id": "SVA_CMD_DECODE",
-      "test_cases": ["TC_DOTPROD_04", "TC_ARGMAX_05", "TC_ECG_06"],
+      "title": "Byte protocol and configuration",
       "status": "PASS",
-      "evidence": "npu_controller.v state machine transition verification",
-      "sign_off": "APPROVED"
+      "evidence": "evidence/review/final/",
+      "human_signoff": "user Gate5 approved",
+      "mutation_score": 1.0
     },
     {
       "req_id": "REQ-NPU-004",
-      "clause": "Sec 5.3",
-      "oracle": "Requantizer computes (Acc + round) >>> shift with saturation",
-      "sva_id": "SVA_REQUANT_SAT",
-      "test_cases": ["TC_RELU_03", "TC_DOTPROD_04", "TC_ECG_06"],
+      "title": "Requantization and activation",
       "status": "PASS",
-      "evidence": "tb_npu_standalone.v (Test 3, Test 4) + test.py::test_relu_clipping",
-      "sign_off": "APPROVED"
+      "evidence": "evidence/review/final/",
+      "human_signoff": "user Gate5 approved",
+      "mutation_score": 1.0
     },
     {
       "req_id": "REQ-NPU-005",
-      "clause": "Sec 5.4",
-      "oracle": "ArgMax tracks signed maximum score and index",
-      "sva_id": "SVA_ARGMAX_WINNER",
-      "test_cases": ["TC_ARGMAX_05", "TC_ECG_06"],
+      "title": "Complete trained quantized network",
       "status": "PASS",
-      "evidence": "tb_npu_standalone.v (Test 5) + test.py::test_argmax_classification",
-      "sign_off": "APPROVED"
+      "evidence": "evidence/review/final/rtl_e2e.json",
+      "human_signoff": "user Gate5 approved",
+      "mutation_score": 1.0
     },
     {
       "req_id": "REQ-NPU-006",
-      "clause": "Sec 4.1",
-      "oracle": "Top module maps to Tiny Tapeout standard pins",
-      "sva_id": "SVA_TT_PINOUT",
-      "test_cases": ["TC_RESET_01", "TC_ECG_06"],
+      "title": "TinyTapeout clock/reset/ports",
       "status": "PASS",
-      "evidence": "tt_um_tinyml_npu_1x1.v port connectivity check",
-      "sign_off": "APPROVED"
+      "evidence": "evidence/review/final/",
+      "human_signoff": "user Gate5 approved",
+      "mutation_score": 1.0
     }
   ]
 }

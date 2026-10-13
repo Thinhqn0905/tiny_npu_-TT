@@ -1,0 +1,10 @@
+{
+  "id": "M06",
+  "req_id": "REQ-NPU-002",
+  "kind": "unit",
+  "test_case": "systolic_and_broadcast",
+  "source": "npu_pe.v",
+  "old": "data_a_out <= data_a_in;",
+  "new": "data_a_out <= {DATA_WIDTH{1'b0}};",
+  "mutated_sha256": "29fcde24cd29a546f2cb73b02af57f62ce34f4752d278c149412546753378188"
+}

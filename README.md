@@ -1,70 +1,52 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
+# TinyML NPU 2x2 signed MAC array
 
-# Scalable TinyML NPU for Tiny Tapeout (ECG Arrhythmia & CNN/MLP Accelerator)
+Four signed INT8 MAC PEs with24-bit accumulators, saturating requantization
+and a TinyTapeout byte interface. **READY FOR PNR:** human Gate5 approved. Complete trained-MLP RTL, reviewed coverage and18/18
+sampled mutations pass; see the retained raw evidence and review documents.
 
-A parameterized, streaming Neural Processing Unit (NPU) accelerator designed for ultra-low-power TinyML inference on a **single 1x1 tile** (~160x108 µm) for the Tiny Tapeout shuttle (IHP SG13G2 130nm / SkyWater Sky130A / GF180MCU).
+Production top: `tt_um_tinyml_npu_2x2`; array2x2; fixed row/column broadcast;
+target50MHz; async active-low reset. User-approved planning allocation2x2
+uses the IHP profile. Physical fit and routed timing have not been verified.
 
-- **Documentation**: [docs/info.md](docs/info.md)
-- **Top Module**: `tt_um_tinyml_npu_1x1`
-- **Tile Footprint**: 1x1 Tile (`tiles: "1x1"`)
-- **Clock**: 50.0 MHz synchronous clock domain (`clk`), active-low reset (`rst_n`).
+## Quick start
 
----
+Run from the repository root in Linux/WSL:
 
-## Architecture Overview
-
-The NPU features a parameterized systolic Processing Element (PE) datapath capable of single-cycle signed INT8 Multiply-Accumulate (MAC), bit-exact requantization with half-integer rounding, nonlinear activation functions (ReLU / Saturated Clip), and a multi-class Winner-Take-All ArgMax classifier.
-
-### Key Features
-- **1x1 Tile Efficiency**: Synthesizes to 884 standard cells (149 DFFs, 1,571 NAND2 GE, 73.67% cell density), fitting safely within the 1x1 tile boundary.
-- **High Throughput**: 50 MMAC/s peak throughput at 50 MHz nominal clock.
-- **Micro-Op Instruction Decoder**: Run-time programmable accumulation vector lengths ($K \in [1, 256]$), quantization scaling shifts ($S \in [0, 15]$), bias loading, and activation modes.
-- **Architectural Scalability**: Parameterized systolic PE grid (`npu_array.v`), scalable from 1x1 tile up to an $M \times N$ systolic grid (such as a 2x2 grid achieving 200 MMAC/s).
-- **Target Workload**: Real-time MIT-BIH ECG arrhythmia detection (Normal, Premature Ventricular Contraction - PVC, Premature Atrial Contraction - PAC), 1D CNN layers, and general dense MLP classifiers.
-
----
-
-## Pinout Mapping (Tiny Tapeout Standard)
-
-| Pin | Name | Direction | Description |
-| :--- | :--- | :--- | :--- |
-| `ui_in[7:0]` | `data_in` | Input | Streaming data (weights, activations) or Opcode byte |
-| `uo_out[7:0]` | `data_out` | Output | Quantized activation byte or ArgMax winning class / status |
-| `uio[0]` | `host_valid` | Input | Host handshake: 1 when `ui_in` is valid |
-| `uio[1]` | `npu_ready` | Output | NPU handshake: 1 when ready to accept byte |
-| `uio[2]` | `cmd_mode` | Input | 1 = Command/Config byte, 0 = Streaming Data byte |
-| `uio[3]` | `weight_stream`| Input | 1 = Incoming data byte is weight, 0 = Activation |
-| `uio[4]` | `out_sel` | Input | 0 = Result activation byte, 1 = ArgMax class / status |
-| `uio[5]` | `out_valid` | Output | 1 when output computation is valid |
-| `uio[6]` | `layer_done` | Output | Pulse when vector dot-product completes |
-| `uio[7]` | `npu_busy` | Output | 1 when computation is in progress |
-
-Bidirectional pin direction: `uio_oe = 8'b11100010`.
-
----
-
-## Verification & Testing
-
-### 1. Standalone Icarus Verilog Simulation
-```bash
-cd test
-iverilog -g2001 -o sim_npu.vvp -I ../src tb_npu_standalone.v ../src/*.v
-vvp sim_npu.vvp
-```
-All 6 directed test phases (Reset, MAC, ReLU clipping, 4-tap dot product, ArgMax, and MIT-BIH PVC ECG inference) pass with 100% bit-exact accuracy.
-
-### 2. Cocotb Testbench
-```bash
-cd test
-make clean
-make
+```sh
+make help
+make regression
+make manifest
+make manifest-check
 ```
 
-### 3. Automated GDS Hardening
-ASIC hardening is automated via GitHub Actions using [LibreLane](https://www.zerotoasiccourse.com/terminology/librelane/) and `TinyTapeout/tt-gds-action@ttihp26a` targeting the IHP SG13G2 130nm process (`.github/workflows/gds.yaml`).
+Requirements: Python3.10+, make, Icarus11, Verilator4.038 or compatible,
+Yosys0.9 or compatible, Cocotb2.1.0, and OpenSTA2.0.17. Exact versions and
+commands are retained in evidence. `make -n regression` shows tool commands.
+Install test packages with `python3 -m pip install -r test/requirements.txt`.
 
----
+## ECG data and checkpoint
+
+`dataset/mitbih/` contains the copied local MIT-BIH records and is ignored
+by Git; `evidence/ecg/dataset_manifest.json` hashes every copied file.
+The public trained24,352-byte CardioEdgeAI INT8 artifact, pinned source,
+MIT license and citation are retained in `models/CardioEdgeAI/`.
+The software benchmark uses annotated beats and is separate from RTL tests.
+The frozen hardware does not yet execute the downloaded complete CNN.
+
+## Documentation
+
+- [Front-end signoff review](docs/FRONTEND_SIGNOFF_REVIEW.md)
+- [Specification under review](docs/FRONTEND_SPEC.md)
+- [Architecture and arithmetic](docs/RTL_FREEZE.md)
+- [PnR interface](pnr_handoff/docs/PNR_INTERFACE.md)
+- [Handoff manifest](pnr_handoff/HANDOFF_MANIFEST.md)
+- [Remaining work](docs/FRONTEND_COMPLETION_PLAN.md)
 
 ## Attribution & Notice
 
-This project contains a substantially redesigned and parameterized TinyML NPU architecture developed for the Tiny Tapeout shuttle. Portions of the initial project structure and template were derived from open-source Tiny Tapeout project templates; see `LICENSE` for applicable Apache 2.0 licensing terms.
+The parameterized TinyML NPU architecture was developed for Tiny Tapeout.
+Portions of the initial project structure/template derive from open-source
+Tiny Tapeout project templates; see LICENSE for Apache2.0 terms. IHP PDK
+copyright/license notices remain in the downloaded library. CardioEdgeAI
+upstream artifacts retain their MIT license and CITATION.cff. MIT-BIH data
+attribution and source are recorded in docs/ECG_BENCHMARK.md.

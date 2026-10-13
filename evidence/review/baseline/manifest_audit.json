@@ -1,0 +1,332 @@
+[
+  {
+    "archive": "evidence/history/c0ef252_editor_snapshot.zip",
+    "files": [
+      {
+        "path": "filelist.f",
+        "claimed_sha256": "742C165613C1F3A083BF8AE6B803ABA1876454836E0BEA1A9023B6394A891BB7",
+        "hex_length": 64,
+        "actual_sha256": "db539c05838f16b12cbd9a0def8208c16b91cce881fc61bfa4479958becb28d7",
+        "claimed_size": 925,
+        "actual_size": 948,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "config/config.json",
+        "claimed_sha256": "10701F37F7D46E5480A0626D047846C2128451809D6AE1FB3980C64310A1DCEB",
+        "hex_length": 64,
+        "actual_sha256": "8ad47868409edd72c392298239484258d591c95b64fa11e23997a7d4647b0264",
+        "claimed_size": 741,
+        "actual_size": 770,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "constraints/design.sdc",
+        "claimed_sha256": "17A249FA25BFDE78CFECDFA7F0924B210A64DF9BFD653C340DC14734511A6985",
+        "hex_length": 64,
+        "actual_sha256": "980dd27a005721ef8e388c5b4e0b3380d4238a3429b23be395656576e75fd946",
+        "claimed_size": 2756,
+        "actual_size": 3264,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "docs/PNR_INTERFACE.md",
+        "claimed_sha256": "F7BF95C5D737607B3405976AC7192707A6957F519F7A9EBC1312639D6D6C429C",
+        "hex_length": 64,
+        "actual_sha256": "45924cd629f4923bf9fd033641349c1c9399f4773cfc760bbc72077d93226022",
+        "claimed_size": 5436,
+        "actual_size": 5544,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/cell_count.rpt",
+        "claimed_sha256": "F1739AB05F513194C5B142C7BC703CC3E8225AD1FFBCA0CE3600C5DD589EFED4",
+        "hex_length": 64,
+        "actual_sha256": "9f08d102e5bd744eced575cdb1d7b5b8f6dbb6856342bbae4bf637e999955a60",
+        "claimed_size": 1872,
+        "actual_size": 3247,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/latch_check.rpt",
+        "claimed_sha256": "93E85CE5BF4DEA838E4AE034E49505E94A38C33FE22C0EA888F8C72D4BC2B78C",
+        "hex_length": 64,
+        "actual_sha256": "ff9613436e490b1a82405f7618b4e09a2d30fdcb3abdd3b6e76964390cb06ac3",
+        "claimed_size": 2267,
+        "actual_size": 1377,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/sequential_dff.rpt",
+        "claimed_sha256": "5F64626E136BFDDD6B86207BAC3579BCFCA662D8B7B7D07C8AB23BBF53922239",
+        "hex_length": 64,
+        "actual_sha256": "7d775236be959fc1d78a38a6116f85740f3438c93291a42aad2219c24e732f59",
+        "claimed_size": 3470,
+        "actual_size": 2111,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/synth_netlist.v",
+        "claimed_sha256": "57712C0CCAAEFAB8BF45AF0CFF2CC28DE81F8A4BE6BA6DE37DFC872F53215D57",
+        "hex_length": 64,
+        "actual_sha256": "a7abac36900b35202a37f2d1bf33c13daafc69a1f68240f7b89a013594e96852",
+        "claimed_size": 147745,
+        "actual_size": 152818,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/synth_stat.rpt",
+        "claimed_sha256": "90BA856F0C912E4DCB80CB1291846DCDE29B19169AB1972C0FA43972B865BE31",
+        "hex_length": 64,
+        "actual_sha256": "bed347319cb00e16cd3f6c2352414dc97a950ecc0d9db794d3d9ca5f859fd029",
+        "claimed_size": 2864,
+        "actual_size": 3494,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/timing_est.rpt",
+        "claimed_sha256": "A8DD993621D46CF819BEFBF37B09AAA1CF2D07C7521AC09D2AD1F4FA54994EED",
+        "hex_length": 64,
+        "actual_sha256": "90316a505be0ffb5531d8a41e4bcd1033eb1801ae31a4a43392b6f6b4ecb4d1a",
+        "claimed_size": 973,
+        "actual_size": 992,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/yosys_synth.log",
+        "claimed_sha256": "C7CBA1D37C839ED3522EFBF6DCF3FC86B7DA0CF0F76704049A25173589E2FCB7",
+        "hex_length": 64,
+        "actual_sha256": "9a93f0816dc37d91594d114d1f2169a1e7c32bc41e0119547947eaa4caf192c9",
+        "claimed_size": 96403,
+        "actual_size": 98167,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/npu_activation.v",
+        "claimed_sha256": "A6DD1A7C1DB17F10F5E1C10DD4FCDB2323FD4D125B16B374515DE781EBF5680F",
+        "hex_length": 64,
+        "actual_sha256": "b9607d3bbf2c4a75f3bdcd488de4e6f550ee408a377b2a53caf294c6ce4d7270",
+        "claimed_size": 3248,
+        "actual_size": 3124,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/npu_array.v",
+        "claimed_sha256": "5635EC7E2C1CAD12A8443BC386009BE30618709921EFD7FE11CCB4BAD05FF6D8",
+        "hex_length": 64,
+        "actual_sha256": "01f34088cc284f16f89cf90a0a2a2085dd86a6a6f088e2f961b783309c642a05",
+        "claimed_size": 5618,
+        "actual_size": 5105,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/npu_pe.v",
+        "claimed_sha256": "CC50D98C113715A54A14C8BB4377E6A49B7E4524F9143E6E9F1D512D7E8B431D",
+        "hex_length": 64,
+        "actual_sha256": "1fa04f152638eb1352c9309db812a706a2ae23a8d59381e332ad68afc34d71d4",
+        "claimed_size": 3922,
+        "actual_size": 3245,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/npu_top_2x2.v",
+        "claimed_sha256": "4056A209EBFCEECFD32828BB30E125CE3FF3C08FE4B109771C7DA5BC8DB05DE3",
+        "hex_length": 64,
+        "actual_sha256": "141b3ebd96f5c5ab0bd4072d0b63843abc698c39fd1c8460efc69286fa1910cb",
+        "claimed_size": 6554,
+        "actual_size": 5822,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/tt_um_tinyml_npu_2x2.v",
+        "claimed_sha256": "436CD98F296174D69C2149E479F61F1AD71B72ACCF5806B4F983667DDD829F00",
+        "hex_length": 64,
+        "actual_sha256": "a16f2a22d3a803a3618654d1f11596d7227ce914a604267be0107ea554aabefe",
+        "claimed_size": 9990,
+        "actual_size": 10263,
+        "valid_sha256": true,
+        "matches": false
+      }
+    ]
+  },
+  {
+    "archive": "evidence/history/d020f70_original.zip",
+    "files": [
+      {
+        "path": "filelist.f",
+        "claimed_sha256": "742C165613C1F3A083BF8AE6B803ABA1876454836E0BEA1A9023B6394A891BB7",
+        "hex_length": 64,
+        "actual_sha256": "db539c05838f16b12cbd9a0def8208c16b91cce881fc61bfa4479958becb28d7",
+        "claimed_size": 925,
+        "actual_size": 948,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "config/config.json",
+        "claimed_sha256": "6AEBD62C3ED920DCD91CE7AE1D525734678ADFFCC1A8C6A047B9A29AF80F5408",
+        "hex_length": 64,
+        "actual_sha256": "3e86414aec90f4e5ab8ba727c5d1249da0cf8fb9198e8a292e9030933ffe6842",
+        "claimed_size": 567,
+        "actual_size": 764,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "constraints/design.sdc",
+        "claimed_sha256": "17A249FA25BFDE78CFECDFA7F0924B210A64DF9BFD653C340DC14734511A6985",
+        "hex_length": 64,
+        "actual_sha256": "980dd27a005721ef8e388c5b4e0b3380d4238a3429b23be395656576e75fd946",
+        "claimed_size": 2756,
+        "actual_size": 3264,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "docs/PNR_INTERFACE.md",
+        "claimed_sha256": "4F471E8F999777A307783157759ED2F492F17182BDF80E91AD4238DCF53787C7",
+        "hex_length": 64,
+        "actual_sha256": "34e57f9157eaab2e911e76831af95095d93c0c75309140763f01af8ce76a52bb",
+        "claimed_size": 4286,
+        "actual_size": 5537,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/cell_count.rpt",
+        "claimed_sha256": "F1739AB05F513194C5B142C7BC703CC3E8225AD1FFBCA0CE3600C5DD589EFED4",
+        "hex_length": 64,
+        "actual_sha256": "9f08d102e5bd744eced575cdb1d7b5b8f6dbb6856342bbae4bf637e999955a60",
+        "claimed_size": 1872,
+        "actual_size": 3247,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/latch_check.rpt",
+        "claimed_sha256": "93E85CE5BF4DEA838E4AE034E49505E94A38C33FE22C0EA888F8C72D4BC2B78C",
+        "hex_length": 64,
+        "actual_sha256": "ff9613436e490b1a82405f7618b4e09a2d30fdcb3abdd3b6e76964390cb06ac3",
+        "claimed_size": 2267,
+        "actual_size": 1377,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/sequential_dff.rpt",
+        "claimed_sha256": "5F64626E136BFDDD6B86207BAC3579BCFCA662D8B7B7D07C8AB23BBF53922239",
+        "hex_length": 64,
+        "actual_sha256": "7d775236be959fc1d78a38a6116f85740f3438c93291a42aad2219c24e732f59",
+        "claimed_size": 3470,
+        "actual_size": 2111,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/synth_netlist.v",
+        "claimed_sha256": "57712C0CCAAEFAB8BF45AF0CFF2CC28DE81F8A4BE6BA6DE37DFC872F53215D57",
+        "hex_length": 64,
+        "actual_sha256": "a7abac36900b35202a37f2d1bf33c13daafc69a1f68240f7b89a013594e96852",
+        "claimed_size": 147745,
+        "actual_size": 152818,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/synth_stat.rpt",
+        "claimed_sha256": "90BA856F0C912E4DCB80CB1291846DCDE29B19169AB1972C0FA43972B865BE31",
+        "hex_length": 64,
+        "actual_sha256": "bed347319cb00e16cd3f6c2352414dc97a950ecc0d9db794d3d9ca5f859fd029",
+        "claimed_size": 2864,
+        "actual_size": 3494,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/timing_est.rpt",
+        "claimed_sha256": "A8DD993621D46CF819BEFBF37B09AAA1CF2D07C7521AC09D2AD1F4FA54994EED",
+        "hex_length": 64,
+        "actual_sha256": "90316a505be0ffb5531d8a41e4bcd1033eb1801ae31a4a43392b6f6b4ecb4d1a",
+        "claimed_size": 973,
+        "actual_size": 992,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "reports/yosys_synth.log",
+        "claimed_sha256": "C7CBA1D37C839ED3522EFBF6DCF3FC86B7DA0CF0F76704049A25173589E2FCB7",
+        "hex_length": 64,
+        "actual_sha256": "9a93f0816dc37d91594d114d1f2169a1e7c32bc41e0119547947eaa4caf192c9",
+        "claimed_size": 96403,
+        "actual_size": 98167,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/npu_activation.v",
+        "claimed_sha256": "A6DD1A7C1DB17F10F5E1C10DD4FCDB2323FD4D125B16B374515DE781EBF5680F",
+        "hex_length": 64,
+        "actual_sha256": "b9607d3bbf2c4a75f3bdcd488de4e6f550ee408a377b2a53caf294c6ce4d7270",
+        "claimed_size": 3248,
+        "actual_size": 3124,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/npu_array.v",
+        "claimed_sha256": "5635EC7E2C1CAD12A8443BC386009BE30618709921EFD7FE11CCB4BAD05FF6D8",
+        "hex_length": 64,
+        "actual_sha256": "01f34088cc284f16f89cf90a0a2a2085dd86a6a6f088e2f961b783309c642a05",
+        "claimed_size": 5618,
+        "actual_size": 5105,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/npu_pe.v",
+        "claimed_sha256": "CC50D98C113715A54A14C8BB4377E6A49B7E4524F9143E6E9F1D512D7E8B431D",
+        "hex_length": 64,
+        "actual_sha256": "1fa04f152638eb1352c9309db812a706a2ae23a8d59381e332ad68afc34d71d4",
+        "claimed_size": 3922,
+        "actual_size": 3245,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/npu_top_2x2.v",
+        "claimed_sha256": "4056A209EBFCEECFD32828BB30E125CE3FF3C08FE4B109771C7DA5BC8DB05DE3",
+        "hex_length": 64,
+        "actual_sha256": "141b3ebd96f5c5ab0bd4072d0b63843abc698c39fd1c8460efc69286fa1910cb",
+        "claimed_size": 6554,
+        "actual_size": 5822,
+        "valid_sha256": true,
+        "matches": false
+      },
+      {
+        "path": "rtl/tt_um_tinyml_npu_2x2.v",
+        "claimed_sha256": "61346303590F2AD9B1A3828E633B42A0AFD8EDF26950A6670DA70C13C153DCBE",
+        "hex_length": 64,
+        "actual_sha256": "3f9cd6ccbbba138b02f41720713fdb118c066b43cd748cc54ada82145d39ba4b",
+        "claimed_size": 8924,
+        "actual_size": 10263,
+        "valid_sha256": true,
+        "matches": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "id": "M01",
+  "req_id": "REQ-NPU-001",
+  "kind": "unit",
+  "test_case": "exhaustive_products_and_overflow",
+  "source": "npu_pe.v",
+  "old": "data_a_in * data_b_in",
+  "new": "$unsigned(data_a_in) * $unsigned(data_b_in)",
+  "mutated_sha256": "fb63b3af763abd1f798d5e52d43ed3fb9d7613f089ed524d48b1c9d5940a75b5"
+}

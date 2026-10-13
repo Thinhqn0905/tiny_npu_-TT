@@ -3,11 +3,11 @@
 # Project:      Scalable TinyML NPU 2x2 Systolic Array (Tiny Tapeout Shuttle)
 # Top Module:   tt_um_tinyml_npu_2x2
 # Target Clock: 50.0 MHz (Clock Period = 20.0 ns)
-# Technology:   IHP SG13G2 130nm / SkyWater Sky130A
+# Technology:   IHP SG13G2; budgets below are engineering assumptions.
 ################################################################################
 
 # Set operating units
-set_units -time ns -resistance kOhm -capacitance pF -voltage V -current mA
+set_units -time ns -resistance kOhm -capacitance pF -voltage V -current uA
 
 ################################################################################
 # 1. Primary Clock Definition
@@ -25,7 +25,7 @@ set_clock_transition 0.200 [get_clocks clk]
 ################################################################################
 # 2. Input Delay Constraints
 ################################################################################
-# External delay budget allocated to host microcontroller / FPGA board (20% of cycle = 4.0 ns)
+# Assumed synchronous host budget, not a measured MCU/board requirement.
 set_input_delay -clock clk -max 4.000 [get_ports {ui_in[*]}]
 set_input_delay -clock clk -min 1.000 [get_ports {ui_in[*]}]
 
@@ -51,7 +51,7 @@ set_output_delay -clock clk -min 1.000 [get_ports {uio_oe[*]}]
 ################################################################################
 # 4. Driving Cell & Output Load Models
 ################################################################################
-# Model standard Tiny Tapeout pad capacitance (load = 20 pF per external line)
+# Assumed external load = 0.050 pF = 50 fF; excludes package/pad parasitics.
 set_load 0.050 [all_outputs]
 
 ################################################################################
@@ -61,5 +61,7 @@ set_load 0.050 [all_outputs]
 # - Zero false paths on functional logic.
 # - Zero unjustified multicycle paths.
 # - Reset (rst_n) recovery and removal timing are fully analyzed against clk.
-# - Asynchronous chip enable (ena) is treated as quasi-static during runtime.
-set_false_path -from [get_ports ena]
+# - ena is functional synchronous control and is timed normally.
+# - rst_n is asynchronously asserted, externally released away from clk edges.
+#   No internal reset synchronizer exists. Recovery/removal must be checked.
+# No false paths or multicycle exceptions. No max/min-delay override.

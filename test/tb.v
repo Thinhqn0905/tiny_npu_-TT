@@ -18,6 +18,8 @@ module tb ();
     wire [7:0] uio_out;
     wire [7:0] uio_oe;
 
+    npu_protocol_properties u_properties(clk,rst_n,ena,uo_out,uio_out,uio_oe);
+
     tt_um_tinyml_npu_2x2 dut (
         .ui_in   (ui_in),
         .uo_out  (uo_out),

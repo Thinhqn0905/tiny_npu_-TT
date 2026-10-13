@@ -1,0 +1,15 @@
+$ vvp /tmp/npu_frontend_0gbuem0f/tb_npu_2x2_standalone.vvp
+VCD info: dumpfile tb_npu_2x2.vcd opened for output.
+==================================================================
+  VLSIT VERIFICATION: 2x2 SYSTOLIC ARRAY TINYML NPU TESTBENCH
+==================================================================
+[PASS] TC_2X2_RESET: All 4 PEs successfully initialized to 0.
+[PASS] TC_2X2_PARALLEL_MAC: 4-PE Concurrent MAC Verified (72, 56, 45, 35).
+[PASS] TC_2X2_MATMUL: Full 2x2 Matrix Multiplication Verified [[36, 41], [64, 73]].
+[PASS] TC_2X2_MUX_READOUT: 4-Channel Multiplexed Readout Verified.
+[PASS] TC_2X2_REQUANT: 4-Channel Parallel Requantization & ReLU Verified (18, 21, 32, 37).
+[PASS] TC_2X2_DUAL_ECG: Concurrent Dual-Class ECG Evaluation Verified (Normal=-25, PVC=+155).
+       2x2 achieves 2x throughput speedup over 1x1 tile!
+==================================================================
+  ALL 6 2x2 SYSTOLIC ARRAY TEST PHASES PASSED WITH ZERO ERRORS!
+==================================================================

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="cocotb tests"><testsuite name="test_release" errors="0" failures="5" skipped="0" tests="5" time="0.033" timestamp="2026-10-13T11:27:27.098482+00:00" hostname="DESKTOP-5BKHJFE"><testcase classname="test_release" name="ready_back_to_back" time="0.002"><failure message="ready asserted while POST_MAC ignores input&#10;assert not (130 &amp; 2)&#10; +  where 130 = int(LogicArray('10000010', Range(7, 'downto', 0)))&#10; +    where LogicArray('10000010', Range(7, 'downto', 0)) = PackedObject(tb.uio_out).value&#10; +      where PackedObject(tb.uio_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uio_out" type="AssertionError">Traceback (most recent call last):
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 69, in ready_back_to_back
+    assert not (int(d.uio_out.value)&amp;2), "ready asserted while POST_MAC ignores input"
+AssertionError: ready asserted while POST_MAC ignores input
+assert not (130 &amp; 2)
+ +  where 130 = int(LogicArray('10000010', Range(7, 'downto', 0)))
+ +    where LogicArray('10000010', Range(7, 'downto', 0)) = PackedObject(tb.uio_out).value
+ +      where PackedObject(tb.uio_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uio_out
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="1791890847" /><property name="file" value="/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py" /><property name="line" value="61" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="0.0" /><property name="sim_time_stop" value="167.0" /><property name="sim_time_duration" value="167.0" /><property name="sim_time_ratio" value="84722.50336232982" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=1791890847
+</system-err></testcase><testcase classname="test_release" name="randomized_signed_transactions" time="0.002"><failure message="(1, 127, 128)&#10;assert 128 == (127 &amp; 255)&#10; +  where 128 = int(LogicArray('10000000', Range(7, 'downto', 0)))&#10; +    where LogicArray('10000000', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value&#10; +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out&#10; +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = &lt;test_release.Host object at 0x7a0d3e73e470&gt;.d" type="AssertionError">Traceback (most recent call last):
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 97, in randomized_signed_transactions
+    await h.outputs([requant(s,shift,mode) for s in sums])
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 59, in outputs
+    assert int(self.d.uo_out.value)==(value &amp; 255),(pe,value,int(self.d.uo_out.value))
+AssertionError: (1, 127, 128)
+assert 128 == (127 &amp; 255)
+ +  where 128 = int(LogicArray('10000000', Range(7, 'downto', 0)))
+ +    where LogicArray('10000000', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value
+ +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out
+ +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = &lt;test_release.Host object at 0x7a0d3e73e470&gt;.d
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="1791890847" /><property name="file" value="/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py" /><property name="line" value="81" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="167.001" /><property name="sim_time_stop" value="457.001" /><property name="sim_time_duration" value="290.0" /><property name="sim_time_ratio" value="157315.52449229138" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=1791890847
+</system-err></testcase><testcase classname="test_release" name="reset_and_enable_recovery" time="0.002"><failure message="(1, 4, 3)&#10;assert 3 == (4 &amp; 255)&#10; +  where 3 = int(LogicArray('00000011', Range(7, 'downto', 0)))&#10; +    where LogicArray('00000011', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value&#10; +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out&#10; +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = &lt;test_release.Host object at 0x7a0d3e73efe0&gt;.d" type="AssertionError">Traceback (most recent call last):
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 116, in reset_and_enable_recovery
+    await h.finish(); await h.outputs([3,4,6,8])
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 59, in outputs
+    assert int(self.d.uo_out.value)==(value &amp; 255),(pe,value,int(self.d.uo_out.value))
+AssertionError: (1, 4, 3)
+assert 3 == (4 &amp; 255)
+ +  where 3 = int(LogicArray('00000011', Range(7, 'downto', 0)))
+ +    where LogicArray('00000011', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value
+ +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out
+ +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = &lt;test_release.Host object at 0x7a0d3e73efe0&gt;.d
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="1791890847" /><property name="file" value="/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py" /><property name="line" value="106" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="457.002" /><property name="sim_time_stop" value="706.002" /><property name="sim_time_duration" value="248.99999999999994" /><property name="sim_time_ratio" value="126562.07590227525" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=1791890847
+</system-err></testcase><testcase classname="test_release" name="bias_snapshot_contract" time="0.002"><failure message="(0, -64, 8)&#10;assert 8 == (-64 &amp; 255)&#10; +  where 8 = int(LogicArray('00001000', Range(7, 'downto', 0)))&#10; +    where LogicArray('00001000', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value&#10; +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out&#10; +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = &lt;test_release.Host object at 0x7a0d3e73f340&gt;.d" type="AssertionError">Traceback (most recent call last):
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 134, in bias_snapshot_contract
+    await h.outputs([-64,-64,8,10])
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 59, in outputs
+    assert int(self.d.uo_out.value)==(value &amp; 255),(pe,value,int(self.d.uo_out.value))
+AssertionError: (0, -64, 8)
+assert 8 == (-64 &amp; 255)
+ +  where 8 = int(LogicArray('00001000', Range(7, 'downto', 0)))
+ +    where LogicArray('00001000', Range(7, 'downto', 0)) = PackedObject(tb.uo_out).value
+ +      where PackedObject(tb.uo_out) = HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)).uo_out
+ +        where HierarchyObject(tb with definition tb (at /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb.v)) = &lt;test_release.Host object at 0x7a0d3e73f340&gt;.d
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="1791890847" /><property name="file" value="/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py" /><property name="line" value="127" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="706.003" /><property name="sim_time_stop" value="893.003" /><property name="sim_time_duration" value="187.0" /><property name="sim_time_ratio" value="109782.69484243904" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=1791890847
+</system-err></testcase><testcase classname="test_release" name="synthetic_dual_dot_product" time="0.026"><failure message="180&#10;assert 180 == 226" type="AssertionError">Traceback (most recent call last):
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 157, in synthetic_dual_dot_product
+    assert elapsed==226,elapsed
+AssertionError: 180
+assert 180 == 226
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="1791890847" /><property name="file" value="/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py" /><property name="line" value="142" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="893.004" /><property name="sim_time_stop" value="4777.004" /><property name="sim_time_duration" value="3884.0" /><property name="sim_time_ratio" value="150610.48626675227" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=1791890847
+</system-err></testcase></testsuite></testsuites>

@@ -1,0 +1,10 @@
+{
+  "id": "M08",
+  "req_id": "REQ-NPU-003",
+  "kind": "release",
+  "test_case": "ready_back_to_back",
+  "source": "tt_um_tinyml_npu_2x2.v",
+  "old": "cfg_vector_len <= {2'b00, ui_in[5:0]} + 8'd1;",
+  "new": "cfg_vector_len <= {2'b00, ui_in[5:0]} + 8'd2;",
+  "mutated_sha256": "7e0a440ac5de5f77cad9d69d230bc5b7a387a6959ed795a7ab0117b9d4833119"
+}

@@ -1,185 +1,44 @@
-# RTL-to-PnR Formal Handoff Manifest
+# PnR handoff manifest
 
-**Project Title:** Scalable TinyML Neural Processing Unit (2x2 Systolic Array)  
-**Target Platform:** Tiny Tapeout Shuttle (IHP SG13G2 130nm / SkyWater Sky130A)  
-**Top Module:** `tt_um_tinyml_npu_2x2`  
-**Core Module:** `npu_top_2x2`  
-**Tile Allocation:** 1x2 Tiles ($202\,\mu\text{m} \times 314\,\mu\text{m}$)  
-**Target Clock:** 50.0 MHz ($T = 20.0\,\text{ns}$)  
-**Author:** Thinh Pham  
-**Handoff Date:** October 13, 2026  
-**Git Baseline Commit:** `906bdcf`  
-**Release Gate Status:** **READY FOR PNR (FORMALLY SIGNED OFF)**  
+Status: READY FOR PNR; see docs/FRONTEND_SIGNOFF_REVIEW.md.
+Top tt_um_tinyml_npu_2x2; IHP planning2x2; target20ns. Author: Thinh Pham.
+Initial commit d020f70630e1c9feacf9fd79206d7a9e2874afed; resumed editor base c0ef2520c1a76f5730e6c716403ca77bc42194e9.
+Hashes identify the reviewed package bytes; Git records the release commit identity.
+This manifest excludes itself to avoid circular self-hashing. All other package files are included.
 
----
-
-## Section A: Executive Summary & Project Identification
-
-This package represents the formal, frozen RTL-to-PnR handoff release for the **2x2 Systolic Array TinyML Neural Processing Unit (NPU)**. The core is tailored for edge real-time biomedical signal processing, specifically automated ECG arrhythmia classification (MIT-BIH Arrhythmia Database template matching) as well as general 1D/2D Convolutional and Multi-Layer Perceptron (MLP) neural inference.
-
-The frontend design phase is officially closed. All microarchitectural explorations have been finalized and frozen. The implementation comprises 4 signed INT8 Processing Elements arranged in a $2 \times 2$ grid, featuring concurrent Fold-SIMD broadcasting and Kung-Leiserson systolic wavefront propagation, integrated bit-exact arithmetic requantization with symmetric rounding bias, and complete single-clock synchronous control. The entire package is self-contained within the `pnr_handoff/` hierarchy, requiring zero parameter inference or architectural assumptions by the Physical Design (PnR) engineering team.
-
----
-
-## Section B: Handoff Package File Inventory & SHA256 Checksums
-
-Every file included in this production release has been hashed using SHA-256 to ensure cryptographic integrity across handoff transitions:
-
-| Relative Path | Size (Bytes) | SHA-256 Checksum | Description |
-| :--- | :---: | :--- | :--- |
-| `filelist.f` | 925 | `742C165613C1F3A083BF8AE6B803ABA1876454836E0BEA1A9023B6394A891BB7` | Dependency-ordered synthesis RTL filelist |
-| `config/config.json` | 741 | `10701F37F7D46E5480A0626D047846C2128451809D6AE1FB3980C64310A1DCEB` | OpenLane/LibreLane PnR configuration file |
-| `constraints/design.sdc` | 2,756 | `17A249FA25BFDE78CFECDFA7F0924B210A64DF9BFD653C340DC14734511A6985` | SDC timing constraints (50 MHz, I/O budgets) |
-| `docs/PNR_INTERFACE.md` | 5,436 | `F7BF95C5D737607B3405976AC7192707A6957F519F7A9EBC1312639D6D6C429C` | Physical design interface contract & rules |
-| `reports/cell_count.rpt` | 1,872 | `F1739AB05F513194C5B142C7BC703CC3E8225AD1FFBCA0CE3600C5DD589EFED4` | Synthesis gate-level primitive breakdown |
-| `reports/latch_check.rpt` | 2,267 | `93E85CE5BF4DEA838E4AE034E49505E94A38C33FE22C0EA888F8C72D4BC2B78C` | Zero-latch verification sign-off report |
-| `reports/sequential_dff.rpt` | 3,470 | `5F64626E136BFDDD6B86207BAC3579BCFCA662D8B7B7D07C8AB23BBF53922239` | Sequential storage & DFF register report |
-| `reports/synth_netlist.v` | 147,745 | `57712C0CCAAEFAB8BF45AF0CFF2CC28DE81F8A4BE6BA6DE37DFC872F53215D57` | Post-synthesis gate-level Verilog netlist |
-| `reports/synth_stat.rpt` | 2,864 | `90BA856F0C912E4DCB80CB1291846DCDE29B19169AB1972C0FA43972B865BE31` | Full Yosys synthesis statistics report |
-| `reports/timing_est.rpt` | 973 | `A8DD993621D46CF819BEFBF37B09AAA1CF2D07C7521AC09D2AD1F4FA54994EED` | Pre-layout timing & logic depth report |
-| `reports/yosys_synth.log` | 96,403 | `C7CBA1D37C839ED3522EFBF6DCF3FC86B7DA0CF0F76704049A25173589E2FCB7` | Complete raw Yosys execution log |
-| `rtl/npu_activation.v` | 3,248 | `A6DD1A7C1DB17F10F5E1C10DD4FCDB2323FD4D125B16B374515DE781EBF5680F` | Hardware requantizer & activation unit |
-| `rtl/npu_array.v` | 5,618 | `5635EC7E2C1CAD12A8443BC386009BE30618709921EFD7FE11CCB4BAD05FF6D8` | 2D Systolic Array grid (ROWS=2, COLS=2) |
-| `rtl/npu_pe.v` | 3,922 | `CC50D98C113715A54A14C8BB4377E6A49B7E4524F9143E6E9F1D512D7E8B431D` | Processing Element (INT8 MAC + 24-bit Acc) |
-| `rtl/npu_top_2x2.v` | 6,554 | `4056A209EBFCEECFD32828BB30E125CE3FF3C08FE4B109771C7DA5BC8DB05DE3` | 2x2 Core Datapath & parallel requantizers |
-| `rtl/tt_um_tinyml_npu_2x2.v` | 9,990 | `436CD98F296174D69C2149E479F61F1AD71B72ACCF5806B4F983667DDD829F00` | Frozen Tiny Tapeout top wrapper |
-
----
-
-## Section C: Target Architecture & Microarchitecture Specifications
-
-1. **Processing Element Array:**
-   - 4 PEs structured in a $2 \text{ rows} \times 2 \text{ columns}$ topology.
-   - Datapath Precision: Signed INT8 operands ($W_{\text{DATA}} = 8$), range $[-128, +127]$.
-   - Accumulator Headroom: 24-bit signed accumulator ($W_{\text{ACC}} = 24$), range $[-8388608, +8388607]$.
-   - Internal Forwarding: Horizontal systolic activation propagation (`data_a_out <= data_a_in`) and vertical weight propagation (`data_b_out <= data_b_in`).
-   - Cascade Bus: Vertical partial-sum accumulation bus (`cascade_acc_in`).
-
-2. **Requantization & Activation Engine:**
-   - Four parallel requantization channels operating on PE00, PE01, PE10, and PE11 accumulators.
-   - Symmetrical Half-Integer Rounding: Adds $2^{S-1}$ prior to arithmetic right shift by $S \in [0, 15]$.
-   - Saturation: Clamping hard-limited to $[-128, +127]$.
-   - Activation Functions: Linear pass-through (`00`), ReLU (`01`), Signed Clip (`10`).
-
-3. **Throughput & Performance:**
-   - Peak Arithmetic Throughput: 4 MACs/cycle $\times$ 50 MHz = **200 MMAC/s** ($0.2\text{ GMAC/s}$).
-   - Classification Latency: Evaluates dual-template 45-sample ECG windows in $\sim 180\text{ clock cycles}$ ($3.6\,\mu\text{s}$ core latency).
-
----
-
-## Section D: Physical Design Contract & Pinout Specification
-
-- **Module Name:** `tt_um_tinyml_npu_2x2`
-- **Tile Footprint:** 1x2 Tiles ($202\,\mu\text{m} \times 314\,\mu\text{m}$).
-- **Target Density:** 55% placement density.
-
-### Tiny Tapeout 24-Pin Assignment:
-- `ui_in[7:0]` (Input): Dedicated streaming operand ingestion and micro-op command bus.
-- `uo_out[7:0]` (Output): Dedicated output bus (Selected PE activation or status byte).
-- `uio_oe[7:0]` (Output): Fixed constant `8'b11100010`.
-- `uio_in[0]` (Input): `host_valid` strobe.
-- `uio_out[1]` (Output): `npu_ready` flow control flag.
-- `uio_in[2]` (Input): `cmd_mode` selector (1 = opcode, 0 = operand).
-- `uio_in[3]` (Input): `stream_sel` channel selector.
-- `uio_in[4]` (Input): `out_sel` readout mux (0 = activation, 1 = status byte).
-- `uio_out[5]` (Output): `out_valid` completion strobe.
-- `uio_out[6]` (Output): `layer_done` vector dot-product pulse.
-- `uio_out[7]` (Output): `npu_busy` status flag.
-- `clk` (Input): Master 50 MHz clock.
-- `rst_n` (Input): Master active-low reset.
-- `ena` (Input): Chip enable.
-
----
-
-## Section E: Clock, Reset, and Timing Budget
-
-1. **Clock Contract:**
-   - Single synchronous domain: `clk`
-   - Period: $20.000\,\text{ns}$ ($f_{\text{clk}} = 50.0\,\text{MHz}$)
-   - Setup Uncertainty: $0.500\,\text{ns}$
-   - Hold Uncertainty: $0.250\,\text{ns}$
-   - Max Transition / Slew: $0.200\,\text{ns}$
-
-2. **I/O Delay Assumptions:**
-   - Input delay (`ui_in`, `uio_in`, `rst_n`): Max $4.000\,\text{ns}$, Min $1.000\,\text{ns}$ ($20\%$ clock period).
-   - Output delay (`uo_out`, `uio_out`, `uio_oe`): Max $4.000\,\text{ns}$, Min $1.000\,\text{ns}$ ($20\%$ clock period).
-   - Output Load: $50\,\text{fF}$ external pad capacitance.
-
-3. **Reset Contract:**
-   - Active-low asynchronous reset (`rst_n`), fully synchronized internally.
-   - Zero recovery/removal timing hazards; recovers in $\le 1$ cycle.
-
----
-
-## Section F: Synthesis Baseline & Gate-Level Complexity Evidence
-
-Directly synthesized via Yosys 0.9 from `pnr_handoff/filelist.f`:
-- **Total Primitive Logic Cells:** 5,822 cells
-- **Estimated Standard Cells:** $\sim 2,350$ standard cells
-- **Sequential Storage:** 280 Flip-Flops (164 in 2x2 Array, 116 in top wrapper)
-- **Inferred Latches:** **0** (Verified via `check -assert`)
-- **Inferred Memories:** **0** (100% digital standard cell logic, zero SRAM macros)
-- **Multiplexers:** 1,353 cells
-- **Combinational Logic:** 5,542 cells (AND, OR, XOR, XNOR, AOI, OAI compound gates)
-
----
-
-## Section G: Static Timing Analysis & Critical Path Evidence
-
-- **Pre-Layout Estimated Critical Path:** $\sim 4.20\,\text{ns}$
-- **Logic Depth:** 18 – 22 gate levels across the $8\times 8$ Wallace/Booth tree multiplier, 24-bit sign extension, accumulator adder, and requantizer barrel shifter.
-- **Setup Slack:** $+15.30\,\text{ns}$ at $50.0\,\text{MHz}$ ($T = 20.0\,\text{ns}$).
-- **Estimated Maximum Frequency ($F_{\max}$):** $\sim 238.1\,\text{MHz}$ ( $> 4.7\times$ nominal operating frequency).
-- **Timing Exceptions:** Zero false paths on functional logic; zero multicycle path exceptions.
-
----
-
-## Section H: Functional Verification & Regression Sign-off Evidence
-
-1. **Standalone RTL Regression (`tb_tt_um_2x2.v`):**
-   - Phase 1: Reset behavior and ready/busy handshake (`TC1_RESET`) — **PASS**
-   - Phase 2: Runtime micro-op configuration ($K=1$, $S=0$, Linear) — **PASS**
-   - Phase 3: 4-PE Concurrent MAC verification (PE00=72, PE01=40, PE10=63, PE11=35) — **PASS**
-   - Phase 4: Serialized 4-channel PE readout multiplexer — **PASS**
-   - Phase 5: Requantization arithmetic shift ($S=2$) with rounding bias — **PASS**
-   - Phase 6: ReLU negative clamping ($\le 0 \rightarrow 0$) on PE00/PE01 — **PASS**
-   - Phase 7: Saturated positive clipping on PE10/PE11 — **PASS**
-   - Total Verification Errors: **0**
-
-2. **Lint & Synthesizability Audit:**
-   - Verilator 5.x `-Wall`: **0 Warnings** (Zero CASEINCOMPLETE, zero UNUSED).
-   - Yosys `check -assert`: **PASS** (Zero undriven nets, zero combinational loops).
-
----
-
-## Section I: Physical Invariants & PnR Team Invariant Rules
-
-The Physical Design team MUST NOT alter:
-1. Top module entity name (`tt_um_tinyml_npu_2x2`) or port list.
-2. Hardwired pin output enable bus (`uio_oe = 8'b11100010`).
-3. Signed INT8 datapath width or 24-bit accumulator precision.
-4. Systolic forwarding registers (retiming across boundary forwarding is forbidden).
-5. Asynchronous clock domain crossings (must remain single synchronous domain `clk`).
-
----
-
-## Section J: Formal Release Gate Sign-off
-
-```
-================================================================================
-                    OFFICIAL FRONTEND SIGN-OFF CERTIFICATE
-================================================================================
-Release Target:        tt_um_tinyml_npu_2x2 (2x2 Systolic Array NPU)
-Target Platform:       Tiny Tapeout Shuttle (IHP SG13G2 / SkyWater Sky130A)
-Tile Allocation:       1x2 Tiles (202 um x 314 um)
-Master Clock:          50.0 MHz (20.0 ns)
-Synthesis Filelist:    pnr_handoff/filelist.f
-Verification Suite:    test/tb_tt_um_2x2.v (PASS, 0 Errors)
-Lint / Latch Audit:    PASS (0 Lint Warnings, 0 Inferred Latches, 0 Memories)
-Timing Closure Margin: +15.30 ns Setup Slack at 50 MHz (Fmax ~238 MHz)
-
-RELEASE GATE VERDICT:  [ READY FOR PNR ]
-Sign-Off Lead:         Thinh Pham
-Date of Sign-Off:      October 13, 2026
-================================================================================
-```
+| Relative path | Bytes | SHA-256 |
+|---|---:|---|
+| `config/README.md` | 836 | `164fdda0f7ed2b7be3b9b0d210e1a8418ba94451912cdab6ea28b3bf9e71e40d` |
+| `config/config.json` | 474 | `fb394038387929e9011bf6ef5ecedeb103d401caa8e02b23521fd28bac183b89` |
+| `config/info.yaml` | 1653 | `db615083cca8829b41a4be1328ea555d770512a0ba2145f4ac4e7365f3c90383` |
+| `config/library_provenance.json` | 283 | `db056534da2603ad19e7be216e7a5cc39b1662c823b02f2000bbb5fca8482858` |
+| `config/sg13g2_stdcell_typ_1p20V_25C.lib` | 1720231 | `7677a8918689f452e80405ad16a83e744709342574f2aedcc507c2758986b396` |
+| `constraints/design.sdc` | 3370 | `cf9db0b9863e91a9ff235711a5782c1f67e1cb4d663434a7d33406da3160f015` |
+| `docs/FRONTEND_SIGNOFF_REVIEW.md` | 15031 | `dd55bbf052aaf3d7341027d723419ab6a27de5282ce53cf91b1ded78c71ec11b` |
+| `docs/FRONTEND_SPEC.md` | 3047 | `9cfe27f5f07b462b0314d83513389ae83f5bed2b9c8b2234773fa869c87c3ff3` |
+| `docs/LICENSE` | 11558 | `1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6` |
+| `docs/PNR_INTERFACE.md` | 2584 | `c892d630a9bc4133225fd720982a8c1d13a95ca458b458edc9adb0cac80c0364` |
+| `docs/RTL_FREEZE.md` | 3612 | `34c3edf4bcc84f2f7670a4823fece2a49e25659402ee8dc7c5a3ea4cfeb43274` |
+| `filelist.f` | 218 | `cfe2b49306ed8a92d3197981ea171d18523555348c06741b72780ac707b06533` |
+| `reports/cell_count.rpt` | 207 | `a10317a492d69b06b5990406b7e31427598ed30b1957fa611a6682b52f326c47` |
+| `reports/elaborated.json` | 210477 | `57ecc2dcf55a274e244f9e5c0e25051cc9bc0da42c0a2822d62ee2d04b99dd24` |
+| `reports/generic.json` | 1390162 | `c6df5c11616702a39c24f49b6bf58d6747c72214db84bc1c7369c161ae96891b` |
+| `reports/generic.ys` | 427 | `b181252748a9864436711f410763b7d9d3e4b765450d67b12bdb30bd8ae0c00d` |
+| `reports/latch_check.rpt` | 89 | `2065ccb806532e1a5c71fe80f2968ab97c885e685374ede37fea28f6853f8dfa` |
+| `reports/mapped.json` | 2653342 | `8a40e87b7c949759ab3ddb3845c28b16f7d63bd6db468bb7b9bff0eae3c13287` |
+| `reports/mapped.ys` | 581 | `ba70c6b30c876cc6562f4a85c13ee5f0a960820227339ee0df859c793899dbe0` |
+| `reports/mapped_netlist.v` | 487389 | `a694142502aef32776a310b3e1ab383fde3deea6c92b5010801e911a1bb6a29a` |
+| `reports/sequential_dff.rpt` | 313 | `f5233a0d4c9454045ffc41f2e4c103c592e568e67cb0f1ed9fe9db12686ca8c0` |
+| `reports/summary.json` | 2196 | `adbe208adde71a94a4a7f8be237522e99f90f93d3cbffc6995384d4b50323a45` |
+| `reports/synth_netlist.v` | 153039 | `f707eb6fdc4a2957b6666b75dfda38c7b84b81f3b1cc52196db2cbd4cfb98749` |
+| `reports/synth_stat.rpt` | 2196 | `adbe208adde71a94a4a7f8be237522e99f90f93d3cbffc6995384d4b50323a45` |
+| `reports/timing.tcl` | 402 | `fe828f71a69f9b27694911c77c5ca98cf942336b9d87cb820828216745ae88eb` |
+| `reports/timing_est.rpt` | 29946 | `005b0a572cf886ce52fd8287d1810fef5bc201db3874d31f75921946b0e5a381` |
+| `reports/timing_summary.json` | 878 | `d53f2e8f78a3b20a9acf237c487755e69bec6d37c05f30eae32b0ddbcc637ae3` |
+| `reports/yosys_mapped.log` | 115918 | `20f001e67d1c43f4d76d9eed0475149cbe425b23cda52716d6d2f42dc3a1f3c0` |
+| `reports/yosys_synth.log` | 101795 | `e7d0b4a6c58673277158657a75fdda1b3dd8dad990f027cf7764dc907d17c36f` |
+| `rtl/npu_activation.v` | 3470 | `8395b1f24cbbc30f5d6f711aa1250a0af62af08dc41c6e65af967a0e79fa1f46` |
+| `rtl/npu_array.v` | 4990 | `a2b517285ccdbd3dfe68d95ab035ec67d51a1099e3db6dd73f1cd3ece43e7eb6` |
+| `rtl/npu_pe.v` | 3166 | `cc50d98c113715a54a14c8bb4377e6a49b7e4524f9143e6e9f1d512d7e8b431d` |
+| `rtl/npu_top_2x2.v` | 5644 | `30ec1c2a42d013d073dcfa043f3785a1ceca8f313235e4346f448c1a17f43aef` |
+| `rtl/tt_um_tinyml_npu_2x2.v` | 10142 | `c6c0f1ece572aad545b298d74ccee3ae7d0734c98fa002483f9194754f3e1fd2` |

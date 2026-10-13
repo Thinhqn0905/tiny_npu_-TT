@@ -3,8 +3,8 @@
 
 //==============================================================================
 // Module:      npu_top_2x2
-// Description: 2x2 Systolic Array Neural Processing Unit Top Module.
-//              Contains 4 PEs (ROWS=2, COLS=2) with systolic data forwarding,
+// Description: 2x2 broadcast MAC core; SYSTOLIC_MODE=0 is fixed here.
+//              Contains 4 PEs (ROWS=2, COLS=2),
 //              4 parallel requantization/activation units, and multi-PE multiplexer.
 //==============================================================================
 

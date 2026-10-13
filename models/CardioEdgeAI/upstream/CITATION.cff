@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this repository in your research, please cite it."
+title: CardioEdgeAI
+authors:
+  - family-names: Islam
+    given-names: Rejoyan
+keywords:
+  - ECG
+  - arrhythmia
+  - TinyML
+  - edge-ai
+  - tensorflow-lite
+  - esp32
+  - mit-bih
+  - quantization
+type: software
+license: MIT

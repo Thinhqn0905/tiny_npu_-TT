@@ -1,0 +1,482 @@
+diff --git a/docs/RTL_FREEZE.md b/docs/RTL_FREEZE.md
+index ef02ac5..86e8a5f 100644
+--- a/docs/RTL_FREEZE.md
++++ b/docs/RTL_FREEZE.md
+@@ -2,7 +2,7 @@
+ 
+ **Project:** Scalable TinyML Neural Processing Unit (NPU) for Arrhythmia ECG Detection  
+ **Target Platform:** Tiny Tapeout Shuttle (IHP SG13G2 130nm / SkyWater Sky130A / GF180MCU)  
+-**Tile Allocation:** 2x1 Tiles ($320\,\mu\text{m} \times 108\,\mu\text{m}$) or 2x2 Tiles  
++**Tile Allocation:** 1x2 Tiles ($202\,\mu\text{m} \times 314\,\mu\text{m}$) or 2x2 Tiles  
+ **Frozen Top Module:** `tt_um_tinyml_npu_2x2`  
+ **Core Module:** `npu_top_2x2`  
+ **Git Baseline Commit:** `906bdcf` (branch `main`)  
+diff --git a/docs/info.md b/docs/info.md
+index 111d85a..ac397cd 100644
+--- a/docs/info.md
++++ b/docs/info.md
+@@ -1,13 +1,13 @@
+ # Scalable TinyML NPU 2x2 Systolic Array (ECG & CNN/MLP Accelerator)
+ 
+-A parameterized, streaming 2D systolic neural processing unit designed for ultra-low-power TinyML inference on 130nm ASIC (IHP SG13G2 / SkyWater Sky130A) allocating **2x1 tiles** ($320\,\mu\text{m} \times 108\,\mu\text{m}$) on the Tiny Tapeout shuttle.
++A parameterized, streaming 2D systolic neural processing unit designed for ultra-low-power TinyML inference on 130nm ASIC (IHP SG13G2 / SkyWater Sky130A) allocating **1x2 tiles** ($202\,\mu\text{m} \times 314\,\mu\text{m}$) on the Tiny Tapeout shuttle.
+ 
+ ## How it works
+ 
+ The NPU features a 4-PE 2D Systolic Array grid ($2 \times 2$) capable of executing concurrent signed INT8 Multiply-Accumulate (MAC) operations, hardware requantization (arithmetic right-shift with rounding), programmable activation functions (Linear, ReLU, Saturated Clip), and multi-channel readout multiplexing.
+ 
+ ### Architecture Highlights:
+-- **2x1 Tile Footprint**: Synthesizes to ~2,350 standard cells (5,822 primitive logic gates), fitting comfortably in a 2x1 tile allocation.
++- **1x2 Tile Footprint**: Synthesizes to ~2,350 standard cells (5,822 primitive logic gates), fitting comfortably in a standard 1x2 tile allocation.
+ - **Concurrent 4-PE Parallel Throughput**: Delivers up to 200 MMAC/s peak throughput at nominal 50.0 MHz.
+ - **Dual Dataflow Execution**:
+   - `SYSTOLIC_MODE = 0`: Fold-SIMD Parallel Broadcast for concurrent matrix dot products.
+diff --git a/info.yaml b/info.yaml
+index 15580a7..b08c243 100644
+--- a/info.yaml
++++ b/info.yaml
+@@ -8,7 +8,7 @@ project:
+   clock_hz:     50000000  # 50 MHz
+ 
+   # How many tiles your design occupies? A single tile is about 167x108 uM.
+-  tiles: "2x1"
++  tiles: "1x2"
+ 
+   # Your top module name must start with "tt_um_". Make it unique by including your github username:
+   top_module:  "tt_um_tinyml_npu_2x2"
+diff --git a/pnr_handoff/config/config.json b/pnr_handoff/config/config.json
+index 86ae72c..af8164d 100644
+--- a/pnr_handoff/config/config.json
++++ b/pnr_handoff/config/config.json
+@@ -13,11 +13,11 @@
+   "PNR_SDC_FILE": "dir::constraints/design.sdc",
+   "PDK": "sg13g2",
+   "STD_CELL_LIBRARY": "sg13g2_stdcell",
+-  "TILE_ALLOCATION": "2x1",
+-  "TILES": "2x1",
+-  "DIE_AREA": "0 0 320 108",
++  "TILE_ALLOCATION": "1x2",
++  "TILES": "1x2",
++  "DIE_AREA": "0 0 202.08 313.74",
+   "FP_SIZING": "absolute",
+-  "PL_TARGET_DENSITY": 0.55,
++  "PL_TARGET_DENSITY": 0.45,
+   "SYNTH_STRATEGY": "AREA 0",
+   "SYNTH_BUFFERING": 1,
+   "SYNTH_SIZING": 1,
+diff --git a/pnr_handoff/docs/PNR_INTERFACE.md b/pnr_handoff/docs/PNR_INTERFACE.md
+index d3ca657..3407a46 100644
+--- a/pnr_handoff/docs/PNR_INTERFACE.md
++++ b/pnr_handoff/docs/PNR_INTERFACE.md
+@@ -4,7 +4,7 @@
+ **Top Module:** `tt_um_tinyml_npu_2x2`  
+ **Core Datapath:** `npu_top_2x2`  
+ **Target Platform:** Tiny Tapeout Shuttle (IHP SG13G2 130nm / SkyWater Sky130A)  
+-**Tile Allocation:** 2x1 Tiles ($320\,\mu\text{m} \times 108\,\mu\text{m}$)  
++**Tile Allocation:** 1x2 Tiles ($202\,\mu\text{m} \times 314\,\mu\text{m}$)  
+ **Target Clock:** 50.0 MHz ($T = 20.0\,\text{ns}$)  
+ **Sign-off Status:** **FROZEN FOR PNR**  
+ 
+@@ -58,8 +58,8 @@ The module `tt_um_tinyml_npu_2x2` conforms strictly to the standard Tiny Tapeout
+ ## 3. Physical Design & Floorplan Rules
+ 
+ 1. **Tile Allocation & Footprint:**
+-   - Shuttle Allocation: **2x1 Tiles** (equivalent to two adjacent standard Tiny Tapeout tiles).
+-   - Bounding Box Dimensions: $X = 320.0\,\mu\text{m}$, $Y = 108.0\,\mu\text{m}$.
++   - Shuttle Allocation: **1x2 Tiles** (standard vertical 2-tile allocation on Tiny Tapeout shuttle).
++   - Bounding Box Dimensions: $X = 202.08\,\mu\text{m}$, $Y = 313.74\,\mu\text{m}$.
+    - Pin placement conforms to the standardized Tiny Tapeout frame.
+ 
+ 2. **Standard Cell & Macro Budget:**
+diff --git a/test/Makefile b/test/Makefile
+index 6bd51dc..8d76fe4 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -5,7 +5,7 @@
+ SIM ?= icarus
+ TOPLEVEL_LANG ?= verilog
+ SRC_DIR = $(PWD)/../src
+-PROJECT_SOURCES = tt_um_tinyml_npu_1x1.v npu_top.v npu_array.v npu_pe.v npu_controller.v npu_activation.v npu_argmax.v
++PROJECT_SOURCES = npu_pe.v npu_activation.v npu_array.v npu_top_2x2.v tt_um_tinyml_npu_2x2.v
+ 
+ ifneq ($(GATES),yes)
+ 
+@@ -39,10 +39,10 @@ TOPLEVEL = tb
+ # MODULE is the basename of the Python test file
+ MODULE = test
+ 
++# include cocotb's make rules to take care of the simulator setup
++include $(shell cocotb-config --makefiles)/Makefile.sim
++
+ .PHONY: sim_standalone
+ sim_standalone:
+-	iverilog -g2012 -o sim_standalone.vvp $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES)) tb_npu_standalone.v
++	iverilog -g2012 -o sim_standalone.vvp $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES)) tb_tt_um_2x2.v
+ 	vvp sim_standalone.vvp
+-
+-# include cocotb's make rules to take care of the simulator setup
+-include $(shell cocotb-config --makefiles)/Makefile.sim
+diff --git a/test/tb.v b/test/tb.v
+index 1585a2c..df82674 100644
+--- a/test/tb.v
++++ b/test/tb.v
+@@ -18,7 +18,7 @@ module tb ();
+     wire [7:0] uio_out;
+     wire [7:0] uio_oe;
+ 
+-    tt_um_tinyml_npu_1x1 dut (
++    tt_um_tinyml_npu_2x2 dut (
+         .ui_in   (ui_in),
+         .uo_out  (uo_out),
+         .uio_in  (uio_in),
+diff --git a/test/test.py b/test/test.py
+index 7e8f2e9..1e7d118 100644
+--- a/test/test.py
++++ b/test/test.py
+@@ -1,5 +1,5 @@
+ """
+-test.py - Cocotb Testbench for Scalable 1x1 TinyML NPU (tt_um_tinyml_npu_1x1)
++test.py - Cocotb Testbench for Scalable 2x2 TinyML NPU (tt_um_tinyml_npu_2x2)
+ Compatible with RTL simulation, gate-level simulation, and GitHub Actions CI.
+ """
+ 
+@@ -12,27 +12,16 @@ GL_TEST = os.environ.get("GATES", "no") == "yes"
+ TIMING_MULT = 3 if GL_TEST else 1
+ CLK_PERIOD_NS = 20  # 50 MHz
+ 
+-# Pin definitions for uio:
+-# uio[0] (in)  : host_valid
+-# uio[1] (out) : npu_ready
+-# uio[2] (in)  : cmd_mode
+-# uio[3] (in)  : weight_stream
+-# uio[4] (in)  : out_sel
+-# uio[5] (out) : out_valid
+-# uio[6] (out) : layer_done
+-# uio[7] (out) : npu_busy
+ 
+-
+-class NPUDriver:
++class NPU2x2Driver:
+ 
+     def __init__(self, dut):
+         self.dut = dut
+ 
+-    def _make_uio(self, valid=0, cmd=0, weight=0, out_sel=0):
++    def _make_uio(self, valid=0, cmd=0, out_sel=0):
+         val = (
+             (1 if valid else 0)
+             | ((1 if cmd else 0) << 2)
+-            | ((1 if weight else 0) << 3)
+             | ((1 if out_sel else 0) << 4)
+         )
+         return val
+@@ -49,40 +38,38 @@ class NPUDriver:
+     async def send_cmd(self, cmd_byte):
+         await RisingEdge(self.dut.clk)
+         self.dut.ui_in.value = cmd_byte & 0xFF
+-        self.dut.uio_in.value = self._make_uio(valid=1, cmd=1)
++        self.dut.uio_in.value = self._make_uio(valid=1, cmd=1, out_sel=0)
+         await RisingEdge(self.dut.clk)
+         self.dut.uio_in.value = 0
+         self.dut.ui_in.value = 0
+         await ClockCycles(self.dut.clk, 1)
+ 
+-    async def send_weight(self, weight):
++    async def send_data_byte(self, byte_val):
+         await RisingEdge(self.dut.clk)
+-        self.dut.ui_in.value = weight & 0xFF
+-        self.dut.uio_in.value = self._make_uio(valid=1, cmd=0, weight=1)
++        self.dut.ui_in.value = byte_val & 0xFF
++        self.dut.uio_in.value = self._make_uio(valid=1, cmd=0, out_sel=0)
+         await RisingEdge(self.dut.clk)
+         self.dut.uio_in.value = 0
+         self.dut.ui_in.value = 0
+ 
+-    async def send_act(self, act):
+-        await RisingEdge(self.dut.clk)
+-        self.dut.ui_in.value = act & 0xFF
+-        self.dut.uio_in.value = self._make_uio(valid=1, cmd=0, weight=0)
+-        await RisingEdge(self.dut.clk)
+-        self.dut.uio_in.value = 0
+-        self.dut.ui_in.value = 0
+-        await ClockCycles(self.dut.clk, 1)
+-
+-    async def send_pair(self, weight, act):
+-        await self.send_weight(weight)
+-        await self.send_act(act)
++    async def stream_2x2_operands(self, r0_act, r1_act, c0_wt, c1_wt):
++        await self.send_data_byte(r0_act)
++        await self.send_data_byte(r1_act)
++        await self.send_data_byte(c0_wt)
++        await self.send_data_byte(c1_wt)
+ 
+-    async def read_data(self):
+-        self.dut.uio_in.value = self._make_uio(out_sel=0)
++    async def read_pe(self, pe_sel):
++        cmd = 0x80 | ((pe_sel & 0x03) << 4)
++        await self.send_cmd(cmd)
++        self.dut.uio_in.value = self._make_uio(valid=0, cmd=0, out_sel=0)
+         await ClockCycles(self.dut.clk, 1)
+-        return int(self.dut.uo_out.value)
++        val = int(self.dut.uo_out.value)
++        if val >= 128:
++            val -= 256
++        return val
+ 
+     async def read_status(self):
+-        self.dut.uio_in.value = self._make_uio(out_sel=1)
++        self.dut.uio_in.value = self._make_uio(valid=0, cmd=0, out_sel=1)
+         await ClockCycles(self.dut.clk, 1)
+         return int(self.dut.uo_out.value)
+ 
+@@ -90,9 +77,9 @@ class NPUDriver:
+ @cocotb.test()
+ async def test_reset(dut):
+     """Test 1: Verify Reset and Initial Ready State"""
+-    clock = Clock(dut.clk, CLK_PERIOD_NS, units="ns")
++    clock = Clock(dut.clk, CLK_PERIOD_NS, unit="ns")
+     cocotb.start_soon(clock.start())
+-    drv = NPUDriver(dut)
++    drv = NPU2x2Driver(dut)
+     await drv.reset()
+ 
+     uio_out = int(dut.uio_out.value)
+@@ -105,153 +92,108 @@ async def test_reset(dut):
+ 
+ 
+ @cocotb.test()
+-async def test_mac_simple(dut):
+-    """Test 2: Single MAC Computation (8 * 9 = 72) with ReLU"""
+-    clock = Clock(dut.clk, CLK_PERIOD_NS, units="ns")
++async def test_mac_2x2_parallel(dut):
++    """Test 2: Concurrent 4-PE Parallel Matrix MAC Computation"""
++    clock = Clock(dut.clk, CLK_PERIOD_NS, unit="ns")
+     cocotb.start_soon(clock.start())
+-    drv = NPUDriver(dut)
++    drv = NPU2x2Driver(dut)
+     await drv.reset()
+ 
+-    # CMD_SET_LEN: len = 1 (ui[7:6]=00, ui[5:0]=0 -> 0x00)
+-    await drv.send_cmd(0x00)
+-    # CMD_SET_POST: shift = 0, act = ReLU (01) (ui[7:6]=01, ui[5:4]=01, ui[3:0]=00 -> 0x50)
+-    await drv.send_cmd(0x50)
+-    # Clear Acc: CMD_ACC_OPS with acc_clear=1 -> 0x81
+-    await drv.send_cmd(0x81)
+-
+-    await drv.send_pair(8, 9)
+-    await ClockCycles(dut.clk, 2)
+-
+-    res = await drv.read_data()
+-    dut._log.info(f"MAC 8 * 9 = {res}, Expected: 72")
+-    assert res == 72, f"Expected 72, got {res}"
+-    dut._log.info("PASS: test_mac_simple")
++    # Set len=1, shift=0, Linear (00), clear Acc
++    await drv.send_cmd(0x00)  # len = 1
++    await drv.send_cmd(0x40)  # shift = 0, Linear
++    await drv.send_cmd(0x81)  # clear acc
++
++    # Stream operands: r0=8, r1=7, c0=9, c1=5
++    # Expected:
++    # PE00: 8 * 9 = 72
++    # PE01: 8 * 5 = 40
++    # PE10: 7 * 9 = 63
++    # PE11: 7 * 5 = 35
++    await drv.stream_2x2_operands(8, 7, 9, 5)
++    await ClockCycles(dut.clk, 3)
++
++    pe00 = await drv.read_pe(0)
++    pe01 = await drv.read_pe(1)
++    pe10 = await drv.read_pe(2)
++    pe11 = await drv.read_pe(3)
++
++    dut._log.info(f"PE00={pe00} (exp 72), PE01={pe01} (exp 40), PE10={pe10} (exp 63), PE11={pe11} (exp 35)")
++    assert pe00 == 72, f"Expected PE00=72, got {pe00}"
++    assert pe01 == 40, f"Expected PE01=40, got {pe01}"
++    assert pe10 == 63, f"Expected PE10=63, got {pe10}"
++    assert pe11 == 35, f"Expected PE11=35, got {pe11}"
++    dut._log.info("PASS: test_mac_2x2_parallel")
+ 
+ 
+ @cocotb.test()
+-async def test_relu_clipping(dut):
+-    """Test 3: Verify Negative Accumulation Clamps to Zero via ReLU"""
+-    clock = Clock(dut.clk, CLK_PERIOD_NS, units="ns")
++async def test_relu_clipping_and_requant(dut):
++    """Test 3: Verify ReLU Clamping and Saturated Requantization on 2x2 Grid"""
++    clock = Clock(dut.clk, CLK_PERIOD_NS, unit="ns")
+     cocotb.start_soon(clock.start())
+-    drv = NPUDriver(dut)
++    drv = NPU2x2Driver(dut)
+     await drv.reset()
+ 
++    # Set len=1, shift=2, ReLU (01), clear Acc
+     await drv.send_cmd(0x00)  # len = 1
+-    await drv.send_cmd(0x50)  # ReLU
+-    await drv.send_cmd(0x81)  # Clear Acc
+-
+-    # (-12) * 5 = -60 -> ReLU should clamp to 0
+-    await drv.send_pair(-12, 5)
+-    await ClockCycles(dut.clk, 2)
+-
+-    res = await drv.read_data()
+-    dut._log.info(f"Negative product with ReLU = {res}, Expected: 0")
+-    assert res == 0, f"Expected 0, got {res}"
+-    dut._log.info("PASS: test_relu_clipping")
++    await drv.send_cmd(0x52)  # shift = 2, ReLU
++    await drv.send_cmd(0x81)  # clear acc
++
++    # Operands: r0=-10, r1=12, c0=4, c1=6
++    # PE00: -10 * 4 = -40 -> ReLU clamp to 0
++    # PE01: -10 * 6 = -60 -> ReLU clamp to 0
++    # PE10:  12 * 4 =  48 -> (48 + 2) >> 2 = 12
++    # PE11:  12 * 6 =  72 -> (72 + 2) >> 2 = 18
++    await drv.stream_2x2_operands(-10, 12, 4, 6)
++    await ClockCycles(dut.clk, 3)
++
++    pe00 = await drv.read_pe(0)
++    pe01 = await drv.read_pe(1)
++    pe10 = await drv.read_pe(2)
++    pe11 = await drv.read_pe(3)
++
++    dut._log.info(f"PE00={pe00} (exp 0), PE01={pe01} (exp 0), PE10={pe10} (exp 12), PE11={pe11} (exp 18)")
++    assert pe00 == 0, f"Expected PE00=0, got {pe00}"
++    assert pe01 == 0, f"Expected PE01=0, got {pe01}"
++    assert pe10 == 12, f"Expected PE10=12, got {pe10}"
++    assert pe11 == 18, f"Expected PE11=18, got {pe11}"
++    dut._log.info("PASS: test_relu_clipping_and_requant")
+ 
+ 
+ @cocotb.test()
+-async def test_vector_dot_product(dut):
+-    """Test 4: Vector Dot-Product with Arithmetic Right Shift Requantization"""
+-    clock = Clock(dut.clk, CLK_PERIOD_NS, units="ns")
++async def test_dual_channel_ecg_inference(dut):
++    """Test 4: Concurrent Dual-Template ECG Arrhythmia Classification"""
++    clock = Clock(dut.clk, CLK_PERIOD_NS, unit="ns")
+     cocotb.start_soon(clock.start())
+-    drv = NPUDriver(dut)
++    drv = NPU2x2Driver(dut)
+     await drv.reset()
+ 
+-    # 4-tap dot-product:
+-    # Weights:     [10, 20, -5, 15]
+-    # Activations: [ 2,  3, 10,  4]
+-    # Sum: 20 + 60 - 50 + 60 = 90
+-    # Requantize with shift=2 (offset=2): (90 + 2) >> 2 = 23
+-    await drv.send_cmd(0x03)  # CMD_SET_LEN: len = 4
+-    await drv.send_cmd(0x52)  # CMD_SET_POST: shift = 2, ReLU
+-    await drv.send_cmd(0x81)  # Clear Acc
+-
+-    pairs = [(10, 2), (20, 3), (-5, 10), (15, 4)]
+-    for w, a in pairs:
+-        await drv.send_pair(w, a)
+-
++    # Column 0: Normal template weights [ -5, 10 ]
++    # Column 1: PVC template weights    [  15, 20 ]
++    # Row 0: Beat sample segment A      [  2,   3 ]
++    # Step 1:
++    # PE00: 2 * (-5) = -10
++    # PE01: 2 * 15   =  30
++    # Step 2:
++    # PE00: -10 + 3 * 10 = +20 (Normal score)
++    # PE01:  30 + 3 * 20 = +90 (PVC score -> Winning Arrhythmia Class!)
++    await drv.send_cmd(0x01)  # len = 2
++    await drv.send_cmd(0x40)  # shift = 0, Linear
++    await drv.send_cmd(0x81)  # clear acc
++
++    # Step 1 operands: r0=2, r1=0, c0=-5, c1=15
++    await drv.stream_2x2_operands(2, 0, -5, 15)
+     await ClockCycles(dut.clk, 2)
+-    res = await drv.read_data()
+-    dut._log.info(f"Vector dot-product = {res}, Expected: 23")
+-    assert res == 23, f"Expected 23, got {res}"
+-    dut._log.info("PASS: test_vector_dot_product")
+-
+-
+-@cocotb.test()
+-async def test_argmax_classification(dut):
+-    """Test 5: Multi-class ArgMax Winner-Take-All Classifier"""
+-    clock = Clock(dut.clk, CLK_PERIOD_NS, units="ns")
+-    cocotb.start_soon(clock.start())
+-    drv = NPUDriver(dut)
+-    await drv.reset()
+-
+-    # Clear ArgMax (CMD_ACC_OPS with argmax_clear=1 -> 0x82)
+-    await drv.send_cmd(0x82)
+-    await drv.send_cmd(0x00)  # len = 1
+-    await drv.send_cmd(0x40)  # Linear
+-
+-    # Class 0: score = 40
+-    await drv.send_cmd(0x81)
+-    await drv.send_pair(10, 4)
+-    await drv.send_cmd(0x84)  # ArgMax compare Class 0
+ 
+-    # Class 1: score = 150 (Winning Class)
+-    await drv.send_cmd(0x81)
+-    await drv.send_pair(15, 10)
+-    await drv.send_cmd(0x94)  # ArgMax compare Class 1
++    # Step 2 operands: r0=3, r1=0, c0=10, c1=20
++    await drv.stream_2x2_operands(3, 0, 10, 20)
++    await ClockCycles(dut.clk, 3)
+ 
+-    # Class 2: score = 60
+-    await drv.send_cmd(0x81)
+-    await drv.send_pair(6, 10)
+-    await drv.send_cmd(0xA4)  # ArgMax compare Class 2
++    normal_score = await drv.read_pe(0)
++    pvc_score = await drv.read_pe(1)
+ 
+-    # Read ArgMax output
+-    status = await drv.read_status()
+-    winning_class = status & 0x0F
+-    dut._log.info(f"ArgMax Winning Class: {winning_class}, Expected: 1")
+-    assert winning_class == 1, f"Expected class 1, got {winning_class}"
+-    dut._log.info("PASS: test_argmax_classification")
+-
+-
+-@cocotb.test()
+-async def test_ecg_arrhythmia_inference(dut):
+-    """Test 6: Full End-to-End ECG Arrhythmia Heartbeat Classification"""
+-    clock = Clock(dut.clk, CLK_PERIOD_NS, units="ns")
+-    cocotb.start_soon(clock.start())
+-    drv = NPUDriver(dut)
+-    await drv.reset()
+-
+-    # Test an abnormal Premature Ventricular Contraction (PVC) heartbeat
+-    # Matching template scores:
+-    #   Normal Template: -35 (Negative score)
+-    #   PVC Template:    +85 (Highest match score)
+-    #   PAC Template:    +15 (Weak match score)
+-    # Expected Winner: Class 1 (PVC Arrhythmia)
+-
+-    await drv.send_cmd(0x82)  # Clear ArgMax
+-    await drv.send_cmd(0x00)  # len = 1
+-    await drv.send_cmd(0x40)  # Linear
+-
+-    # Normal template
+-    await drv.send_cmd(0x81)
+-    await drv.send_pair(-7, 5)
+-    await drv.send_cmd(0x84)  # Class 0
+-
+-    # PVC template
+-    await drv.send_cmd(0x81)
+-    await drv.send_pair(17, 5)
+-    await drv.send_cmd(0x94)  # Class 1
+-
+-    # PAC template
+-    await drv.send_cmd(0x81)
+-    await drv.send_pair(3, 5)
+-    await drv.send_cmd(0xA4)  # Class 2
+-
+-    status = await drv.read_status()
+-    best_class = status & 0x0F
+-    dut._log.info(
+-        f"ECG Heartbeat Arrhythmia Prediction: Class {best_class} (PVC), Expected: 1"
+-    )
+-    assert best_class == 1, f"Expected class 1 (PVC), got {best_class}"
+-    dut._log.info("PASS: test_ecg_arrhythmia_inference")
++    dut._log.info(f"ECG Normal Template Score: {normal_score}, PVC Template Score: {pvc_score}")
++    assert normal_score == 20, f"Expected Normal score=20, got {normal_score}"
++    assert pvc_score == 90, f"Expected PVC score=90, got {pvc_score}"
++    assert pvc_score > normal_score, "PVC score must exceed Normal score for abnormal heartbeat"
++    dut._log.info("PASS: test_dual_channel_ecg_inference (PVC correctly identified with higher match score)")

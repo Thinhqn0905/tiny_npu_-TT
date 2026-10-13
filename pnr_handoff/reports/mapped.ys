@@ -1,0 +1,15 @@
+read_liberty -lib config/sg13g2_stdcell_typ_1p20V_25C.lib
+read_verilog rtl/npu_pe.v
+read_verilog rtl/npu_activation.v
+read_verilog rtl/npu_array.v
+read_verilog rtl/npu_top_2x2.v
+read_verilog rtl/tt_um_tinyml_npu_2x2.v
+hierarchy -check -top tt_um_tinyml_npu_2x2
+synth -top tt_um_tinyml_npu_2x2 -noabc -flatten
+dfflibmap -liberty config/sg13g2_stdcell_typ_1p20V_25C.lib
+abc -liberty config/sg13g2_stdcell_typ_1p20V_25C.lib
+clean
+check -assert
+stat -liberty config/sg13g2_stdcell_typ_1p20V_25C.lib
+write_json reports/mapped.json
+write_verilog -noattr -noexpr reports/mapped_netlist.v

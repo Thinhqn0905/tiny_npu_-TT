@@ -1,153 +1,712 @@
 {
-  "metadata": {
-    "phase": 5,
-    "ip_name": "tinyml_npu_multiscale",
-    "gate_5_approved": true,
-    "approved_at": "2026-10-13T16:30:00+07:00",
-    "description": "Full verification and front-end ASIC benchmark report for 1x1 and 2x2 scalable TinyML NPU architectures"
-  },
-  "sim_summary_1x1": {
-    "total_tc": 6,
-    "pass": 6,
-    "fail": 0,
-    "na": 0,
-    "sva_violations": 0,
-    "testbench_file": "src/tb/tb_npu_standalone.v",
-    "tests": [
-      {
-        "id": "TC_RESET_01",
-        "name": "Reset Recovery & Pin Handshake Verification",
-        "cycles": 8,
-        "status": "PASS",
-        "description": "Verifies rst_n recovery, default pin directions (uio_oe=0xE2), npu_ready=1, npu_busy=0"
-      },
-      {
-        "id": "TC_MAC_02",
-        "name": "Single-Cycle Signed INT8 MAC",
-        "cycles": 6,
-        "status": "PASS",
-        "description": "Computes 8 * 9 = 72, verifies single-cycle accumulation without latency skew"
-      },
-      {
-        "id": "TC_RELU_03",
-        "name": "Negative Saturation & Non-Linear ReLU Activation",
-        "cycles": 6,
-        "status": "PASS",
-        "description": "Computes (-12) * 5 = -60, verifies hardware ReLU saturation to 0"
-      },
-      {
-        "id": "TC_DOTPROD_04",
-        "name": "4-Tap Vector Dot-Product with Scaled Requantization",
-        "cycles": 18,
-        "status": "PASS",
-        "description": "Computes dot-product of length 4, applies half-integer rounding (+2) and shift-right S=2 to yield 23"
-      },
-      {
-        "id": "TC_ARGMAX_05",
-        "name": "Multi-Class Winner-Take-All Classifier",
-        "cycles": 32,
-        "status": "PASS",
-        "description": "Evaluates scores for Class 0 (40), Class 1 (150), Class 2 (60); selects Class 1 as winning index"
-      },
-      {
-        "id": "TC_ECG_06",
-        "name": "End-to-End MIT-BIH ECG Arrhythmia Inference",
-        "cycles": 105,
-        "status": "PASS",
-        "description": "Streams 16-sample PVC heartbeat against 3 templates (Normal=-35, PVC=+85, PAC=+15); detects PVC (Class 1)"
-      }
-    ]
-  },
-  "sim_summary_2x2": {
-    "total_tc": 6,
-    "pass": 6,
-    "fail": 0,
-    "na": 0,
-    "sva_violations": 0,
-    "testbench_file": "src/tb/tb_npu_2x2_standalone.v",
-    "tests": [
-      {
-        "id": "TC_2X2_RESET",
-        "name": "2x2 Array Reset Recovery & Zero State",
-        "cycles": 4,
-        "status": "PASS",
-        "description": "Verifies synchronous reset and zero initialization across all 4 PEs (PE00, PE01, PE10, PE11)"
-      },
-      {
-        "id": "TC_2X2_PARALLEL_MAC",
-        "name": "4-PE Concurrent Single-Cycle MAC",
-        "cycles": 3,
-        "status": "PASS",
-        "description": "Row acts [8, 5] and Col wgts [9, 7] yield concurrent PE outputs [72, 56, 45, 35]"
-      },
-      {
-        "id": "TC_2X2_MATMUL",
-        "name": "2x2 Matrix Multiplication (C = A x B)",
-        "cycles": 4,
-        "status": "PASS",
-        "description": "A=[[2,3],[4,5]], B=[[6,7],[8,9]] computed in 2 MAC cycles yielding C=[[36,41],[64,73]]"
-      },
-      {
-        "id": "TC_2X2_MUX_READOUT",
-        "name": "PE Readout Multiplexer Channel Select",
-        "cycles": 4,
-        "status": "PASS",
-        "description": "Verifies 4-to-1 readout multiplexer selecting individual PE outputs correctly"
-      },
-      {
-        "id": "TC_2X2_REQUANT",
-        "name": "4-Channel Parallel Requantization & ReLU",
-        "cycles": 2,
-        "status": "PASS",
-        "description": "Applies rounding offset and shift S=1 with ReLU yielding [18, 21, 32, 37]"
-      },
-      {
-        "id": "TC_2X2_DUAL_ECG",
-        "name": "Dual-Template Arrhythmia Inference (2x Speedup)",
-        "cycles": 4,
-        "status": "PASS",
-        "description": "Normal template on Col 0 (-25), PVC template on Col 1 (+155) evaluated concurrently in 2 cycles"
-      }
-    ]
-  },
-  "code_coverage_summary": {
-    "line_coverage_pct": 98.8,
-    "branch_coverage_pct": 97.4,
-    "toggle_coverage_pct": 96.1,
-    "fsm_state_coverage_pct": 100.0,
-    "uncovered_branches_note": "Reserved instruction opcode 2'b11 bias load higher address bits for future multi-tile expansion"
-  },
-  "mutation_summary": {
-    "total_modules_tested": 6,
-    "module_scores": {
-      "npu_pe": 1.0,
-      "npu_activation": 0.952,
-      "npu_argmax": 1.0,
-      "npu_controller": 0.928,
-      "npu_array": 1.0,
-      "tt_um_tinyml_npu_1x1": 1.0
+  "ip_name": "tt_um_tinyml_npu_2x2",
+  "gate_5_approved": true,
+  "gate_status": "PASS",
+  "functional_diagnostics": [
+    {
+      "test": "arithmetic",
+      "count": 3,
+      "passed": 3,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/arithmetic.log"
     },
-    "above_threshold": 6,
-    "below_threshold": 0,
-    "threshold": 0.85,
-    "note": "All 6 synthesizable modules exceed the 85% mutation score threshold"
+    {
+      "test": "release",
+      "count": 5,
+      "passed": 5,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/release.log"
+    },
+    {
+      "test": "existing",
+      "count": 4,
+      "passed": 4,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/existing.log"
+    },
+    {
+      "test": "legacy",
+      "count": 6,
+      "passed": 6,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/legacy.log"
+    },
+    {
+      "test": "tb_npu_standalone",
+      "count": 6,
+      "passed": 6,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/tb_npu_standalone.log"
+    },
+    {
+      "test": "tb_npu_2x2_standalone",
+      "count": 6,
+      "passed": 6,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/tb_npu_2x2_standalone.log"
+    },
+    {
+      "test": "tb_tt_um_2x2",
+      "count": 8,
+      "passed": 8,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/tb_tt_um_2x2.log"
+    },
+    {
+      "test": "Verilator lint",
+      "count": 1,
+      "passed": 1,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/verilator.log"
+    },
+    {
+      "test": "TC-TRAINED-E2E",
+      "count": 6,
+      "passed": 6,
+      "failed": 0,
+      "status": "PASS",
+      "evidence": "evidence/review/final/trained_network.log"
+    }
+  ],
+  "source_identity": "evidence/review/final/run_identity.json",
+  "gate_3b_approved": true,
+  "code_coverage": {
+    "status": "target_met",
+    "tool": "Verilator 4.038",
+    "scope": [
+      "pnr_handoff/rtl/npu_activation.v",
+      "pnr_handoff/rtl/npu_array.v",
+      "pnr_handoff/rtl/npu_pe.v",
+      "pnr_handoff/rtl/npu_top_2x2.v",
+      "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v"
+    ],
+    "aggregation": "Verilator merged hierarchical points (h field retained)",
+    "exclusions": [
+      "testbench",
+      "SVA"
+    ],
+    "dut_exclusions": "25 exact points approved by user; docs/COVERAGE_REVIEW.md and schemas/review_approvals.json",
+    "target_percent": 100,
+    "metrics": {
+      "v_branch": {
+        "covered": 16,
+        "coverable": 16,
+        "percent": 100.0,
+        "uncovered": []
+      },
+      "v_line": {
+        "covered": 30,
+        "coverable": 33,
+        "percent": 90.9090909090909,
+        "uncovered": [
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "139",
+            "n": "33",
+            "page": "v_line/tt_um_tinyml_npu_2x2",
+            "o": "case",
+            "S": "139",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "163",
+            "n": "33",
+            "page": "v_line/tt_um_tinyml_npu_2x2",
+            "o": "case",
+            "S": "163",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "187",
+            "n": "17",
+            "page": "v_line/tt_um_tinyml_npu_2x2",
+            "o": "case",
+            "S": "187-188",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          }
+        ]
+      },
+      "v_toggle": {
+        "covered": 1650,
+        "coverable": 1672,
+        "percent": 98.6842105263158,
+        "uncovered": [
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[15]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[16]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[17]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[18]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[19]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[20]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[21]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[22]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[23]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_activation.v",
+            "l": "30",
+            "n": "31",
+            "page": "v_toggle/npu_activation",
+            "o": "round_offset[24]",
+            "h": "TOP.coverage_top.dut.u_core_2x2.u_act_*",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/npu_top_2x2.v",
+            "l": "42",
+            "n": "34",
+            "page": "v_toggle/npu_top_2x2",
+            "o": "out_acc_sel",
+            "h": "TOP.coverage_top.dut.u_core_2x2",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "18",
+            "n": "23",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "uio_out[0]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "18",
+            "n": "23",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "uio_out[2]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "18",
+            "n": "23",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "uio_out[3]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "18",
+            "n": "23",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "uio_out[4]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "19",
+            "n": "23",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "uio_oe[0]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "19",
+            "n": "23",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "uio_oe[2]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "19",
+            "n": "23",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "uio_oe[3]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "19",
+            "n": "23",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "uio_oe[4]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "70",
+            "n": "26",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "cfg_vector_len[7]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "71",
+            "n": "26",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "mac_count[6]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          },
+          {
+            "f": "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v",
+            "l": "71",
+            "n": "26",
+            "page": "v_toggle/tt_um_tinyml_npu_2x2",
+            "o": "mac_count[7]",
+            "h": "TOP.coverage_top.dut",
+            "count": 0
+          }
+        ]
+      }
+    },
+    "branch_metric": "v_branch: native Verilator branch points; denominator retained separately from v_line and v_toggle",
+    "functional_checks": "PASS TC-COVERAGE-BASE; public-pin integer oracle",
+    "raw_database": "evidence/review/coverage/merged.dat",
+    "eligible_metrics": {
+      "v_line": {
+        "covered": 30,
+        "coverable": 30,
+        "percent": 100.0,
+        "excluded": 3
+      },
+      "v_toggle": {
+        "covered": 1650,
+        "coverable": 1650,
+        "percent": 100.0,
+        "excluded": 22
+      },
+      "v_branch": {
+        "covered": 16,
+        "coverable": 16,
+        "percent": 100.0,
+        "excluded": 0
+      }
+    }
   },
-  "rtm_summary": {
-    "total_req_ids": 6,
-    "signed_off": 6,
-    "pending": 0,
-    "locked": 0,
-    "sign_off_pct": 100.0
+  "mutation": {
+    "status": "PASS",
+    "mutations": [
+      {
+        "id": "M01",
+        "req_id": "REQ-NPU-001",
+        "kind": "unit",
+        "test_case": "exhaustive_products_and_overflow",
+        "source": "npu_pe.v",
+        "old": "data_a_in * data_b_in",
+        "new": "$unsigned(data_a_in) * $unsigned(data_b_in)",
+        "mutated_sha256": "fb63b3af763abd1f798d5e52d43ed3fb9d7613f089ed524d48b1c9d5940a75b5",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M01"
+      },
+      {
+        "id": "M02",
+        "req_id": "REQ-NPU-001",
+        "kind": "unit",
+        "test_case": "exhaustive_products_and_overflow",
+        "source": "npu_pe.v",
+        "old": "{(ACC_WIDTH-16){prod[15]}}",
+        "new": "{(ACC_WIDTH-16){1'b0}}",
+        "mutated_sha256": "f584eb70b3216c64d36e3d8d3791b4094e099a7a60048d12d44751b29b39e55c",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M02"
+      },
+      {
+        "id": "M03",
+        "req_id": "REQ-NPU-001",
+        "kind": "unit",
+        "test_case": "exhaustive_products_and_overflow",
+        "source": "npu_pe.v",
+        "old": "acc_reg + prod_sext",
+        "new": "acc_reg - prod_sext",
+        "mutated_sha256": "a74d738f7834fc6bcf3808c10a7f88b8cfde2a79eff8cb4cf325f13a02f50c1d",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M03"
+      },
+      {
+        "id": "M04",
+        "req_id": "REQ-NPU-002",
+        "kind": "unit",
+        "test_case": "systolic_and_broadcast",
+        "source": "npu_array.v",
+        "old": "assign pe_a_in = data_a_in_vec[r*DATA_WIDTH +: DATA_WIDTH];",
+        "new": "assign pe_a_in = data_a_in_vec[0 +: DATA_WIDTH];",
+        "mutated_sha256": "72f1d45fbfa56b2b86b7203e0171b24d0c1bf31538f1b72c86dfa556baaa9321",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M04"
+      },
+      {
+        "id": "M05",
+        "req_id": "REQ-NPU-002",
+        "kind": "unit",
+        "test_case": "systolic_and_broadcast",
+        "source": "npu_array.v",
+        "old": "assign pe_b_in = data_b_in_vec[c*DATA_WIDTH +: DATA_WIDTH];",
+        "new": "assign pe_b_in = data_b_in_vec[0 +: DATA_WIDTH];",
+        "mutated_sha256": "50d1f69fe0780c245e44d21316e5e7ba4c040b5d2cdb95631a1457a0ee3e577a",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M05"
+      },
+      {
+        "id": "M06",
+        "req_id": "REQ-NPU-002",
+        "kind": "unit",
+        "test_case": "systolic_and_broadcast",
+        "source": "npu_pe.v",
+        "old": "data_a_out <= data_a_in;",
+        "new": "data_a_out <= {DATA_WIDTH{1'b0}};",
+        "mutated_sha256": "29fcde24cd29a546f2cb73b02af57f62ce34f4752d278c149412546753378188",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M06"
+      },
+      {
+        "id": "M07",
+        "req_id": "REQ-NPU-003",
+        "kind": "release",
+        "test_case": "ready_back_to_back",
+        "source": "tt_um_tinyml_npu_2x2.v",
+        "old": "assign npu_ready = rst_n && ena && (state == S_IDLE);",
+        "new": "assign npu_ready = 1'b1;",
+        "mutated_sha256": "7ca6d53d5c9ff90d70eb617cec2610a4d5a29820ad75328a931fcf5f428b7d7d",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M07"
+      },
+      {
+        "id": "M08",
+        "req_id": "REQ-NPU-003",
+        "kind": "release",
+        "test_case": "ready_back_to_back",
+        "source": "tt_um_tinyml_npu_2x2.v",
+        "old": "cfg_vector_len <= {2'b00, ui_in[5:0]} + 8'd1;",
+        "new": "cfg_vector_len <= {2'b00, ui_in[5:0]} + 8'd2;",
+        "mutated_sha256": "7e0a440ac5de5f77cad9d69d230bc5b7a387a6959ed795a7ab0117b9d4833119",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M08"
+      },
+      {
+        "id": "M09",
+        "req_id": "REQ-NPU-003",
+        "kind": "release",
+        "test_case": "ready_back_to_back",
+        "source": "tt_um_tinyml_npu_2x2.v",
+        "old": ">= cfg_vector_len",
+        "new": "> cfg_vector_len",
+        "mutated_sha256": "5688d09609769b8b8e76fdec78761261e1b1acb899a8b6fd3bc51594c8d45994",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M09"
+      },
+      {
+        "id": "M10",
+        "req_id": "REQ-NPU-004",
+        "kind": "unit",
+        "test_case": "rounding_boundaries",
+        "source": "npu_activation.v",
+        "old": "ONE <<< (shift_val - 4'd1)",
+        "new": "ZERO <<< (shift_val - 4'd1)",
+        "mutated_sha256": "e72c223896a9d3d39a20149ec16ab420e833b333ec87ca53af387de210f88dd1",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M10"
+      },
+      {
+        "id": "M11",
+        "req_id": "REQ-NPU-004",
+        "kind": "unit",
+        "test_case": "rounding_boundaries",
+        "source": "npu_activation.v",
+        "old": "acc_rounded >>> shift_val",
+        "new": "acc_rounded >> shift_val",
+        "mutated_sha256": "6c99d42ec9b307cee24ad135202c28a1847a72c3001a51df43b656a8a6d99e9d",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M11"
+      },
+      {
+        "id": "M12",
+        "req_id": "REQ-NPU-004",
+        "kind": "unit",
+        "test_case": "rounding_boundaries",
+        "source": "npu_activation.v",
+        "old": "? 8'sd127 :",
+        "new": "? 8'sd126 :",
+        "mutated_sha256": "84cf2f00f7e916ea332a8c80d4beb175edfbebe084201c666183f97deb7f9702",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 0,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M12"
+      },
+      {
+        "id": "M13",
+        "req_id": "REQ-NPU-005",
+        "kind": "network",
+        "test_case": "none",
+        "source": "npu_pe.v",
+        "old": "acc_reg + prod_sext",
+        "new": "acc_reg",
+        "mutated_sha256": "6f6858ef38102cefa03db901577c63cad60b84dd988830224ad2e05f20d4d4ba",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 1,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M13"
+      },
+      {
+        "id": "M14",
+        "req_id": "REQ-NPU-005",
+        "kind": "network",
+        "test_case": "none",
+        "source": "npu_top_2x2.v",
+        "old": ".act_type(act_type)",
+        "new": ".act_type(2'b00)",
+        "mutated_sha256": "ccc5c25d562195de7cece968514eb424cfa4f47c1c1f043c29bb671c8fafc83a",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 1,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M14"
+      },
+      {
+        "id": "M15",
+        "req_id": "REQ-NPU-005",
+        "kind": "network",
+        "test_case": "none",
+        "source": "npu_top_2x2.v",
+        "old": "mux_act = pe01_act; mux_acc = pe01_acc",
+        "new": "mux_act = pe00_act; mux_acc = pe00_acc",
+        "mutated_sha256": "1bac9784007322cad69b7102969786595cc2776da4df430da83aa79d6574df29",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 1,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M15"
+      },
+      {
+        "id": "M16",
+        "req_id": "REQ-NPU-006",
+        "kind": "network",
+        "test_case": "none",
+        "source": "tt_um_tinyml_npu_2x2.v",
+        "old": "assign uio_oe = 8'b11100010;",
+        "new": "assign uio_oe = 8'b11100011;",
+        "mutated_sha256": "693b233717e8c5061646463d84f3ce9fd030a2e362da50c7c4e30250da69e155",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 1,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M16"
+      },
+      {
+        "id": "M17",
+        "req_id": "REQ-NPU-006",
+        "kind": "network",
+        "test_case": "none",
+        "source": "tt_um_tinyml_npu_2x2.v",
+        "old": "assign uio_out[4] = 1'b0;",
+        "new": "assign uio_out[4] = 1'b1;",
+        "mutated_sha256": "373847e8ad8aa930114fb6e5a32c27e701e71161c9a80a598e2b2ab019cf4218",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 1,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M17"
+      },
+      {
+        "id": "M18",
+        "req_id": "REQ-NPU-006",
+        "kind": "network",
+        "test_case": "none",
+        "source": "tt_um_tinyml_npu_2x2.v",
+        "old": "npu_busy       <= 1'b0;",
+        "new": "npu_busy       <= 1'b1;",
+        "mutated_sha256": "0dac86e187459c1ef83d2d616dd6baf3734ba589ab42056957c088c3d414c6bd",
+        "compiled": true,
+        "compile_rc": 0,
+        "run_rc": 1,
+        "detected": true,
+        "status": "PASS",
+        "evidence": "evidence/review/mutation/M18"
+      }
+    ],
+    "invalid_mutants": 0,
+    "per_requirement": {
+      "REQ-NPU-001": {
+        "detected": 3,
+        "compiled": 3,
+        "score": 1.0
+      },
+      "REQ-NPU-002": {
+        "detected": 3,
+        "compiled": 3,
+        "score": 1.0
+      },
+      "REQ-NPU-003": {
+        "detected": 3,
+        "compiled": 3,
+        "score": 1.0
+      },
+      "REQ-NPU-004": {
+        "detected": 3,
+        "compiled": 3,
+        "score": 1.0
+      },
+      "REQ-NPU-005": {
+        "detected": 3,
+        "compiled": 3,
+        "score": 1.0
+      },
+      "REQ-NPU-006": {
+        "detected": 3,
+        "compiled": 3,
+        "score": 1.0
+      }
+    },
+    "limitation": "18 sampled plausible faults only; not an exhaustive correctness or formal-equivalence claim"
   },
-  "benchmark_summary": {
-    "clock_frequency_target_mhz": 50.0,
-    "clock_frequency_max_mhz": 216.4,
-    "throughput_1x1_mmac_s": 50.0,
-    "throughput_2x2_mmac_s": 200.0,
-    "latency_per_mac_cycles": 1,
-    "ecg_inference_cycles_1x1": 105,
-    "ecg_inference_cycles_2x2": 53,
-    "speedup_2x2_vs_1x1": "2.0x to 4.0x",
-    "cr2032_wearable_runtime_years": ">10 (shelf-life bound)"
-  }
+  "full_network": {
+    "status": "PASS",
+    "samples": 6,
+    "batches": 3,
+    "logical_macs": 1104,
+    "total_cycles": 1585,
+    "compared_values": 66,
+    "model": "models/tiny_ecg_qat/network.json",
+    "scope": "Complete 20->8 ReLU->3 trained INT8 network; actual RTL hidden outputs feed RTL next layer",
+    "input_boundary": "Offline annotated-beat 20-feature INT8 tensor; no raw streaming or clinical claim",
+    "evidence": "evidence/review/final/trained_network.log"
+  },
+  "signoff": "Explicit user Gate5 approval in schemas/review_approvals.json"
 }

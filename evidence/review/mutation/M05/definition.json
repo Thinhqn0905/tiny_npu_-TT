@@ -1,0 +1,10 @@
+{
+  "id": "M05",
+  "req_id": "REQ-NPU-002",
+  "kind": "unit",
+  "test_case": "systolic_and_broadcast",
+  "source": "npu_array.v",
+  "old": "assign pe_b_in = data_b_in_vec[c*DATA_WIDTH +: DATA_WIDTH];",
+  "new": "assign pe_b_in = data_b_in_vec[0 +: DATA_WIDTH];",
+  "mutated_sha256": "50d1f69fe0780c245e44d21316e5e7ba4c040b5d2cdb95631a1457a0ee3e577a"
+}

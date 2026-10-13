@@ -1,29 +1,22 @@
 {
   "DESIGN_NAME": "tt_um_tinyml_npu_2x2",
   "VERILOG_FILES": [
-    "dir::rtl/npu_pe.v",
-    "dir::rtl/npu_activation.v",
-    "dir::rtl/npu_array.v",
-    "dir::rtl/npu_top_2x2.v",
-    "dir::rtl/tt_um_tinyml_npu_2x2.v"
+    "dir::../rtl/npu_pe.v",
+    "dir::../rtl/npu_activation.v",
+    "dir::../rtl/npu_array.v",
+    "dir::../rtl/npu_top_2x2.v",
+    "dir::../rtl/tt_um_tinyml_npu_2x2.v"
   ],
   "CLOCK_PORT": "clk",
-  "CLOCK_NET": "clk",
-  "CLOCK_PERIOD": 20.0,
-  "PNR_SDC_FILE": "dir::constraints/design.sdc",
-  "PDK": "sg13g2",
-  "STD_CELL_LIBRARY": "sg13g2_stdcell",
-  "TILE_ALLOCATION": "1x2",
-  "TILES": "1x2",
-  "DIE_AREA": "0 0 202.08 313.74",
+  "CLOCK_PERIOD": 20,
+  "PNR_SDC_FILE": "dir::../constraints/design.sdc",
+  "DIE_AREA": [
+    0,
+    0,
+    419.52,
+    313.74
+  ],
   "FP_SIZING": "absolute",
-  "PL_TARGET_DENSITY": 0.45,
-  "SYNTH_STRATEGY": "AREA 0",
-  "SYNTH_BUFFERING": 1,
-  "SYNTH_SIZING": 1,
-  "DESIGN_IS_CORE": false,
-  "FP_PDN_CORE_RING": false,
-  "RT_MAX_LAYER": "Metal5",
-  "VDD_NET": "vccd1",
-  "GND_NET": "vssd1"
+  "PL_TARGET_DENSITY_PCT": 55,
+  "RUN_LINTER": true
 }

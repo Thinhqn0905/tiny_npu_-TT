@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "tool": "OpenSTA 2.0.17",
+  "boundary": "PRE-LAYOUT / SYNTHESIS ESTIMATE; typ_1p20V_25C, ideal clock, Liberty wire-load model, no extracted RC",
+  "clock_period_ns": 20,
+  "setup_uncertainty_ns": 0.5,
+  "worst_setup_slack_ns": 4.3904,
+  "worst_reported_data_arrival_ns": 11.1096,
+  "period_minus_slack_ns": 15.6096,
+  "naive_period_minus_slack_fmax_mhz": 64.06314063140631,
+  "unconstrained_constant_endpoints": [
+    "uio_oe[0]",
+    "uio_oe[1]",
+    "uio_oe[2]",
+    "uio_oe[3]",
+    "uio_oe[4]",
+    "uio_oe[5]",
+    "uio_oe[6]",
+    "uio_oe[7]",
+    "uio_out[0]",
+    "uio_out[2]",
+    "uio_out[3]",
+    "uio_out[4]"
+  ],
+  "warning_review": "All 12 untimed endpoints independently verified as constant netlist outputs.",
+  "caution": "The period-minus-slack budget includes IO delay and uncertainty; it is not the cell data delay or routed Fmax."
+}

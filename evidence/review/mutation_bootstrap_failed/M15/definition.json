@@ -1,0 +1,10 @@
+{
+  "id": "M15",
+  "req_id": "REQ-NPU-005",
+  "kind": "network",
+  "test_case": "none",
+  "source": "npu_top_2x2.v",
+  "old": "mux_act = pe01_act; mux_acc = pe01_acc",
+  "new": "mux_act = pe00_act; mux_acc = pe00_acc",
+  "mutated_sha256": "1bac9784007322cad69b7102969786595cc2776da4df430da83aa79d6574df29"
+}

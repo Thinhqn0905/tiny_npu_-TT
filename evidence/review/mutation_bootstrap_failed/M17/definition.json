@@ -1,0 +1,10 @@
+{
+  "id": "M17",
+  "req_id": "REQ-NPU-006",
+  "kind": "network",
+  "test_case": "none",
+  "source": "tt_um_tinyml_npu_2x2.v",
+  "old": "assign uio_out[4] = 1'b0;",
+  "new": "assign uio_out[4] = 1'b1;",
+  "mutated_sha256": "373847e8ad8aa930114fb6e5a32c27e701e71161c9a80a598e2b2ab019cf4218"
+}

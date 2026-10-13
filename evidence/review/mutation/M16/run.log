@@ -1,0 +1,2 @@
+FATAL: src/sva/npu_protocol_properties.sv:14: PROP-TT-001 output enable
+       Time: 20000 Scope: tb_trained_network.u_properties

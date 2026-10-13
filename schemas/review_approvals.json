@@ -1,0 +1,61 @@
+{
+    "gate_1":  {
+                   "approved":  true,
+                   "signer":  "user",
+                   "date":  "2026-10-13",
+                   "revision":  "FE-REVIEW-20261013",
+                   "user_statement":  "Approve Gate 1/3a; continue. Preserve the frozen four-PE arithmetic/interface baseline and the complete trained-network requirement. Ensure the specification does not remove the existing dual-mode broadcast/systolic capability if it remains part of the intended RTL architecture. RTL E2E and coverage remain open verification items, not waived signoff criteria.",
+                   "artifact_sha256":  "f2f8b3fb95b4c7f74e6eaa52a3b8be7b0de42302245a247d40344739e1c6fc91"
+               },
+    "gate_3a":  {
+                    "approved":  true,
+                    "signer":  "user",
+                    "date":  "2026-10-13",
+                    "revision":  "FE-REVIEW-20261013",
+                    "user_statement":  "Approve Gate 1/3a; continue. Preserve the frozen four-PE arithmetic/interface baseline and the complete trained-network requirement. Ensure the specification does not remove the existing dual-mode broadcast/systolic capability if it remains part of the intended RTL architecture. RTL E2E and coverage remain open verification items, not waived signoff criteria.",
+                    "artifact_sha256":  "f56a115a51acbe3969b3637e9fb12ea0d155bd03ff9c710942467d0c9ffafa23"
+                },
+    "gate_3b":  {
+                    "approved":  true,
+                    "signer":  "user",
+                    "date":  "2026-10-13",
+                    "user_statement":  "Approve Gate 3b",
+                    "artifact_sha256":  "c59d7c161120c81d6f758b044a35afb8ae040447df2d0126330f3f230833cf3b"
+                },
+    "coverage_exclusions":  {
+                                "approved":  true,
+                                "signer":  "user",
+                                "date":  "2026-10-13",
+                                "user_statement":  "Approve these 25 exclusions",
+                                "artifact_sha256":  "1f96de560519fa9d094b63000ef2d7c4a5ebf4e791cbf8bc4a1e43dfe3db193f",
+                                "line_points":  3,
+                                "toggle_points":  22,
+                                "raw_metrics_retained":  true
+                            },
+    "gate_2":  {
+                   "approved":  true,
+                   "signer":  "autoflow",
+                   "date":  "2026-10-13",
+                   "basis":  "Frozen supported ROWS=2 COLS=2 DATA_WIDTH=8 ACC_WIDTH=24 SYSTOLIC_MODE=0; source/metadata/config checks passed; user-approved planning2x2",
+                   "authority":  "VLSIT_RTL_Generator_AI_Flow/.claude/commands/autoflow.md",
+                   "human_approval":  false
+               },
+    "gate_4":  {
+                   "approved":  true,
+                   "signer":  "autoflow",
+                   "date":  "2026-10-13",
+                   "basis":  "All applicable base and trained-network cases selected; independent contract-shell compilation passed; coverage exclusions explicitly reviewed; no unresolved test-plan issue",
+                   "authority":  "VLSIT_RTL_Generator_AI_Flow/.claude/commands/autoflow.md",
+                   "human_approval":  false
+               },
+    "gate_5":  {
+                   "approved":  true,
+                   "signer":  "user",
+                   "date":  "2026-10-13",
+                   "user_statement":  "Approve Gate 5; commit and push",
+                   "review_artifact_sha256":  "da9b76240b51d12289d92541c00a775ffe2b244df34de7c411a34fe321753322",
+                   "verification_artifact_sha256":  "29d11aa2f7f924c3a60ef05ff2e2f1ca31bbf6bae2fb2cc52a38def2af40ce37",
+                   "reviewed_manifest_sha256":  "3333926bd06de9504e2e9d575fdaef075397d860e4da13920aaf0a41e8cae889",
+                   "boundary":  "Front-end only; allocation2x2 pending physical fit; no routed timing, raw-signal E2E or clinical claim"
+               }
+}

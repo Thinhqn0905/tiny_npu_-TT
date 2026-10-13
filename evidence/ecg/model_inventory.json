@@ -1,0 +1,207 @@
+{
+  "artifact_sha256": "216ae64abccae28fde39da9cb4ec6c0656d71a37ffa8b3acc21ceaee01ff5389",
+  "bytes": 24352,
+  "logical_macs_per_inference": 1056352,
+  "inputs": [
+    {
+      "name": "serving_default_input_layer:0_int8",
+      "shape": [
+        1,
+        360,
+        1
+      ],
+      "dtype": "<class 'numpy.int8'>",
+      "quantization": [
+        0.0829324796795845,
+        15
+      ]
+    },
+    {
+      "name": "serving_default_input_layer_1:0_int8",
+      "shape": [
+        1,
+        4
+      ],
+      "dtype": "<class 'numpy.int8'>",
+      "quantization": [
+        0.2829573452472687,
+        -117
+      ]
+    }
+  ],
+  "output": {
+    "name": "StatefulPartitionedCall_1:0_int8",
+    "shape": [
+      1,
+      3
+    ],
+    "quantization": [
+      0.00390625,
+      -128
+    ]
+  },
+  "operators": [
+    {
+      "name": "SHAPE",
+      "inputs": [
+        0
+      ],
+      "outputs": [
+        17
+      ]
+    },
+    {
+      "name": "STRIDED_SLICE",
+      "inputs": [
+        17,
+        15,
+        16,
+        16
+      ],
+      "outputs": [
+        18
+      ]
+    },
+    {
+      "name": "PACK",
+      "inputs": [
+        18,
+        13,
+        14,
+        13
+      ],
+      "outputs": [
+        19
+      ]
+    },
+    {
+      "name": "RESHAPE",
+      "inputs": [
+        0,
+        19
+      ],
+      "outputs": [
+        20
+      ]
+    },
+    {
+      "name": "CONV_2D",
+      "inputs": [
+        20,
+        7,
+        4
+      ],
+      "outputs": [
+        21
+      ]
+    },
+    {
+      "name": "MAX_POOL_2D",
+      "inputs": [
+        21
+      ],
+      "outputs": [
+        22
+      ]
+    },
+    {
+      "name": "CONV_2D",
+      "inputs": [
+        22,
+        6,
+        3
+      ],
+      "outputs": [
+        23
+      ]
+    },
+    {
+      "name": "MAX_POOL_2D",
+      "inputs": [
+        23
+      ],
+      "outputs": [
+        24
+      ]
+    },
+    {
+      "name": "CONV_2D",
+      "inputs": [
+        24,
+        5,
+        2
+      ],
+      "outputs": [
+        25
+      ]
+    },
+    {
+      "name": "MEAN",
+      "inputs": [
+        25,
+        12
+      ],
+      "outputs": [
+        26
+      ]
+    },
+    {
+      "name": "QUANTIZE",
+      "inputs": [
+        26
+      ],
+      "outputs": [
+        31
+      ]
+    },
+    {
+      "name": "CONCATENATION",
+      "inputs": [
+        31,
+        1
+      ],
+      "outputs": [
+        27
+      ]
+    },
+    {
+      "name": "FULLY_CONNECTED",
+      "inputs": [
+        27,
+        9,
+        10
+      ],
+      "outputs": [
+        28
+      ]
+    },
+    {
+      "name": "FULLY_CONNECTED",
+      "inputs": [
+        28,
+        8,
+        11
+      ],
+      "outputs": [
+        29
+      ]
+    },
+    {
+      "name": "SOFTMAX",
+      "inputs": [
+        29
+      ],
+      "outputs": [
+        30
+      ]
+    }
+  ],
+  "hardware_mapping": "NOT VERIFIED: model uses bias, per-channel affine scaling, pooling, mean and softmax absent from the frozen wrapper",
+  "versions": {
+    "python": "3.10.12",
+    "numpy": "1.26.4",
+    "runtime": "tflite-runtime 2.14.0",
+    "wfdb": "4.1.2",
+    "scipy": "1.11.4"
+  }
+}

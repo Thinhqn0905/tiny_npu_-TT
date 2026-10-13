@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "samples": 6,
+  "batches": 3,
+  "logical_macs": 1104,
+  "total_cycles": 1585,
+  "compared_values": 66,
+  "model": "models/tiny_ecg_qat/network.json",
+  "scope": "Complete 20->8 ReLU->3 trained INT8 network; actual RTL hidden outputs feed RTL next layer",
+  "input_boundary": "Offline annotated-beat 20-feature INT8 tensor; no raw streaming or clinical claim",
+  "evidence": "evidence/review/final/trained_network.log"
+}

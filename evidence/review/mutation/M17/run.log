@@ -1,0 +1,2 @@
+FATAL: src/sva/npu_protocol_properties.sv:16: PROP-TT-002 reserved outputs
+       Time: 20000 Scope: tb_trained_network.u_properties

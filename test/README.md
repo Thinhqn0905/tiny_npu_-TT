@@ -1,47 +1,17 @@
-# Sample testbench for a Tiny Tapeout project
+# Verification
 
-This is a sample testbench for a Tiny Tapeout project. It uses [cocotb](https://docs.cocotb.org/en/stable/) to drive the DUT and check the outputs.
-See below to get started or for more information, check the [website](https://tinytapeout.com/hdl/testing/).
+`make regression` from repository root is the canonical command. The
+original `test/Makefile` remains the Cocotb simulator integration layer.
+Root recipes show each compiler/simulator invocation and archive logs/XML.
 
-## Setting up
+`test_arithmetic.py` compares exhaustive signed products, random/boundary
+MACs, requantization and both dataflows against `oracle.py` integer math.
+`test_release.py` checks the production byte protocol and synthetic workload.
+`test.py` is the maintained four-case production smoke suite. The three
+standalone Verilog benches are retained, including the historical1x1 top.
+Their ECG-named synthetic score cases are not trained-model inference.
 
-1. Edit [Makefile](Makefile) and modify `PROJECT_SOURCES` to point to your Verilog files.
-2. Edit [tb.v](tb.v) and replace `tt_um_example` with your module name.
-
-## How to run
-
-To run the RTL simulation:
-
-```sh
-make -B
-```
-
-To run gatelevel simulation, first harden your project and copy `../runs/wokwi/results/final/verilog/gl/{your_module_name}.v` to `gate_level_netlist.v`.
-
-Then run:
-
-```sh
-make -B GATES=yes
-```
-
-If you wish to save the waveform in VCD format instead of FST format, edit tb.v to use `$dumpfile("tb.vcd");` and then run:
-
-```sh
-make -B FST=
-```
-
-This will generate `tb.vcd` instead of `tb.fst`.
-
-## How to view the waveform file
-
-Using GTKWave
-
-```sh
-gtkwave tb.fst tb.gtkw
-```
-
-Using Surfer
-
-```sh
-surfer tb.fst
-```
+Specification/contract Gate1/3a and assertion Gate3b have user approval.
+The complete trained MLP passes on RTL. Production coverage meets100% after
+exactly25 user-reviewed exclusions; raw metrics remain visible. Sampled
+mutation detection is18/18. Human final Gate5 remains open.

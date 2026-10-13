@@ -1,0 +1,1403 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2019  Clifford Wolf <clifford@clifford.at>           |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.9 (git sha1 1979e0b)
+
+
+-- Executing script file `reports/mapped.ys' --
+
+1. Executing Liberty frontend.
+Imported 84 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: rtl/npu_pe.v
+Parsing Verilog input from `rtl/npu_pe.v' to AST representation.
+Generating RTLIL representation for module `\npu_pe'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/npu_activation.v
+Parsing Verilog input from `rtl/npu_activation.v' to AST representation.
+Generating RTLIL representation for module `\npu_activation'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/npu_array.v
+Parsing Verilog input from `rtl/npu_array.v' to AST representation.
+Generating RTLIL representation for module `\npu_array'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/npu_top_2x2.v
+Parsing Verilog input from `rtl/npu_top_2x2.v' to AST representation.
+Generating RTLIL representation for module `\npu_top_2x2'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/tt_um_tinyml_npu_2x2.v
+Parsing Verilog input from `rtl/tt_um_tinyml_npu_2x2.v' to AST representation.
+Generating RTLIL representation for module `\tt_um_tinyml_npu_2x2'.
+Successfully finished Verilog frontend.
+
+7. Executing HIERARCHY pass (managing design hierarchy).
+
+7.1. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+Used module:     \npu_top_2x2
+Used module:         \npu_activation
+Used module:         \npu_array
+Used module:             \npu_pe
+
+7.2. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACC_WIDTH = 24
+Generating RTLIL representation for module `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24'.
+
+7.3. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_activation'.
+Parameter \ACC_WIDTH = 24
+Parameter \DATA_WIDTH = 8
+Generating RTLIL representation for module `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8'.
+
+7.4. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_activation'.
+Parameter \ACC_WIDTH = 24
+Parameter \DATA_WIDTH = 8
+Found cached RTLIL representation for module `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8'.
+
+7.5. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_activation'.
+Parameter \ACC_WIDTH = 24
+Parameter \DATA_WIDTH = 8
+Found cached RTLIL representation for module `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8'.
+
+7.6. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_activation'.
+Parameter \ACC_WIDTH = 24
+Parameter \DATA_WIDTH = 8
+Found cached RTLIL representation for module `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8'.
+
+7.7. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_array'.
+Parameter \ROWS = 2
+Parameter \COLS = 2
+Parameter \DATA_WIDTH = 8
+Parameter \ACC_WIDTH = 24
+Generating RTLIL representation for module `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24'.
+
+7.8. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_top_2x2'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACC_WIDTH = 24
+Generating RTLIL representation for module `$paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24'.
+
+7.9. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+Used module:     $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:         \npu_activation
+Used module:         \npu_array
+Used module:             $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24
+
+7.10. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_activation'.
+Parameter \ACC_WIDTH = 24
+Parameter \DATA_WIDTH = 8
+Found cached RTLIL representation for module `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8'.
+
+7.11. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_activation'.
+Parameter \ACC_WIDTH = 24
+Parameter \DATA_WIDTH = 8
+Found cached RTLIL representation for module `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8'.
+
+7.12. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_activation'.
+Parameter \ACC_WIDTH = 24
+Parameter \DATA_WIDTH = 8
+Found cached RTLIL representation for module `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8'.
+
+7.13. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_activation'.
+Parameter \ACC_WIDTH = 24
+Parameter \DATA_WIDTH = 8
+Found cached RTLIL representation for module `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8'.
+
+7.14. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_array'.
+Parameter \ROWS = 2
+Parameter \COLS = 2
+Parameter \DATA_WIDTH = 8
+Parameter \ACC_WIDTH = 24
+Found cached RTLIL representation for module `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24'.
+
+7.15. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+Used module:     $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:         $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8
+Used module:         $paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:             \npu_pe
+
+7.16. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACC_WIDTH = 24
+Found cached RTLIL representation for module `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24'.
+
+7.17. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACC_WIDTH = 24
+Found cached RTLIL representation for module `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24'.
+
+7.18. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACC_WIDTH = 24
+Found cached RTLIL representation for module `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24'.
+
+7.19. Executing AST frontend in derive mode using pre-parsed AST for module `\npu_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACC_WIDTH = 24
+Found cached RTLIL representation for module `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24'.
+
+7.20. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+Used module:     $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:         $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8
+Used module:         $paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:             $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24
+
+7.21. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+Used module:     $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:         $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8
+Used module:         $paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:             $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24
+Removing unused module `\npu_top_2x2'.
+Removing unused module `\npu_array'.
+Removing unused module `\npu_activation'.
+Removing unused module `\npu_pe'.
+Removed 4 unused modules.
+
+8. Executing SYNTH pass.
+
+8.1. Executing HIERARCHY pass (managing design hierarchy).
+
+8.1.1. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+Used module:     $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:         $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8
+Used module:         $paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:             $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24
+
+8.1.2. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+Used module:     $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:         $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8
+Used module:         $paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24
+Used module:             $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24
+Removed 0 unused modules.
+
+8.2. Executing PROC pass (convert processes to netlists).
+
+8.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+8.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$rtl/tt_um_tinyml_npu_2x2.v:85$39 in module tt_um_tinyml_npu_2x2.
+Marked 6 switch rules as full_case in process $proc$rtl/tt_um_tinyml_npu_2x2.v:85$39 in module tt_um_tinyml_npu_2x2.
+Removed 1 dead cases from process $proc$rtl/npu_top_2x2.v:133$87 in module $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.
+Marked 1 switch rules as full_case in process $proc$rtl/npu_top_2x2.v:133$87 in module $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.
+Removed 1 dead cases from process $proc$rtl/npu_activation.v:57$72 in module $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.
+Marked 1 switch rules as full_case in process $proc$rtl/npu_activation.v:57$72 in module $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.
+Marked 3 switch rules as full_case in process $proc$rtl/npu_pe.v:51$52 in module $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.
+Removed a total of 3 dead cases.
+
+8.2.3. Executing PROC_INIT pass (extract init attributes).
+
+8.2.4. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+Found async reset \rst_n in `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_pe.v:51$52'.
+
+8.2.5. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+     1/19: $0\state[1:0]
+     2/19: $0\byte_idx[1:0]
+     3/19: $0\mac_count[7:0]
+     4/19: $0\cfg_vector_len[7:0]
+     5/19: $0\bias_c1[23:0]
+     6/19: $0\bias_c0[23:0]
+     7/19: $0\c1_weight[7:0]
+     8/19: $0\c0_weight[7:0]
+     9/19: $0\r1_act[7:0]
+    10/19: $0\r0_act[7:0]
+    11/19: $0\npu_busy[0:0]
+    12/19: $0\layer_done[0:0]
+    13/19: $0\out_valid[0:0]
+    14/19: $0\pe_sel[1:0]
+    15/19: $0\act_type[1:0]
+    16/19: $0\shift_val[3:0]
+    17/19: $0\acc_clear[0:0]
+    18/19: $0\mac_en[0:0]
+    19/19: $0\load_bias[0:0]
+Creating decoders for process `$paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_top_2x2.v:133$87'.
+     1/4: $1\mux_acc[23:0]
+     2/4: $1\mux_act[7:0]
+     3/4: $0\mux_acc[23:0]
+     4/4: $0\mux_act[7:0]
+Creating decoders for process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:13$86'.
+     1/4: $0\b_wire[1][7:0]
+     2/4: $0\b_wire[0][7:0]
+     3/4: $0\a_wire[3][7:0]
+     4/4: $0\a_wire[0][7:0]
+Creating decoders for process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:105$81'.
+     1/3: $0\ir[31:0]
+     2/3: $0\ic[31:0]
+     3/3: $0\ovf_comb[0:0]
+Creating decoders for process `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.$proc$rtl/npu_activation.v:57$72'.
+     1/4: $1\result_unsigned[7:0]
+     2/4: $1\result_signed[7:0]
+     3/4: $0\result_unsigned[7:0]
+     4/4: $0\result_signed[7:0]
+Creating decoders for process `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_pe.v:51$52'.
+     1/4: $0\acc_reg[23:0]
+     2/4: $0\overflow_flag[0:0]
+     3/4: $0\data_b_out[7:0]
+     4/4: $0\data_a_out[7:0]
+
+8.2.6. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.\mux_act' from process `$paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_top_2x2.v:133$87'.
+No latch inferred for signal `$paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.\mux_acc' from process `$paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_top_2x2.v:133$87'.
+No latch inferred for signal `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.\a_wire[0]' from process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:13$86'.
+No latch inferred for signal `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.\b_wire[0]' from process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:13$86'.
+No latch inferred for signal `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.\b_wire[1]' from process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:13$86'.
+No latch inferred for signal `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.\a_wire[3]' from process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:13$86'.
+No latch inferred for signal `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.\ir' from process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:105$81'.
+No latch inferred for signal `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.\ovf_comb' from process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:105$81'.
+No latch inferred for signal `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.\ic' from process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:105$81'.
+No latch inferred for signal `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.\result_signed' from process `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.$proc$rtl/npu_activation.v:57$72'.
+No latch inferred for signal `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.\result_unsigned' from process `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.$proc$rtl/npu_activation.v:57$72'.
+
+8.2.7. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\tt_um_tinyml_npu_2x2.\load_bias' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$421' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\mac_en' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$422' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\acc_clear' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$423' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\shift_val' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$424' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\act_type' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$425' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\pe_sel' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$426' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\out_valid' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$427' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\layer_done' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$428' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\npu_busy' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$429' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\r0_act' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$430' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\r1_act' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$431' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\c0_weight' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$432' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\c1_weight' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$433' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\bias_c0' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$434' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\bias_c1' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$435' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\cfg_vector_len' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$436' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\mac_count' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$437' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\byte_idx' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$438' with positive edge clock and negative level reset.
+Creating register for signal `\tt_um_tinyml_npu_2x2.\state' using process `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+  created $adff cell `$procdff$439' with positive edge clock and negative level reset.
+Creating register for signal `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.\data_a_out' using process `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_pe.v:51$52'.
+  created $adff cell `$procdff$440' with positive edge clock and negative level reset.
+Creating register for signal `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.\data_b_out' using process `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_pe.v:51$52'.
+  created $adff cell `$procdff$441' with positive edge clock and negative level reset.
+Creating register for signal `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.\overflow_flag' using process `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_pe.v:51$52'.
+  created $adff cell `$procdff$442' with positive edge clock and negative level reset.
+Creating register for signal `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.\acc_reg' using process `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_pe.v:51$52'.
+  created $adff cell `$procdff$443' with positive edge clock and negative level reset.
+
+8.2.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 9 empty switches in `\tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+Removing empty process `tt_um_tinyml_npu_2x2.$proc$rtl/tt_um_tinyml_npu_2x2.v:85$39'.
+Found and cleaned up 1 empty switch in `$paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_top_2x2.v:133$87'.
+Removing empty process `$paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_top_2x2.v:133$87'.
+Removing empty process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:13$86'.
+Removing empty process `$paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_array.v:105$81'.
+Found and cleaned up 1 empty switch in `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.$proc$rtl/npu_activation.v:57$72'.
+Removing empty process `$paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.$proc$rtl/npu_activation.v:57$72'.
+Found and cleaned up 4 empty switches in `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_pe.v:51$52'.
+Removing empty process `$paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.$proc$rtl/npu_pe.v:51$52'.
+Cleaned up 15 empty switches.
+
+8.3. Executing FLATTEN pass (flatten design).
+Using template $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24 for cells of type $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.
+Using template $paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24 for cells of type $paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.
+Using template $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8 for cells of type $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.
+Using template $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24 for cells of type $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.
+<suppressed ~10 debug messages>
+No more expansions possible.
+Deleting now unused module $paramod\npu_top_2x2\DATA_WIDTH=8\ACC_WIDTH=24.
+Deleting now unused module $paramod\npu_array\ROWS=2\COLS=2\DATA_WIDTH=8\ACC_WIDTH=24.
+Deleting now unused module $paramod\npu_activation\ACC_WIDTH=24\DATA_WIDTH=8.
+Deleting now unused module $paramod\npu_pe\DATA_WIDTH=8\ACC_WIDTH=24.
+
+8.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+<suppressed ~36 debug messages>
+
+8.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+Removed 78 unused cells and 282 unused wires.
+<suppressed ~95 debug messages>
+
+8.6. Executing CHECK pass (checking for obvious problems).
+checking module tt_um_tinyml_npu_2x2..
+found and reported 0 problems.
+
+8.7. Executing OPT pass (performing simple optimizations).
+
+8.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+
+8.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+<suppressed ~171 debug messages>
+Removed a total of 57 cells.
+
+8.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_tinyml_npu_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~36 debug messages>
+
+8.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+    New ctrl vector for $pmux cell $techmap\u_core_2x2.u_act_00.$procmux$392: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$opt_reduce.cc:132:opt_mux$445 }
+    New ctrl vector for $pmux cell $techmap\u_core_2x2.u_act_01.$procmux$392: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$opt_reduce.cc:132:opt_mux$447 }
+    New ctrl vector for $pmux cell $techmap\u_core_2x2.u_act_10.$procmux$392: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$opt_reduce.cc:132:opt_mux$449 }
+    New ctrl vector for $pmux cell $procmux$136: $auto$opt_reduce.cc:132:opt_mux$451
+    New ctrl vector for $pmux cell $techmap\u_core_2x2.u_act_11.$procmux$392: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$opt_reduce.cc:132:opt_mux$453 }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:126:opt_mux$450: { $procmux$137_CMP $procmux$119_CMP }
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+Performed a total of 6 changes.
+
+8.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+8.7.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+Removed 0 unused cells and 98 unused wires.
+<suppressed ~36 debug messages>
+
+8.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+
+8.7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_tinyml_npu_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~33 debug messages>
+
+8.7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+Performed a total of 0 changes.
+
+8.7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+Removed a total of 0 cells.
+
+8.7.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+
+8.7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+
+8.7.16. Finished OPT passes. (There is nothing left to do.)
+
+8.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell tt_um_tinyml_npu_2x2.$procmux$134_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell tt_um_tinyml_npu_2x2.$procmux$112_CMP0 ($eq).
+Removed top 7 bits (of 8) from port B of cell tt_um_tinyml_npu_2x2.$add$rtl/tt_um_tinyml_npu_2x2.v:170$42 ($add).
+Removed top 2 bits (of 8) from port A of cell tt_um_tinyml_npu_2x2.$add$rtl/tt_um_tinyml_npu_2x2.v:120$41 ($add).
+Removed top 7 bits (of 8) from port B of cell tt_um_tinyml_npu_2x2.$add$rtl/tt_um_tinyml_npu_2x2.v:120$41 ($add).
+Removed top 1 bits (of 8) from port Y of cell tt_um_tinyml_npu_2x2.$add$rtl/tt_um_tinyml_npu_2x2.v:120$41 ($add).
+Removed top 1 bits (of 2) from port B of cell tt_um_tinyml_npu_2x2.$procmux$304_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.$procmux$385_CMP0 ($eq).
+Removed top 7 bits (of 8) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:64$73 ($lt).
+Removed top 17 bits (of 25) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:40$61 ($lt).
+Removed top 17 bits (of 25) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_11.$gt$rtl/npu_activation.v:39$60 ($gt).
+Removed top 7 bits (of 8) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:64$73 ($lt).
+Removed top 17 bits (of 25) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:40$61 ($lt).
+Removed top 17 bits (of 25) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_10.$gt$rtl/npu_activation.v:39$60 ($gt).
+Removed top 7 bits (of 8) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:64$73 ($lt).
+Removed top 17 bits (of 25) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:40$61 ($lt).
+Removed top 17 bits (of 25) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_01.$gt$rtl/npu_activation.v:39$60 ($gt).
+Removed top 1 bits (of 2) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$procmux$395_CMP0 ($eq).
+Removed top 7 bits (of 8) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:64$73 ($lt).
+Removed top 17 bits (of 25) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:40$61 ($lt).
+Removed top 17 bits (of 25) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:39$60 ($gt).
+Removed top 7 bits (of 32) from mux cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$ternary$rtl/npu_activation.v:31$57 ($mux).
+Removed top 23 bits (of 25) from port A of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$sshl$rtl/npu_activation.v:31$56 ($sshl).
+Removed top 7 bits (of 32) from port Y of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$sshl$rtl/npu_activation.v:31$56 ($sshl).
+Removed top 3 bits (of 4) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$sub$rtl/npu_activation.v:31$55 ($sub).
+Removed top 3 bits (of 4) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:30$54 ($gt).
+Removed top 8 bits (of 24) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[1].u_pe.$add$rtl/npu_pe.v:47$48 ($add).
+Removed top 8 bits (of 24) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[1].u_pe.$add$rtl/npu_pe.v:47$48 ($add).
+Removed top 8 bits (of 24) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[0].u_pe.$add$rtl/npu_pe.v:47$48 ($add).
+Removed top 8 bits (of 24) from port B of cell tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[0].u_pe.$add$rtl/npu_pe.v:47$48 ($add).
+Removed top 1 bits (of 8) from wire tt_um_tinyml_npu_2x2.$add$rtl/tt_um_tinyml_npu_2x2.v:120$41_Y.
+Removed top 7 bits (of 32) from wire tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$sshl$rtl/npu_activation.v:31$56_Y.
+Removed top 5 bits (of 8) from wire tt_um_tinyml_npu_2x2.$techmap\u_core_2x2.u_act_00.$ternary$rtl/npu_activation.v:64$74_Y.
+
+8.9. Executing PEEPOPT pass (run peephole optimizers).
+
+8.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+8.11. Executing TECHMAP pass (map to technology primitives).
+
+8.11.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+8.11.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~164 debug messages>
+
+8.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module tt_um_tinyml_npu_2x2:
+  creating $macc model for $add$rtl/tt_um_tinyml_npu_2x2.v:120$41 ($add).
+  creating $macc model for $add$rtl/tt_um_tinyml_npu_2x2.v:170$42 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_act_00.$add$rtl/npu_activation.v:33$58 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_act_00.$sub$rtl/npu_activation.v:31$55 ($sub).
+  creating $macc model for $techmap\u_core_2x2.u_act_01.$add$rtl/npu_activation.v:33$58 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_act_10.$add$rtl/npu_activation.v:33$58 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_act_11.$add$rtl/npu_activation.v:33$58 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[0].u_pe.$add$rtl/npu_pe.v:47$48 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[0].u_pe.$mul$rtl/npu_pe.v:40$47 ($mul).
+  creating $macc model for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[1].u_pe.$add$rtl/npu_pe.v:47$48 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[1].u_pe.$mul$rtl/npu_pe.v:40$47 ($mul).
+  creating $macc model for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[0].u_pe.$add$rtl/npu_pe.v:47$48 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[0].u_pe.$mul$rtl/npu_pe.v:40$47 ($mul).
+  creating $macc model for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[1].u_pe.$add$rtl/npu_pe.v:47$48 ($add).
+  creating $macc model for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[1].u_pe.$mul$rtl/npu_pe.v:40$47 ($mul).
+  creating $alu model for $macc $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[1].u_pe.$add$rtl/npu_pe.v:47$48.
+  creating $alu model for $macc $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[0].u_pe.$add$rtl/npu_pe.v:47$48.
+  creating $alu model for $macc $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[1].u_pe.$add$rtl/npu_pe.v:47$48.
+  creating $alu model for $macc $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[0].u_pe.$add$rtl/npu_pe.v:47$48.
+  creating $alu model for $macc $techmap\u_core_2x2.u_act_11.$add$rtl/npu_activation.v:33$58.
+  creating $alu model for $macc $techmap\u_core_2x2.u_act_10.$add$rtl/npu_activation.v:33$58.
+  creating $alu model for $macc $techmap\u_core_2x2.u_act_01.$add$rtl/npu_activation.v:33$58.
+  creating $alu model for $macc $techmap\u_core_2x2.u_act_00.$sub$rtl/npu_activation.v:31$55.
+  creating $alu model for $macc $techmap\u_core_2x2.u_act_00.$add$rtl/npu_activation.v:33$58.
+  creating $alu model for $macc $add$rtl/tt_um_tinyml_npu_2x2.v:170$42.
+  creating $alu model for $macc $add$rtl/tt_um_tinyml_npu_2x2.v:120$41.
+  creating $macc cell for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[0].u_pe.$mul$rtl/npu_pe.v:40$47: $auto$alumacc.cc:354:replace_macc$457
+  creating $macc cell for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[0].u_pe.$mul$rtl/npu_pe.v:40$47: $auto$alumacc.cc:354:replace_macc$458
+  creating $macc cell for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[1].u_pe.$mul$rtl/npu_pe.v:40$47: $auto$alumacc.cc:354:replace_macc$459
+  creating $macc cell for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[1].u_pe.$mul$rtl/npu_pe.v:40$47: $auto$alumacc.cc:354:replace_macc$460
+  creating $alu model for $ge$rtl/tt_um_tinyml_npu_2x2.v:170$43 ($ge): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:30$54 ($gt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:39$60 ($gt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:40$61 ($lt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:64$73 ($lt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_01.$gt$rtl/npu_activation.v:39$60 ($gt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:40$61 ($lt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:64$73 ($lt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_10.$gt$rtl/npu_activation.v:39$60 ($gt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:40$61 ($lt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:64$73 ($lt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_11.$gt$rtl/npu_activation.v:39$60 ($gt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:40$61 ($lt): new $alu
+  creating $alu model for $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:64$73 ($lt): new $alu
+  creating $alu cell for $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:64$73: $auto$alumacc.cc:474:replace_alu$475
+  creating $alu cell for $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:40$61: $auto$alumacc.cc:474:replace_alu$488
+  creating $alu cell for $techmap\u_core_2x2.u_act_11.$gt$rtl/npu_activation.v:39$60: $auto$alumacc.cc:474:replace_alu$501
+  creating $alu cell for $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:64$73: $auto$alumacc.cc:474:replace_alu$508
+  creating $alu cell for $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:40$61: $auto$alumacc.cc:474:replace_alu$521
+  creating $alu cell for $techmap\u_core_2x2.u_act_10.$gt$rtl/npu_activation.v:39$60: $auto$alumacc.cc:474:replace_alu$534
+  creating $alu cell for $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:64$73: $auto$alumacc.cc:474:replace_alu$541
+  creating $alu cell for $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:40$61: $auto$alumacc.cc:474:replace_alu$554
+  creating $alu cell for $techmap\u_core_2x2.u_act_01.$gt$rtl/npu_activation.v:39$60: $auto$alumacc.cc:474:replace_alu$567
+  creating $alu cell for $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:64$73: $auto$alumacc.cc:474:replace_alu$574
+  creating $alu cell for $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:40$61: $auto$alumacc.cc:474:replace_alu$587
+  creating $alu cell for $techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:39$60: $auto$alumacc.cc:474:replace_alu$600
+  creating $alu cell for $techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:30$54: $auto$alumacc.cc:474:replace_alu$607
+  creating $alu cell for $ge$rtl/tt_um_tinyml_npu_2x2.v:170$43: $auto$alumacc.cc:474:replace_alu$612
+  creating $alu cell for $add$rtl/tt_um_tinyml_npu_2x2.v:120$41: $auto$alumacc.cc:474:replace_alu$621
+  creating $alu cell for $add$rtl/tt_um_tinyml_npu_2x2.v:170$42: $auto$alumacc.cc:474:replace_alu$624
+  creating $alu cell for $techmap\u_core_2x2.u_act_00.$add$rtl/npu_activation.v:33$58: $auto$alumacc.cc:474:replace_alu$627
+  creating $alu cell for $techmap\u_core_2x2.u_act_00.$sub$rtl/npu_activation.v:31$55: $auto$alumacc.cc:474:replace_alu$630
+  creating $alu cell for $techmap\u_core_2x2.u_act_01.$add$rtl/npu_activation.v:33$58: $auto$alumacc.cc:474:replace_alu$633
+  creating $alu cell for $techmap\u_core_2x2.u_act_10.$add$rtl/npu_activation.v:33$58: $auto$alumacc.cc:474:replace_alu$636
+  creating $alu cell for $techmap\u_core_2x2.u_act_11.$add$rtl/npu_activation.v:33$58: $auto$alumacc.cc:474:replace_alu$639
+  creating $alu cell for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[0].u_pe.$add$rtl/npu_pe.v:47$48: $auto$alumacc.cc:474:replace_alu$642
+  creating $alu cell for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[0].gen_pe_cols[1].u_pe.$add$rtl/npu_pe.v:47$48: $auto$alumacc.cc:474:replace_alu$645
+  creating $alu cell for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[0].u_pe.$add$rtl/npu_pe.v:47$48: $auto$alumacc.cc:474:replace_alu$648
+  creating $alu cell for $techmap\u_core_2x2.u_array_2x2.gen_pe_rows[1].gen_pe_cols[1].u_pe.$add$rtl/npu_pe.v:47$48: $auto$alumacc.cc:474:replace_alu$651
+  created 25 $alu and 4 $macc cells.
+
+8.13. Executing SHARE pass (SAT-based resource sharing).
+Found 5 cells in module tt_um_tinyml_npu_2x2 that may be considered for resource sharing.
+  Analyzing resource sharing options for $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+    Found 9 activation_patterns using ctrl signal { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] }.
+    Found 3 candidates: $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59 $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59 $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59
+    Analyzing resource sharing with $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+      Found 9 activation_patterns using ctrl signal { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] }.
+      Forbidden control signals for this pair of cells: { $techmap\u_core_2x2.u_act_10.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:64$73_Y $techmap\u_core_2x2.u_act_11.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:64$73_Y }
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 5'11000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 6'101000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 5'11000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 6'100010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'10010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1864:Xor$540 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1864:Xor$540 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'10010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'0110
+      Adding exclusive control bits: $techmap\u_core_2x2.$procmux$384_CMP vs. $techmap\u_core_2x2.$procmux$383_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Size of SAT problem: 41 cells, 2578 variables, 7003 clauses
+      According to the SAT solver this pair of cells can be shared.
+      Activation signal for $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: $auto$share.cc:986:make_cell_activation_logic$664
+      New cell: $auto$share.cc:666:make_supercell$671 ($sshr)
+      New topology contains loops! Rolling back..
+    Analyzing resource sharing with $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+      Found 9 activation_patterns using ctrl signal { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] }.
+      Forbidden control signals for this pair of cells: { $techmap\u_core_2x2.u_act_01.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:64$73_Y $techmap\u_core_2x2.u_act_11.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:64$73_Y }
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 5'11000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 6'101000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 5'11000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $auto$rtlil.cc:1832:Not$566 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 6'001010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'01010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Adding exclusive control bits: $techmap\u_core_2x2.$procmux$385_CMP vs. $techmap\u_core_2x2.$procmux$383_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Size of SAT problem: 41 cells, 2578 variables, 7003 clauses
+      According to the SAT solver this pair of cells can be shared.
+      Activation signal for $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: $auto$share.cc:986:make_cell_activation_logic$684
+      New cell: $auto$share.cc:666:make_supercell$691 ($sshr)
+      New topology contains loops! Rolling back..
+    Analyzing resource sharing with $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+      Found 9 activation_patterns using ctrl signal { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$586 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 }.
+      Forbidden control signals for this pair of cells: { $techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:64$73_Y $techmap\u_core_2x2.u_act_11.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_11.$lt$rtl/npu_activation.v:64$73_Y }
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 5'11000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 6'101000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 \uio_in [4] } = 5'11000
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$487 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1864:Xor$507 \uio_in [4] } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 6'100100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 4'1100
+      Adding exclusive control bits: $techmap\u_core_2x2.$procmux$386_CMP vs. $techmap\u_core_2x2.$procmux$383_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Size of SAT problem: 41 cells, 2576 variables, 6997 clauses
+      According to the SAT solver this pair of cells can be shared.
+      Activation signal for $techmap\u_core_2x2.u_act_11.$sshr$rtl/npu_activation.v:36$59: $auto$share.cc:986:make_cell_activation_logic$704
+      New cell: $auto$share.cc:666:make_supercell$711 ($sshr)
+      New topology contains loops! Rolling back..
+  Analyzing resource sharing options for $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+    Found 9 activation_patterns using ctrl signal { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$586 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 }.
+    Found 2 candidates: $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59 $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59
+    Analyzing resource sharing with $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+      Found 9 activation_patterns using ctrl signal { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] }.
+      Forbidden control signals for this pair of cells: { $techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:64$73_Y $techmap\u_core_2x2.u_act_10.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:64$73_Y }
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 6'100100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 6'100010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'10010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1864:Xor$540 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1864:Xor$540 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'10010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'0110
+      Adding exclusive control bits: $techmap\u_core_2x2.$procmux$384_CMP vs. $techmap\u_core_2x2.$procmux$386_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Size of SAT problem: 41 cells, 2576 variables, 6997 clauses
+      According to the SAT solver this pair of cells can be shared.
+      Activation signal for $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: $auto$share.cc:986:make_cell_activation_logic$724
+      New cell: $auto$share.cc:666:make_supercell$731 ($sshr)
+      New topology contains loops! Rolling back..
+    Analyzing resource sharing with $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+      Found 9 activation_patterns using ctrl signal { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] }.
+      Forbidden control signals for this pair of cells: { $techmap\u_core_2x2.u_act_00.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_00.$lt$rtl/npu_activation.v:64$73_Y $techmap\u_core_2x2.u_act_01.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:64$73_Y }
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 6'100100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$586 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 5'10100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$386_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 } = 4'1100
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $auto$rtlil.cc:1832:Not$566 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 6'001010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'01010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Adding exclusive control bits: $techmap\u_core_2x2.$procmux$385_CMP vs. $techmap\u_core_2x2.$procmux$386_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Size of SAT problem: 41 cells, 2576 variables, 6997 clauses
+      According to the SAT solver this pair of cells can be shared.
+      Activation signal for $techmap\u_core_2x2.u_act_00.$sshr$rtl/npu_activation.v:36$59: $auto$share.cc:986:make_cell_activation_logic$744
+      New cell: $auto$share.cc:666:make_supercell$751 ($sshr)
+      New topology contains loops! Rolling back..
+  Analyzing resource sharing options for $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+    Found 9 activation_patterns using ctrl signal { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] }.
+    Found 1 candidates: $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59
+    Analyzing resource sharing with $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+      Found 9 activation_patterns using ctrl signal { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] }.
+      Forbidden control signals for this pair of cells: { $techmap\u_core_2x2.u_act_01.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_01.$lt$rtl/npu_activation.v:64$73_Y $techmap\u_core_2x2.u_act_10.$gt$rtl/npu_activation.v:39$60_Y $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:40$61_Y $techmap\u_core_2x2.u_act_10.$lt$rtl/npu_activation.v:64$73_Y }
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $auto$rtlil.cc:1832:Not$566 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 6'001010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'01010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$573 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] } = 4'0110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'00110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 6'100010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'10010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 3'110
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1864:Xor$540 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'1010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1864:Xor$540 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 5'10010
+      Activation pattern for cell $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59: { $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] } = 4'0110
+      Adding exclusive control bits: $techmap\u_core_2x2.$procmux$385_CMP vs. $techmap\u_core_2x2.$procmux$384_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Adding exclusive control bits: $auto$opt_reduce.cc:132:opt_mux$445 vs. $techmap\u_core_2x2.u_act_00.$procmux$395_CMP
+      Size of SAT problem: 41 cells, 2580 variables, 7009 clauses
+      According to the SAT solver this pair of cells can be shared.
+      Activation signal for $techmap\u_core_2x2.u_act_01.$sshr$rtl/npu_activation.v:36$59: $auto$share.cc:986:make_cell_activation_logic$764
+      New cell: $auto$share.cc:666:make_supercell$771 ($sshr)
+      New topology contains loops! Rolling back..
+  Analyzing resource sharing options for $techmap\u_core_2x2.u_act_10.$sshr$rtl/npu_activation.v:36$59 ($sshr):
+    Found 9 activation_patterns using ctrl signal { $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$opt_reduce.cc:132:opt_mux$445 $auto$rtlil.cc:1832:Not$520 $techmap\u_core_2x2.$procmux$384_CMP \uio_in [4] }.
+    No candidates found.
+  Analyzing resource sharing options for $techmap\u_core_2x2.u_act_00.$sshl$rtl/npu_activation.v:31$56 ($sshl):
+    Found 36 activation_patterns using ctrl signal { $auto$rtlil.cc:1832:Not$611 $auto$rtlil.cc:1832:Not$553 $auto$rtlil.cc:1864:Xor$573 $techmap\u_core_2x2.u_act_00.$procmux$395_CMP $auto$rtlil.cc:1832:Not$566 $auto$rtlil.cc:1832:Not$533 $auto$rtlil.cc:1864:Xor$540 $auto$rtlil.cc:1832:Not$487 $auto$opt_reduce.cc:132:opt_mux$445 $techmap\u_core_2x2.$procmux$383_CMP $auto$rtlil.cc:1832:Not$520 $auto$rtlil.cc:1832:Not$586 $auto$rtlil.cc:1864:Xor$507 $auto$rtlil.cc:1832:Not$500 $auto$rtlil.cc:1832:Not$599 $techmap\u_core_2x2.$procmux$386_CMP $techmap\u_core_2x2.$procmux$384_CMP $techmap\u_core_2x2.$procmux$385_CMP \uio_in [4] $auto$rtlil.cc:1864:Xor$606 }.
+    No candidates found.
+
+8.14. Executing OPT pass (performing simple optimizations).
+
+8.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+<suppressed ~9 debug messages>
+
+8.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+Removed a total of 0 cells.
+
+8.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_tinyml_npu_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~33 debug messages>
+
+8.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+    New input vector for $reduce_or cell $auto$alumacc.cc:509:replace_alu$619: { $auto$rtlil.cc:1832:Not$616 $auto$rtlil.cc:1835:ReduceAnd$618 }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$478: { $auto$alumacc.cc:490:replace_alu$476 [0] $auto$alumacc.cc:490:replace_alu$476 [1] $auto$alumacc.cc:490:replace_alu$476 [2] $auto$alumacc.cc:490:replace_alu$476 [3] $auto$alumacc.cc:490:replace_alu$476 [4] $auto$alumacc.cc:490:replace_alu$476 [5] $auto$alumacc.cc:490:replace_alu$476 [6] $auto$alumacc.cc:490:replace_alu$476 [7] }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$491: { $auto$alumacc.cc:490:replace_alu$489 [0] $auto$alumacc.cc:490:replace_alu$489 [1] $auto$alumacc.cc:490:replace_alu$489 [2] $auto$alumacc.cc:490:replace_alu$489 [3] $auto$alumacc.cc:490:replace_alu$489 [4] $auto$alumacc.cc:490:replace_alu$489 [5] $auto$alumacc.cc:490:replace_alu$489 [6] $auto$alumacc.cc:490:replace_alu$489 [7] $auto$alumacc.cc:490:replace_alu$489 [8] $auto$alumacc.cc:490:replace_alu$489 [9] $auto$alumacc.cc:490:replace_alu$489 [10] $auto$alumacc.cc:490:replace_alu$489 [11] $auto$alumacc.cc:490:replace_alu$489 [12] $auto$alumacc.cc:490:replace_alu$489 [13] $auto$alumacc.cc:490:replace_alu$489 [14] $auto$alumacc.cc:490:replace_alu$489 [15] $auto$alumacc.cc:490:replace_alu$489 [16] $auto$alumacc.cc:490:replace_alu$489 [17] $auto$alumacc.cc:490:replace_alu$489 [18] $auto$alumacc.cc:490:replace_alu$489 [19] $auto$alumacc.cc:490:replace_alu$489 [20] $auto$alumacc.cc:490:replace_alu$489 [21] $auto$alumacc.cc:490:replace_alu$489 [22] $auto$alumacc.cc:490:replace_alu$489 [23] $auto$alumacc.cc:490:replace_alu$489 [24] }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$511: { $auto$alumacc.cc:490:replace_alu$509 [0] $auto$alumacc.cc:490:replace_alu$509 [1] $auto$alumacc.cc:490:replace_alu$509 [2] $auto$alumacc.cc:490:replace_alu$509 [3] $auto$alumacc.cc:490:replace_alu$509 [4] $auto$alumacc.cc:490:replace_alu$509 [5] $auto$alumacc.cc:490:replace_alu$509 [6] $auto$alumacc.cc:490:replace_alu$509 [7] }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$524: { $auto$alumacc.cc:490:replace_alu$522 [0] $auto$alumacc.cc:490:replace_alu$522 [1] $auto$alumacc.cc:490:replace_alu$522 [2] $auto$alumacc.cc:490:replace_alu$522 [3] $auto$alumacc.cc:490:replace_alu$522 [4] $auto$alumacc.cc:490:replace_alu$522 [5] $auto$alumacc.cc:490:replace_alu$522 [6] $auto$alumacc.cc:490:replace_alu$522 [7] $auto$alumacc.cc:490:replace_alu$522 [8] $auto$alumacc.cc:490:replace_alu$522 [9] $auto$alumacc.cc:490:replace_alu$522 [10] $auto$alumacc.cc:490:replace_alu$522 [11] $auto$alumacc.cc:490:replace_alu$522 [12] $auto$alumacc.cc:490:replace_alu$522 [13] $auto$alumacc.cc:490:replace_alu$522 [14] $auto$alumacc.cc:490:replace_alu$522 [15] $auto$alumacc.cc:490:replace_alu$522 [16] $auto$alumacc.cc:490:replace_alu$522 [17] $auto$alumacc.cc:490:replace_alu$522 [18] $auto$alumacc.cc:490:replace_alu$522 [19] $auto$alumacc.cc:490:replace_alu$522 [20] $auto$alumacc.cc:490:replace_alu$522 [21] $auto$alumacc.cc:490:replace_alu$522 [22] $auto$alumacc.cc:490:replace_alu$522 [23] $auto$alumacc.cc:490:replace_alu$522 [24] }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$544: { $auto$alumacc.cc:490:replace_alu$542 [0] $auto$alumacc.cc:490:replace_alu$542 [1] $auto$alumacc.cc:490:replace_alu$542 [2] $auto$alumacc.cc:490:replace_alu$542 [3] $auto$alumacc.cc:490:replace_alu$542 [4] $auto$alumacc.cc:490:replace_alu$542 [5] $auto$alumacc.cc:490:replace_alu$542 [6] $auto$alumacc.cc:490:replace_alu$542 [7] }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$557: { $auto$alumacc.cc:490:replace_alu$555 [0] $auto$alumacc.cc:490:replace_alu$555 [1] $auto$alumacc.cc:490:replace_alu$555 [2] $auto$alumacc.cc:490:replace_alu$555 [3] $auto$alumacc.cc:490:replace_alu$555 [4] $auto$alumacc.cc:490:replace_alu$555 [5] $auto$alumacc.cc:490:replace_alu$555 [6] $auto$alumacc.cc:490:replace_alu$555 [7] $auto$alumacc.cc:490:replace_alu$555 [8] $auto$alumacc.cc:490:replace_alu$555 [9] $auto$alumacc.cc:490:replace_alu$555 [10] $auto$alumacc.cc:490:replace_alu$555 [11] $auto$alumacc.cc:490:replace_alu$555 [12] $auto$alumacc.cc:490:replace_alu$555 [13] $auto$alumacc.cc:490:replace_alu$555 [14] $auto$alumacc.cc:490:replace_alu$555 [15] $auto$alumacc.cc:490:replace_alu$555 [16] $auto$alumacc.cc:490:replace_alu$555 [17] $auto$alumacc.cc:490:replace_alu$555 [18] $auto$alumacc.cc:490:replace_alu$555 [19] $auto$alumacc.cc:490:replace_alu$555 [20] $auto$alumacc.cc:490:replace_alu$555 [21] $auto$alumacc.cc:490:replace_alu$555 [22] $auto$alumacc.cc:490:replace_alu$555 [23] $auto$alumacc.cc:490:replace_alu$555 [24] }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$577: { $auto$alumacc.cc:490:replace_alu$575 [0] $auto$alumacc.cc:490:replace_alu$575 [1] $auto$alumacc.cc:490:replace_alu$575 [2] $auto$alumacc.cc:490:replace_alu$575 [3] $auto$alumacc.cc:490:replace_alu$575 [4] $auto$alumacc.cc:490:replace_alu$575 [5] $auto$alumacc.cc:490:replace_alu$575 [6] $auto$alumacc.cc:490:replace_alu$575 [7] }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$590: { $auto$alumacc.cc:490:replace_alu$588 [0] $auto$alumacc.cc:490:replace_alu$588 [1] $auto$alumacc.cc:490:replace_alu$588 [2] $auto$alumacc.cc:490:replace_alu$588 [3] $auto$alumacc.cc:490:replace_alu$588 [4] $auto$alumacc.cc:490:replace_alu$588 [5] $auto$alumacc.cc:490:replace_alu$588 [6] $auto$alumacc.cc:490:replace_alu$588 [7] $auto$alumacc.cc:490:replace_alu$588 [8] $auto$alumacc.cc:490:replace_alu$588 [9] $auto$alumacc.cc:490:replace_alu$588 [10] $auto$alumacc.cc:490:replace_alu$588 [11] $auto$alumacc.cc:490:replace_alu$588 [12] $auto$alumacc.cc:490:replace_alu$588 [13] $auto$alumacc.cc:490:replace_alu$588 [14] $auto$alumacc.cc:490:replace_alu$588 [15] $auto$alumacc.cc:490:replace_alu$588 [16] $auto$alumacc.cc:490:replace_alu$588 [17] $auto$alumacc.cc:490:replace_alu$588 [18] $auto$alumacc.cc:490:replace_alu$588 [19] $auto$alumacc.cc:490:replace_alu$588 [20] $auto$alumacc.cc:490:replace_alu$588 [21] $auto$alumacc.cc:490:replace_alu$588 [22] $auto$alumacc.cc:490:replace_alu$588 [23] $auto$alumacc.cc:490:replace_alu$588 [24] }
+    New input vector for $reduce_and cell $auto$alumacc.cc:64:get_eq$617: { $auto$alumacc.cc:490:replace_alu$613 [0] $auto$alumacc.cc:490:replace_alu$613 [1] $auto$alumacc.cc:490:replace_alu$613 [2] $auto$alumacc.cc:490:replace_alu$613 [3] $auto$alumacc.cc:490:replace_alu$613 [4] $auto$alumacc.cc:490:replace_alu$613 [5] $auto$alumacc.cc:490:replace_alu$613 [6] $auto$alumacc.cc:490:replace_alu$613 [7] }
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+Performed a total of 10 changes.
+
+8.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+Removed a total of 0 cells.
+
+8.14.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+Removed 9 unused cells and 53 unused wires.
+<suppressed ~10 debug messages>
+
+8.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+
+8.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_tinyml_npu_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~33 debug messages>
+
+8.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+Performed a total of 0 changes.
+
+8.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+Removed a total of 0 cells.
+
+8.14.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+
+8.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+
+8.14.16. Finished OPT passes. (There is nothing left to do.)
+
+8.15. Executing FSM pass (extract and optimize FSM).
+
+8.15.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking tt_um_tinyml_npu_2x2.byte_idx as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Found FSM state register tt_um_tinyml_npu_2x2.state.
+
+8.15.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\tt_um_tinyml_npu_2x2'.
+  found $adff cell for state register: $procdff$439
+  root of input selection tree: $0\state[1:0]
+  found reset state: 2'00 (from async reset)
+  found ctrl input: \ena
+  found ctrl input: $procmux$134_CMP
+  found ctrl input: $eq$rtl/tt_um_tinyml_npu_2x2.v:82$37_Y
+  found ctrl input: $auto$rtlil.cc:1836:ReduceOr$620
+  found state code: 2'10
+  found ctrl input: \uio_in [0]
+  found ctrl input: \uio_in [2]
+  found ctrl input: $procmux$110_CMP
+  found state code: 2'01
+  found ctrl output: $procmux$134_CMP
+  found ctrl output: $eq$rtl/tt_um_tinyml_npu_2x2.v:82$37_Y
+  found ctrl output: $procmux$255_CMP
+  ctrl inputs: { $auto$rtlil.cc:1836:ReduceOr$620 \uio_in [2] \uio_in [0] $procmux$110_CMP \ena }
+  ctrl outputs: { $procmux$255_CMP $0\state[1:0] $eq$rtl/tt_um_tinyml_npu_2x2.v:82$37_Y $procmux$134_CMP }
+  transition:       2'00 5'----0 ->       2'00 5'00010
+  transition:       2'00 5'--0-1 ->       2'00 5'00010
+  transition:       2'00 5'-0101 ->       2'00 5'00010
+  transition:       2'00 5'-0111 ->       2'01 5'00110
+  transition:       2'00 5'-11-1 ->       2'00 5'00010
+  transition:       2'10 5'----0 ->       2'10 5'11000
+  transition:       2'10 5'----1 ->       2'00 5'10000
+  transition:       2'01 5'----0 ->       2'01 5'00101
+  transition:       2'01 5'0---1 ->       2'00 5'00001
+  transition:       2'01 5'1---1 ->       2'10 5'01001
+
+8.15.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$774' from module `\tt_um_tinyml_npu_2x2'.
+
+8.15.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+Removed 10 unused cells and 10 unused wires.
+<suppressed ~11 debug messages>
+
+8.15.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$774' from module `\tt_um_tinyml_npu_2x2'.
+  Removing unused output signal $0\state[1:0] [0].
+  Removing unused output signal $0\state[1:0] [1].
+
+8.15.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$774' from module `\tt_um_tinyml_npu_2x2' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> --1
+  10 -> -1-
+  01 -> 1--
+
+8.15.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$774' from module `\tt_um_tinyml_npu_2x2':
+-------------------------------------
+
+  Information on FSM $fsm$\state$774 (\state):
+
+  Number of input signals:    5
+  Number of output signals:   3
+  Number of state bits:       3
+
+  Input signals:
+    0: \ena
+    1: $procmux$110_CMP
+    2: \uio_in [0]
+    3: \uio_in [2]
+    4: $auto$rtlil.cc:1836:ReduceOr$620
+
+  Output signals:
+    0: $procmux$134_CMP
+    1: $eq$rtl/tt_um_tinyml_npu_2x2.v:82$37_Y
+    2: $procmux$255_CMP
+
+  State encoding:
+    0:      3'--1  <RESET STATE>
+    1:      3'-1-
+    2:      3'1--
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 5'----0   ->     0 3'010
+      1:     0 5'-0101   ->     0 3'010
+      2:     0 5'--0-1   ->     0 3'010
+      3:     0 5'-11-1   ->     0 3'010
+      4:     0 5'-0111   ->     2 3'010
+      5:     1 5'----1   ->     0 3'100
+      6:     1 5'----0   ->     1 3'100
+      7:     2 5'0---1   ->     0 3'001
+      8:     2 5'1---1   ->     1 3'001
+      9:     2 5'----0   ->     2 3'001
+
+-------------------------------------
+
+8.15.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$774' from module `\tt_um_tinyml_npu_2x2'.
+
+8.16. Executing OPT pass (performing simple optimizations).
+
+8.16.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+<suppressed ~4 debug messages>
+
+8.16.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+8.16.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.16.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+Removed 0 unused cells and 9 unused wires.
+<suppressed ~1 debug messages>
+
+8.16.5. Finished fast OPT passes.
+
+8.17. Executing MEMORY pass.
+
+8.17.1. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
+
+8.17.2. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+
+8.17.3. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+8.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+
+8.17.5. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+
+8.19. Executing OPT pass (performing simple optimizations).
+
+8.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+<suppressed ~21 debug messages>
+
+8.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+Removed a total of 0 cells.
+
+8.19.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.19.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+Removed 2 unused cells and 6 unused wires.
+<suppressed ~3 debug messages>
+
+8.19.5. Finished fast OPT passes.
+
+8.20. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
+
+8.21. Executing OPT pass (performing simple optimizations).
+
+8.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+
+8.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+Removed a total of 0 cells.
+
+8.21.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_tinyml_npu_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~34 debug messages>
+
+8.21.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$816: { $auto$fsm_map.cc:118:implement_pattern_cache$810 $auto$fsm_map.cc:118:implement_pattern_cache$814 }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$807: { $auto$fsm_map.cc:118:implement_pattern_cache$797 $auto$fsm_map.cc:118:implement_pattern_cache$789 $auto$fsm_map.cc:118:implement_pattern_cache$793 $auto$fsm_map.cc:118:implement_pattern_cache$785 $auto$fsm_map.cc:118:implement_pattern_cache$805 $auto$fsm_map.cc:118:implement_pattern_cache$801 }
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+Performed a total of 2 changes.
+
+8.21.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+Removed a total of 0 cells.
+
+8.21.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.21.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+
+8.21.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+
+8.21.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.21.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_tinyml_npu_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~34 debug messages>
+
+8.21.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_tinyml_npu_2x2.
+Performed a total of 0 changes.
+
+8.21.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+Removed a total of 0 cells.
+
+8.21.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.21.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+
+8.21.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+
+8.21.16. Finished OPT passes. (There is nothing left to do.)
+
+8.22. Executing TECHMAP pass (map to technology primitives).
+
+8.22.1. Executing Verilog-2005 frontend: <techmap.v>
+Parsing Verilog input from `<techmap.v>' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+8.22.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod\_90_pmux\WIDTH=8\S_WIDTH=2 for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod\_90_pmux\WIDTH=2\S_WIDTH=3 for cells of type $pmux.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=4\Y_WIDTH=4 for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $or.
+Using extmapper maccmap for cells of type $macc.
+  add \r1_act * \c1_weight (8x8 bits, signed)
+Using extmapper simplemap for cells of type $logic_and.
+  add \r0_act * \c0_weight (8x8 bits, signed)
+Using template $paramod\_90_alu\A_SIGNED=1\B_SIGNED=1\A_WIDTH=1\B_WIDTH=8\Y_WIDTH=8 for cells of type $alu.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=25\B_WIDTH=25\Y_WIDTH=25 for cells of type $alu.
+Using template $paramod$constmap:04c1c7a39c7c373535a5445ce23694feda2f8895$paramod$bd3540b3bc2f4239c023cda9ffa8c81dc1e0a687\_90_shift_ops_shr_shl_sshl_sshr for cells of type $sshr.
+Using template $paramod\_90_alu\A_SIGNED=1\B_SIGNED=1\A_WIDTH=8\B_WIDTH=25\Y_WIDTH=25 for cells of type $alu.
+Using template $paramod\_90_pmux\WIDTH=1\S_WIDTH=2 for cells of type $pmux.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $adff.
+  add \r0_act * \c1_weight (8x8 bits, signed)
+Using extmapper simplemap for cells of type $not.
+Using template $paramod\_90_pmux\WIDTH=8\S_WIDTH=3 for cells of type $pmux.
+Using template $paramod\_90_alu\A_SIGNED=1\B_SIGNED=1\A_WIDTH=16\B_WIDTH=24\Y_WIDTH=24 for cells of type $alu.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=4\B_WIDTH=1\Y_WIDTH=4 for cells of type $alu.
+Using template $paramod$constmap:e61d2959c5a463554b7916c1b78d11cb148e7ca5$paramod$fa1fad65d9827c0bcab236a6b5bf46c17201b7e6\_90_shift_ops_shr_shl_sshl_sshr for cells of type $sshl.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=8\Y_WIDTH=8 for cells of type $alu.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=8\B_WIDTH=8\Y_WIDTH=8 for cells of type $alu.
+  add \r1_act * \c0_weight (8x8 bits, signed)
+Using extmapper simplemap for cells of type $ne.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=6\Y_WIDTH=7 for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=16 for cells of type $fa.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=16\B_WIDTH=16\Y_WIDTH=16 for cells of type $alu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=8 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=4 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=25 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=24 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=7 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=16 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~4546 debug messages>
+
+8.23. Executing OPT pass (performing simple optimizations).
+
+8.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_tinyml_npu_2x2.
+<suppressed ~2643 debug messages>
+
+8.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_tinyml_npu_2x2'.
+<suppressed ~1989 debug messages>
+Removed a total of 663 cells.
+
+8.23.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+8.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_tinyml_npu_2x2..
+Removed 770 unused cells and 1865 unused wires.
+<suppressed ~771 debug messages>
+
+8.23.5. Finished fast OPT passes.
+
+8.24. Executing HIERARCHY pass (managing design hierarchy).
+
+8.24.1. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+
+8.24.2. Analyzing design hierarchy..
+Top module:  \tt_um_tinyml_npu_2x2
+Removed 0 unused modules.
+
+8.25. Printing statistics.
+
+=== tt_um_tinyml_npu_2x2 ===
+
+   Number of wires:               1726
+   Number of wire bits:           9668
+   Number of public wires:         214
+   Number of public wire bits:    2422
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               5722
+     $_AND_                       1950
+     $_DFF_PN0_                    213
+     $_DFF_PN1_                      2
+     $_MUX_                       1524
+     $_NOT_                        185
+     $_OR_                         719
+     $_XOR_                       1129
+
+8.26. Executing CHECK pass (checking for obvious problems).
+checking module tt_um_tinyml_npu_2x2..
+found and reported 0 problems.
+
+9. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+  cell sg13g2_dfrbpq_1 (noninv, pins=4, area=48.99) is a direct match for cell type $_DFF_PN0_.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_1' - skipping.
+Warning: Found unsupported expression 'SCE*SCD+!SCE*D' in pin attribute of cell 'sg13g2_sdfrbpq_2' - skipping.
+  create mapping for $_DFF_PP0_ from mapping for $_DFF_PN0_.
+  create mapping for $_DFF_PN1_ from mapping for $_DFF_PN0_.
+  create mapping for $_DFF_PP1_ from mapping for $_DFF_PN1_.
+  create mapping for $_DFF_NN0_ from mapping for $_DFF_PN0_.
+  create mapping for $_DFF_NP0_ from mapping for $_DFF_NN0_.
+  create mapping for $_DFF_NN1_ from mapping for $_DFF_NN0_.
+  create mapping for $_DFF_NP1_ from mapping for $_DFF_NN1_.
+  create mapping for $_DFF_N_ from mapping for $_DFF_NN0_.
+  create mapping for $_DFF_P_ from mapping for $_DFF_PN0_.
+  final dff cell mappings:
+    sg13g2_dfrbpq_1 _DFF_N_ (.CLK(~C), .D( D), .Q( Q), .RESET_B( 1));
+    sg13g2_dfrbpq_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q), .RESET_B( 1));
+    sg13g2_dfrbpq_1 _DFF_NN0_ (.CLK(~C), .D( D), .Q( Q), .RESET_B( R));
+    sg13g2_dfrbpq_1 _DFF_NN1_ (.CLK(~C), .D(~D), .Q(~Q), .RESET_B( R));
+    sg13g2_dfrbpq_1 _DFF_NP0_ (.CLK(~C), .D( D), .Q( Q), .RESET_B(~R));
+    sg13g2_dfrbpq_1 _DFF_NP1_ (.CLK(~C), .D(~D), .Q(~Q), .RESET_B(~R));
+    sg13g2_dfrbpq_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    sg13g2_dfrbpq_1 _DFF_PN1_ (.CLK( C), .D(~D), .Q(~Q), .RESET_B( R));
+    sg13g2_dfrbpq_1 _DFF_PP0_ (.CLK( C), .D( D), .Q( Q), .RESET_B(~R));
+    sg13g2_dfrbpq_1 _DFF_PP1_ (.CLK( C), .D(~D), .Q(~Q), .RESET_B(~R));
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+Mapping DFF cells in module `\tt_um_tinyml_npu_2x2':
+  mapped 213 $_DFF_PN0_ cells to \sg13g2_dfrbpq_1 cells.
+  mapped 2 $_DFF_PN1_ cells to \sg13g2_dfrbpq_1 cells.
+
+10. Executing ABC pass (technology mapping using ABC).
+
+10.1. Extracting gate netlist of module `\tt_um_tinyml_npu_2x2' to `<abc-temp-dir>/input.blif'..
+Extracted 5511 gates and 5741 wires to a netlist network with 228 inputs and 224 outputs.
+
+10.1.1. Executing ABC.
+Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/config/sg13g2_stdcell_typ_1p20V_25C.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.01 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_antennanp" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhrq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllrq_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_lgcp_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_sighold" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_slgcp_1" due to dont_use attribute.
+ABC: Library "sg13g2_stdcell_typ_1p20V_25C" from "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/config/sg13g2_stdcell_typ_1p20V_25C.lib" has 54 cells (20 skipped: 14 seq; 6 tri-state; 0 no func; 10 dont_use).  Time =     0.02 sec
+ABC: Memory =    2.25 MB. Time =     0.02 sec
+ABC: + strash 
+ABC: + ifraig 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+10.1.2. Re-integrating ABC results.
+ABC RESULTS:     sg13g2_a21o_1 cells:      112
+ABC RESULTS:    sg13g2_a21oi_1 cells:      447
+ABC RESULTS:   sg13g2_a221oi_1 cells:       39
+ABC RESULTS:    sg13g2_a22oi_1 cells:       89
+ABC RESULTS:     sg13g2_and2_1 cells:      124
+ABC RESULTS:     sg13g2_and3_1 cells:       37
+ABC RESULTS:     sg13g2_and4_1 cells:       32
+ABC RESULTS:      sg13g2_inv_1 cells:      124
+ABC RESULTS:     sg13g2_mux2_1 cells:      116
+ABC RESULTS:    sg13g2_nand2_1 cells:      511
+ABC RESULTS:   sg13g2_nand2b_1 cells:      154
+ABC RESULTS:    sg13g2_nand3_1 cells:      130
+ABC RESULTS:   sg13g2_nand3b_1 cells:        8
+ABC RESULTS:    sg13g2_nand4_1 cells:       41
+ABC RESULTS:     sg13g2_nor2_1 cells:      335
+ABC RESULTS:    sg13g2_nor2b_1 cells:       77
+ABC RESULTS:     sg13g2_nor3_1 cells:       75
+ABC RESULTS:     sg13g2_nor4_1 cells:       28
+ABC RESULTS:    sg13g2_o21ai_1 cells:      595
+ABC RESULTS:      sg13g2_or2_1 cells:      138
+ABC RESULTS:      sg13g2_or3_1 cells:       49
+ABC RESULTS:      sg13g2_or4_1 cells:        1
+ABC RESULTS:    sg13g2_xnor2_1 cells:      423
+ABC RESULTS:     sg13g2_xor2_1 cells:      191
+ABC RESULTS:        internal signals:     5289
+ABC RESULTS:           input signals:      228
+ABC RESULTS:          output signals:      224
+Removing temp directory.
+Removed 0 unused cells and 1895 unused wires.
+
+11. Executing CHECK pass (checking for obvious problems).
+checking module tt_um_tinyml_npu_2x2..
+found and reported 0 problems.
+
+12. Printing statistics.
+
+=== tt_um_tinyml_npu_2x2 ===
+
+   Number of wires:               3939
+   Number of wire bits:           5644
+   Number of public wires:         163
+   Number of public wire bits:    1774
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4091
+     sg13g2_a21o_1                 112
+     sg13g2_a21oi_1                447
+     sg13g2_a221oi_1                39
+     sg13g2_a22oi_1                 89
+     sg13g2_and2_1                 124
+     sg13g2_and3_1                  37
+     sg13g2_and4_1                  32
+     sg13g2_dfrbpq_1               215
+     sg13g2_inv_1                  124
+     sg13g2_mux2_1                 116
+     sg13g2_nand2_1                511
+     sg13g2_nand2b_1               154
+     sg13g2_nand3_1                130
+     sg13g2_nand3b_1                 8
+     sg13g2_nand4_1                 41
+     sg13g2_nor2_1                 335
+     sg13g2_nor2b_1                 77
+     sg13g2_nor3_1                  75
+     sg13g2_nor4_1                  28
+     sg13g2_o21ai_1                595
+     sg13g2_or2_1                  138
+     sg13g2_or3_1                   49
+     sg13g2_or4_1                    1
+     sg13g2_xnor2_1                423
+     sg13g2_xor2_1                 191
+
+   Chip area for module '\tt_um_tinyml_npu_2x2': 49527.941400
+
+13. Executing JSON backend.
+
+14. Executing Verilog backend.
+Dumping module `\tt_um_tinyml_npu_2x2'.
+
+Warnings: 4 unique messages, 36 total
+End of script. Logfile hash: f7f99d14d0
+CPU: user 2.96s system 0.05s, MEM: 55.52 MB total, 48.68 MB resident
+Yosys 0.9 (git sha1 1979e0b)
+Time spent: 20% 18x opt_merge (0 sec), 13% 2x write_verilog (0 sec), ...

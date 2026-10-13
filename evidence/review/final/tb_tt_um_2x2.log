@@ -1,0 +1,15 @@
+VCD info: dumpfile tb_tt_um_2x2.vcd opened for output.
+==================================================================
+  STARTING TT_UM_TINYML_NPU_2X2 TINY TAPEOUT TOP VERIFICATION
+==================================================================
+[PASS] TC1_RESET: npu_ready=1 and npu_busy=0 as expected.
+[PASS] TC2_PE00: PE00 =   72 (Expected: 72)
+[PASS] TC3_PE01: PE01 =   40 (Expected: 40)
+[PASS] TC4_PE10: PE10 =   63 (Expected: 63)
+[PASS] TC5_PE11: PE11 =   35 (Expected: 35)
+[PASS] TC6_RELU_PE00: PE00 =   0 (Expected: 0)
+[PASS] TC7_REQUANT_PE10: PE10 =  12 (Expected: 12)
+[PASS] TC8_REQUANT_PE11: PE11 =  18 (Expected: 18)
+==================================================================
+  ALL TT_UM_TINYML_NPU_2X2 VERIFICATION TESTS PASSED (0 ERRORS)!
+==================================================================

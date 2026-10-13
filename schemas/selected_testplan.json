@@ -1,44 +1,90 @@
 {
-  "ip_name": "tt_um_tinyml_npu_1x1",
+  "ip_name": "tt_um_tinyml_npu_2x2",
   "gate_4_approved": true,
-  "approved_at": "2026-10-13T16:15:00+07:00",
-  "approved_by": "VLSIT-Agent",
+  "baseline_evidence": "evidence/review/final/verification.json",
   "test_cases": [
     {
-      "tc_id": "TC_RESET_01",
-      "target_req": ["REQ-NPU-006"],
-      "description": "Verify reset deassertion and initial ready/idle handshake.",
-      "file": "test/test.py::test_reset"
+      "tc_id": "arithmetic",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/arithmetic.log"
     },
     {
-      "tc_id": "TC_MAC_02",
-      "target_req": ["REQ-NPU-001"],
-      "description": "Verify single-cycle signed 8x8 MAC computation (8 * 9 = 72).",
-      "file": "test/test.py::test_mac_simple"
+      "tc_id": "release",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/release.log"
     },
     {
-      "tc_id": "TC_RELU_03",
-      "target_req": ["REQ-NPU-004"],
-      "description": "Verify negative product (-60) clamps to zero through ReLU.",
-      "file": "test/test.py::test_relu_clipping"
+      "tc_id": "existing",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/existing.log"
     },
     {
-      "tc_id": "TC_DOTPROD_04",
-      "target_req": ["REQ-NPU-001", "REQ-NPU-003", "REQ-NPU-004"],
-      "description": "Verify multi-tap vector dot-product with arithmetic right shift requantization.",
-      "file": "test/test.py::test_vector_dot_product"
+      "tc_id": "legacy",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/legacy.log"
     },
     {
-      "tc_id": "TC_ARGMAX_05",
-      "target_req": ["REQ-NPU-005"],
-      "description": "Verify multi-class Winner-Take-All ArgMax selection.",
-      "file": "test/test.py::test_argmax_classification"
+      "tc_id": "tb_npu_standalone",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/tb_npu_standalone.log"
     },
     {
-      "tc_id": "TC_ECG_06",
-      "target_req": ["REQ-NPU-001", "REQ-NPU-003", "REQ-NPU-004", "REQ-NPU-005", "REQ-NPU-006"],
-      "description": "End-to-End ECG arrhythmia heartbeat inference on PVC waveform.",
-      "file": "test/test.py::test_ecg_arrhythmia_inference"
+      "tc_id": "tb_npu_2x2_standalone",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/tb_npu_2x2_standalone.log"
+    },
+    {
+      "tc_id": "tb_tt_um_2x2",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/tb_tt_um_2x2.log"
+    },
+    {
+      "tc_id": "Verilator lint",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/verilator.log"
+    },
+    {
+      "tc_id": "TC-TRAINED-E2E",
+      "file": "test/",
+      "status": "PASS",
+      "evidence": "evidence/review/final/trained_network.log"
     }
-  ]
+  ],
+  "coverage_closure": {
+    "test_cases": [],
+    "target_percent": 100,
+    "review": "docs/COVERAGE_REVIEW.md"
+  },
+  "additional_cases": [
+    {
+      "tc_id": "TC-TRAINED-E2E",
+      "file": "src/tb/tests/tc_trained_network.sv",
+      "req_ids": [
+        "REQ-NPU-001",
+        "REQ-NPU-003",
+        "REQ-NPU-004",
+        "REQ-NPU-005"
+      ]
+    },
+    {
+      "tc_id": "TC-COVERAGE-BASE",
+      "file": "src/tb/tests/tc_coverage_baseline.sv",
+      "driver": "test/coverage_driver.cpp",
+      "req_ids": [
+        "REQ-NPU-001",
+        "REQ-NPU-003",
+        "REQ-NPU-004",
+        "REQ-NPU-006"
+      ]
+    }
+  ],
+  "unresolved": []
 }

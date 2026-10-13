@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/md-rejoyan-islam/CardioEdgeAI",
+  "commit": "ec36bbc5f96ea42a93274c499a51e3678742ffcf",
+  "source_header": "deploy/esp32/CardioEdgeAI/model.h",
+  "source_url": "https://raw.githubusercontent.com/md-rejoyan-islam/CardioEdgeAI/ec36bbc5f96ea42a93274c499a51e3678742ffcf/deploy/esp32/CardioEdgeAI/model.h",
+  "trained_status": "upstream reports trained; local training not rerun",
+  "license": "MIT; upstream/LICENSE retained",
+  "size": 24352,
+  "sha256": "216ae64abccae28fde39da9cb4ec6c0656d71a37ffa8b3acc21ceaee01ff5389",
+  "upstream_files": {
+    "deploy/esp32/CardioEdgeAI/model.h": "b878faafc09f4705fb1c65db41de232d546279d33469fecc1ae37d5938456320",
+    "LICENSE": "6313884555ed637fbb0908099b43bbe5dd250bbc19c57a0f1df22803160ba183",
+    "README.md": "c1b71b67696a87530424fece2c0007d77c8c96a4129819bf4838edc946af39a4",
+    "CITATION.cff": "2b8582dfc02135c148810c099d76a4bac41891444d55296c9d81297bbb2da180",
+    "src/config.py": "bf1e69fd5174143be7f008b37e725cd6f404f3e11d243c405dd38fb9c8608ff0",
+    "src/data/preprocess.py": "8bf3b8bf11a35c89a267f408c9fba4a259522798d308d6cca77c94dbf96f0f19",
+    "src/models/cnn.py": "6be97e5e12af6f3f5e21c34f9a1cd1181d8ef556add04866956225138f8304b7",
+    "src/models/quantize.py": "6cf5488952b4e85a31115089e2f749aedc1f11af5ca9f738b91b3e0adb3b78f1",
+    "deploy/tflite/export_model_header.py": "f73428335f04ea4f89d0ea788aa8137cc1b221ed79e99c166901ffc0aa011355",
+    "docs/results.json": "4a401ff7d100ae0a7c8686ebd223d8577c429c54fb08fc169d969f71bfe4a9f7"
+  }
+}

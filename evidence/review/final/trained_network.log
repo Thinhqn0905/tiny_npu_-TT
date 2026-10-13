@@ -1,0 +1,4 @@
+[PASS] TC-TRAINED-E2E batch0: all hidden and output values match; cycles=529
+[PASS] TC-TRAINED-E2E batch1: all hidden and output values match; cycles=528
+[PASS] TC-TRAINED-E2E batch2: all hidden and output values match; cycles=528
+NETWORK_RESULT samples=6 batches=3 logical_macs=1104 total_cycles=1585

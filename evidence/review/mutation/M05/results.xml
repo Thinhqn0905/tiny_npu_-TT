@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="cocotb tests"><testsuite name="test_arithmetic" errors="0" failures="1" skipped="0" tests="1" time="0.001" timestamp="2026-10-13T12:57:52.990385+00:00" hostname="DESKTOP-5BKHJFE"><testcase classname="test_arithmetic" name="systolic_and_broadcast" time="0.001"><failure message="assert [-4494, -4494, -588, -588] == [-4494, 8453, -588, 1106]&#10; +  where [-4494, -4494, -588, -588] = grid(PackedObject(tb_review.grid0))&#10; +    where PackedObject(tb_review.grid0) = HierarchyObject(tb_review with definition tb_review (at test/tb_review.v)).grid0" type="AssertionError">Traceback (most recent call last):
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_arithmetic.py", line 136, in systolic_and_broadcast
+    assert grid(d.grid0)==exp
+AssertionError: assert [-4494, -4494, -588, -588] == [-4494, 8453, -588, 1106]
+ +  where [-4494, -4494, -588, -588] = grid(PackedObject(tb_review.grid0))
+ +    where PackedObject(tb_review.grid0) = HierarchyObject(tb_review with definition tb_review (at test/tb_review.v)).grid0
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="784736294" /><property name="file" value="/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_arithmetic.py" /><property name="line" value="98" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="0.0" /><property name="sim_time_stop" value="90.0" /><property name="sim_time_duration" value="90.0" /><property name="sim_time_ratio" value="66808.6474149583" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=784736294
+</system-err></testcase></testsuite></testsuites>

@@ -1,0 +1,27 @@
+$ verilator --lint-only -Wall --top-module tt_um_tinyml_npu_2x2 /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_pe.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_array.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_top_2x2.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v
+%Warning-WIDTH: /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v:35:49: Operator GTS expects 25 bits on the RHS, but RHS's CONST '24'sh7f' generates 24 bits.
+                                                                                                                 : ... In instance tt_um_tinyml_npu_2x2.u_core_2x2.u_act_11
+   35 |     wire signed [7:0] signed_clipped = (shifted > 24'sd127)  ? 8'sd127 :
+      |                                                 ^
+                ... Use "/* verilator lint_off WIDTH */" and lint_on around source to disable this message.
+%Warning-WIDTH: /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v:36:51: Operator NEGATE expects 25 bits on the LHS, but LHS's CONST '24'sh80' generates 24 bits.
+                                                                                                                 : ... In instance tt_um_tinyml_npu_2x2.u_core_2x2.u_act_11
+   36 |                                        (shifted < -24'sd128) ? -8'sd128 :
+      |                                                   ^
+%Warning-WIDTH: /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v:40:40: Operator LTS expects 25 bits on the RHS, but RHS's CONST '24'sh0' generates 24 bits.
+                                                                                                                 : ... In instance tt_um_tinyml_npu_2x2.u_core_2x2.u_act_11
+   40 |     wire [7:0] relu_clipped = (shifted < 24'sd0)   ? 8'd0 :
+      |                                        ^
+%Warning-WIDTH: /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v:41:40: Operator GTS expects 25 bits on the RHS, but RHS's CONST '24'shff' generates 24 bits.
+                                                                                                                 : ... In instance tt_um_tinyml_npu_2x2.u_core_2x2.u_act_11
+   41 |                               (shifted > 24'sd255) ? 8'd255 :
+      |                                        ^
+%Warning-WIDTH: /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v:45:44: Operator LTS expects 25 bits on the RHS, but RHS's CONST '24'sh0' generates 24 bits.
+                                                                                                                 : ... In instance tt_um_tinyml_npu_2x2.u_core_2x2.u_act_11
+   45 |     wire [7:0] unsigned_clipped = (shifted < 24'sd0)   ? 8'd0 :
+      |                                            ^
+%Warning-WIDTH: /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/pnr_handoff/rtl/npu_activation.v:46:44: Operator GTS expects 25 bits on the RHS, but RHS's CONST '24'shff' generates 24 bits.
+                                                                                                                 : ... In instance tt_um_tinyml_npu_2x2.u_core_2x2.u_act_11
+   46 |                                   (shifted > 24'sd255) ? 8'd255 :
+      |                                            ^
+%Error: Exiting due to 6 warning(s)

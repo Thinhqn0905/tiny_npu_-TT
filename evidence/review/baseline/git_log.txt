@@ -1,0 +1,34 @@
+commit d020f70630e1c9feacf9fd79206d7a9e2874afed
+Author:     Pham Quoc Thinh <giabao05vng@gmail.com>
+AuthorDate: Tue Oct 13 18:10:50 2026 +0700
+Commit:     Pham Quoc Thinh <giabao05vng@gmail.com>
+CommitDate: Tue Oct 13 18:10:50 2026 +0700
+
+    Release: Freeze 2x2 Systolic Array NPU and deliver formal PnR handoff package
+    
+    - Freeze architecture to 2x2 Systolic Array NPU (tt_um_tinyml_npu_2x2)
+    - Allocate 2x1 tiles (320 um x 108 um) for Tiny Tapeout shuttle
+    - Add dedicated 2x2 top wrapper (src/tt_um_tinyml_npu_2x2.v) and testbench (test/tb_tt_um_2x2.v)
+    - Deliver self-contained pnr_handoff/ package (rtl, filelist.f, config, constraints, docs, reports)
+    - Validate 0 lint warnings (Verilator), 0 inferred latches (Yosys), and 8/8 simulation phases (Icarus)
+    - Generate SHA256 checksums and sign off Release Gate in pnr_handoff/HANDOFF_MANIFEST.md
+    
+    Co-Authored-By: Claude Code <noreply@anthropic.com>
+
+commit 906bdcfa80b71830a7bea7ba6dc93c3626d6bc1c
+Author:     Pham Quoc Thinh <giabao05vng@gmail.com>
+AuthorDate: Tue Oct 13 18:00:05 2026 +0700
+Commit:     Pham Quoc Thinh <giabao05vng@gmail.com>
+CommitDate: Tue Oct 13 18:00:05 2026 +0700
+
+    Initial commit: Scalable TinyML NPU TinyTapeout Architecture
+    
+    - Parameterized systolic datapath (1x1 tile to MxN grid)
+    - Signed INT8 MAC with 24-bit accumulator and overflow detection
+    - Micro-op instruction decoder with Ready/Valid streaming handshake
+    - Hardware requantization with half-integer rounding and saturation
+    - Winner-take-all ArgMax classifier for ECG arrhythmia detection
+    - VLSIT 5-gate verified front-end with zero Verilator lint warnings
+    - Full test suite passing standalone Icarus Verilog and Python oracles
+    
+    Co-Authored-By: Claude Code <noreply@anthropic.com>

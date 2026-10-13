@@ -1,0 +1,15 @@
+read_verilog rtl/npu_pe.v
+read_verilog rtl/npu_activation.v
+read_verilog rtl/npu_array.v
+read_verilog rtl/npu_top_2x2.v
+read_verilog rtl/tt_um_tinyml_npu_2x2.v
+hierarchy -check -top tt_um_tinyml_npu_2x2
+proc
+opt
+write_json reports/elaborated.json
+synth -top tt_um_tinyml_npu_2x2
+check -assert
+select -assert-none t:$dlatch t:$_DLATCH_* t:$mem*
+stat
+write_json reports/generic.json
+write_verilog -noattr reports/synth_netlist.v

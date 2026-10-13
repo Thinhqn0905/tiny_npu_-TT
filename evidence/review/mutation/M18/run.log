@@ -1,0 +1,2 @@
+FATAL: src/sva/npu_protocol_properties.sv:21: PROP-RESET-004 reset status
+       Time: 20000 Scope: tb_trained_network.u_properties

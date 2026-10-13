@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="cocotb tests"><testsuite name="test_arithmetic" errors="0" failures="1" skipped="0" tests="1" time="0.044" timestamp="2026-10-13T12:57:57.783579+00:00" hostname="DESKTOP-5BKHJFE"><testcase classname="test_arithmetic" name="rounding_boundaries" time="0.044"><failure message="(-8388608, 1, 0)&#10;assert 127 == -128&#10; +  where 127 = signed(127, 8)&#10; +    where 127 = int(LogicArray('01111111', Range(7, 'downto', 0)))&#10; +      where LogicArray('01111111', Range(7, 'downto', 0)) = PackedObject(tb_review.q).value&#10; +        where PackedObject(tb_review.q) = HierarchyObject(tb_review with definition tb_review (at test/tb_review.v)).q&#10; +  and   -128 = requant(-8388608, 1, 0)" type="AssertionError">Traceback (most recent call last):
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_arithmetic.py", line 47, in rounding_boundaries
+    assert signed(int(d.q.value),8) == requant(value,shift,mode), (value,shift,mode)
+AssertionError: (-8388608, 1, 0)
+assert 127 == -128
+ +  where 127 = signed(127, 8)
+ +    where 127 = int(LogicArray('01111111', Range(7, 'downto', 0)))
+ +      where LogicArray('01111111', Range(7, 'downto', 0)) = PackedObject(tb_review.q).value
+ +        where PackedObject(tb_review.q) = HierarchyObject(tb_review with definition tb_review (at test/tb_review.v)).q
+ +  and   -128 = requant(-8388608, 1, 0)
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="784736294" /><property name="file" value="/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_arithmetic.py" /><property name="line" value="31" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="0.0" /><property name="sim_time_stop" value="1121.0" /><property name="sim_time_duration" value="1121.0" /><property name="sim_time_ratio" value="25539.766213400584" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=784736294
+</system-err></testcase></testsuite></testsuites>

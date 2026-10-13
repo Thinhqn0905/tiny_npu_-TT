@@ -5,8 +5,8 @@
 // Module:      npu_array
 // Description: Parameterized 2D Processing Element (PE) Array for Scalable
 //              TinyML NPU. Configurable grid dimensions (ROWS x COLS) supporting
-//              both 2D Fold-SIMD Parallel Broadcast matrix multiplication and
-//              Kung-Leiserson Systolic Wavefront forward chaining.
+//              row-activation/column-weight broadcast and externally skewed,
+//              registered activation-east / weight-south neighbor propagation.
 //              Features parameterized bitwidths and vertical cascade accumulators.
 //==============================================================================
 
@@ -15,7 +15,7 @@ module npu_array #(
     parameter COLS          = 1,
     parameter DATA_WIDTH    = 8,
     parameter ACC_WIDTH     = 24,
-    parameter SYSTOLIC_MODE = 0  // 0: 2D Fold-SIMD Parallel Broadcast, 1: Systolic Wavefront
+    parameter SYSTOLIC_MODE = 0  // 0: row/column broadcast; 1: registered neighbors
 )(
     input  wire                                  clk,
     input  wire                                  rst_n,

@@ -1,0 +1,3 @@
+$ make -f /tmp/npu_frontend_27ht807y/legacy/Makefile
+rm -f results.xml
+make: *** No rule to make target '/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/tb_legacy.v', needed by 'sim_build/sim.vvp'.  Stop.

@@ -1,0 +1,28 @@
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:242  in gpi_load_users                  Loaded entry library: '/usr/lib/x86_64-linux-gnu/libpython3.10.so.1.0'
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:233  in gpi_load_users                  Running entry func 'initialize' from loaded library '/home/hacker/.local/lib/python3.10/site-packages/cocotb/simulator.cpython-310-x86_64-linux-gnu.so'
+     -.--ns INFO     pygpi                              ..ib/pygpi/embed.cpp:114  in initialize                      Using Python 3.10.19 interpreter at /usr/bin/python3
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: VPI support registered
+     0.00ns INFO     cocotb.initialize                  Seeding Python random module with 784736294
+     0.00ns WARNING  gpi                                vpi_iterate returned NULL for type vpiInstance for object NULL
+     0.00ns INFO     cocotb.initialize                  Initialized cocotb v2.1.0 from /home/hacker/.local/lib/python3.10/site-packages/cocotb
+     0.00ns INFO     cocotb.initialize                  Running on Icarus Verilog version 11.0 (stable)
+     0.00ns INFO     cocotb.regression                  Running tests
+     0.00ns INFO     cocotb.regression                  running test_arithmetic.rounding_boundaries (1/1)
+  1121.00ns WARNING  cocotb.regression                  test_arithmetic.rounding_boundaries failed
+                                                        Traceback (most recent call last):
+                                                          File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_arithmetic.py", line 47, in rounding_boundaries
+                                                            assert signed(int(d.q.value),8) == requant(value,shift,mode), (value,shift,mode)
+                                                        AssertionError: (-8388608, 1, 0)
+                                                        assert 127 == -128
+                                                         +  where 127 = signed(127, 8)
+                                                         +    where 127 = int(LogicArray('01111111', Range(7, 'downto', 0)))
+                                                         +      where LogicArray('01111111', Range(7, 'downto', 0)) = PackedObject(tb_review.q).value
+                                                         +        where PackedObject(tb_review.q) = HierarchyObject(tb_review with definition tb_review (at test/tb_review.v)).q
+                                                         +  and   -128 = requant(-8388608, 1, 0)
+  1121.00ns INFO     cocotb.regression                  *********************************************************************************************
+                                                        ** TEST                                 STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        *********************************************************************************************
+                                                        ** test_arithmetic.rounding_boundaries   FAIL        1121.00           0.04      25539.77  **
+                                                        *********************************************************************************************
+                                                        ** TESTS=1 PASS=0 FAIL=1 SKIP=0                      1121.00           0.05      22525.23  **
+                                                        *********************************************************************************************

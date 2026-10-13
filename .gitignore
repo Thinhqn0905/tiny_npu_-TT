@@ -12,4 +12,10 @@ test/__pycache__/
 test/results.xml
 test/gate_level_netlist.v
 *.vvp
-evidence/
+# Review evidence is deliberately versioned; simulator build products are not.
+__pycache__/
+*.pyc
+.pytest_cache/
+dataset/
+models/downloads/
+work/

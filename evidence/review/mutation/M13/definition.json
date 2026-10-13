@@ -1,0 +1,10 @@
+{
+  "id": "M13",
+  "req_id": "REQ-NPU-005",
+  "kind": "network",
+  "test_case": "none",
+  "source": "npu_pe.v",
+  "old": "acc_reg + prod_sext",
+  "new": "acc_reg",
+  "mutated_sha256": "6f6858ef38102cefa03db901577c63cad60b84dd988830224ad2e05f20d4d4ba"
+}

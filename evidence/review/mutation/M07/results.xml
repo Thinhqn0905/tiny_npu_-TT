@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="cocotb tests"><testsuite name="test_release" errors="0" failures="1" skipped="0" tests="1" time="0.004" timestamp="2026-10-13T12:57:54.545459+00:00" hostname="DESKTOP-5BKHJFE"><testcase classname="test_release" name="ready_back_to_back" time="0.004"><failure message="ready asserted while POST_MAC ignores input&#10;assert not (130 &amp; 2)&#10; +  where 130 = int(LogicArray('10000010', Range(7, 'downto', 0)))&#10; +    where LogicArray('10000010', Range(7, 'downto', 0)) = PackedObject(tb.uio_out).value&#10; +      where PackedObject(tb.uio_out) = HierarchyObject(tb with definition tb (at test/tb.v)).uio_out" type="AssertionError">Traceback (most recent call last):
+  File "/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py", line 72, in ready_back_to_back
+    assert not (int(d.uio_out.value)&amp;2), "ready asserted while POST_MAC ignores input"
+AssertionError: ready asserted while POST_MAC ignores input
+assert not (130 &amp; 2)
+ +  where 130 = int(LogicArray('10000010', Range(7, 'downto', 0)))
+ +    where LogicArray('10000010', Range(7, 'downto', 0)) = PackedObject(tb.uio_out).value
+ +      where PackedObject(tb.uio_out) = HierarchyObject(tb with definition tb (at test/tb.v)).uio_out
+</failure><properties><property name="cocotb" value="True" /><property name="random_seed" value="784736294" /><property name="file" value="/mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/test/test_release.py" /><property name="line" value="64" /><property name="sim_time_unit" value="ns" /><property name="sim_time_start" value="0.0" /><property name="sim_time_stop" value="169.0" /><property name="sim_time_duration" value="169.0" /><property name="sim_time_ratio" value="41313.475160106085" /></properties><system-err>Test failed with COCOTB_RANDOM_SEED=784736294
+</system-err></testcase></testsuite></testsuites>

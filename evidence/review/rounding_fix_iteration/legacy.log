@@ -1,0 +1,58 @@
+$ make -f /tmp/npu_frontend_0gbuem0f/legacy/Makefile
+rm -f results.xml
+mkdir -p sim_build
+/usr/bin/iverilog -o sim_build/sim.vvp -s tb -g2012 -f sim_build/cmds.f  /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/npu_activation.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/npu_argmax.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/npu_array.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/npu_controller.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/npu_pe.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/npu_top.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/npu_top_2x2.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/tt_um_tinyml_npu_1x1.v /mnt/e/PROJECTS/tinyml_npu_ecg/ttihp26a-inferenceFCNN-16h3/src/tt_um_tinyml_npu_2x2.v /tmp/npu_frontend_0gbuem0f/reference/tb.v
+rm -f results.xml
+COCOTB_TEST_MODULES=test_legacy COCOTB_TESTCASE=  COCOTB_TOPLEVEL=tb TOPLEVEL_LANG=verilog COCOTB_RANDOM_SEED=784736294      \
+	 /usr/bin/vvp -m /home/hacker/.local/lib/python3.10/site-packages/cocotb/libs/libcocotbvpi_icarus.so   sim_build/sim.vvp   
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:242  in gpi_load_users                  Loaded entry library: '/usr/lib/x86_64-linux-gnu/libpython3.10.so.1.0'
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:233  in gpi_load_users                  Running entry func 'initialize' from loaded library '/home/hacker/.local/lib/python3.10/site-packages/cocotb/simulator.cpython-310-x86_64-linux-gnu.so'
+     -.--ns INFO     pygpi                              ..ib/pygpi/embed.cpp:114  in initialize                      Using Python 3.10.19 interpreter at /usr/bin/python3
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:74   in gpi_print_registered_impl       GPI: VPI support registered
+     0.00ns INFO     cocotb.initialize                  Seeding Python random module with 784736294
+     0.00ns WARNING  gpi                                vpi_iterate returned NULL for type vpiInstance for object NULL
+     0.00ns INFO     cocotb.initialize                  Initialized cocotb v2.1.0 from /home/hacker/.local/lib/python3.10/site-packages/cocotb
+     0.00ns INFO     cocotb.initialize                  Running on Icarus Verilog version 11.0 (stable)
+     0.00ns INFO     cocotb.regression                  Running tests
+     0.00ns INFO     cocotb.regression                  running test_legacy.test_reset (1/6)
+                                                            Test 1: Verify Reset and Initial Ready State
+   180.00ns INFO     cocotb.tb                          PASS: test_reset
+   180.00ns INFO     cocotb.regression                  test_legacy.test_reset passed
+   180.00ns INFO     cocotb.regression                  running test_legacy.test_mac_simple (2/6)
+                                                            Test 2: Single MAC Computation (8 * 9 = 72) with ReLU
+   720.00ns INFO     cocotb.tb                          MAC 8 * 9 = 72, Expected: 72
+   720.00ns INFO     cocotb.tb                          PASS: test_mac_simple
+   720.00ns INFO     cocotb.regression                  test_legacy.test_mac_simple passed
+   720.00ns INFO     cocotb.regression                  running test_legacy.test_relu_clipping (3/6)
+                                                            Test 3: Verify Negative Accumulation Clamps to Zero via ReLU
+  1260.00ns INFO     cocotb.tb                          Negative product with ReLU = 0, Expected: 0
+  1260.00ns INFO     cocotb.tb                          PASS: test_relu_clipping
+  1260.00ns INFO     cocotb.regression                  test_legacy.test_relu_clipping passed
+  1260.00ns INFO     cocotb.regression                  running test_legacy.test_vector_dot_product (4/6)
+                                                            Test 4: Vector Dot-Product with Arithmetic Right Shift Requantization
+  2100.00ns INFO     cocotb.tb                          Vector dot-product = 23, Expected: 23
+  2100.00ns INFO     cocotb.tb                          PASS: test_vector_dot_product
+  2100.00ns INFO     cocotb.regression                  test_legacy.test_vector_dot_product passed
+  2100.00ns INFO     cocotb.regression                  running test_legacy.test_argmax_classification (5/6)
+                                                            Test 5: Multi-class ArgMax Winner-Take-All Classifier
+  3160.00ns INFO     cocotb.tb                          ArgMax Winning Class: 1, Expected: 1
+  3160.00ns INFO     cocotb.tb                          PASS: test_argmax_classification
+  3160.00ns INFO     cocotb.regression                  test_legacy.test_argmax_classification passed
+  3160.00ns INFO     cocotb.regression                  running test_legacy.test_ecg_arrhythmia_inference (6/6)
+                                                            Test 6: Full End-to-End ECG Arrhythmia Heartbeat Classification
+  4220.01ns INFO     cocotb.tb                          ECG Heartbeat Arrhythmia Prediction: Class 1 (PVC), Expected: 1
+  4220.01ns INFO     cocotb.tb                          PASS: test_ecg_arrhythmia_inference
+  4220.01ns INFO     cocotb.regression                  test_legacy.test_ecg_arrhythmia_inference passed
+  4220.01ns INFO     cocotb.regression                  ***************************************************************************************************
+                                                        ** TEST                                       STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        ***************************************************************************************************
+                                                        ** test_legacy.test_reset                      PASS         180.00           0.00     148712.28  **
+                                                        ** test_legacy.test_mac_simple                 PASS         540.00           0.00     360269.72  **
+                                                        ** test_legacy.test_relu_clipping              PASS         540.00           0.00     342049.69  **
+                                                        ** test_legacy.test_vector_dot_product         PASS         840.00           0.00     344552.48  **
+                                                        ** test_legacy.test_argmax_classification      PASS        1060.00           0.00     356259.17  **
+                                                        ** test_legacy.test_ecg_arrhythmia_inference   PASS        1060.00           0.00     355024.31  **
+                                                        ***************************************************************************************************
+                                                        ** TESTS=6 PASS=6 FAIL=0 SKIP=0                            4220.01           0.01     286552.49  **
+                                                        ***************************************************************************************************
+VCD info: dumpfile tb.vcd opened for output.

@@ -1,0 +1,10 @@
+{
+  "id": "M14",
+  "req_id": "REQ-NPU-005",
+  "kind": "network",
+  "test_case": "none",
+  "source": "npu_top_2x2.v",
+  "old": ".act_type(act_type)",
+  "new": ".act_type(2'b00)",
+  "mutated_sha256": "ccc5c25d562195de7cece968514eb424cfa4f47c1c1f043c29bb671c8fafc83a"
+}

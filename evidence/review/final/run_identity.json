@@ -1,0 +1,24 @@
+{
+  "starting_commit": "d020f70630e1c9feacf9fd79206d7a9e2874afed",
+  "resumed_base_commit": "c0ef2520c1a76f5730e6c716403ca77bc42194e9",
+  "seed": 784736294,
+  "parameters": {
+    "ROWS": 2,
+    "COLS": 2,
+    "DATA_WIDTH": 8,
+    "ACC_WIDTH": 24,
+    "SYSTOLIC_MODE": 0
+  },
+  "platform": "ihp-sg13g2",
+  "tiles": "2x2",
+  "clock_period_ns": 20,
+  "rtl_sha256": {
+    "pnr_handoff/rtl/npu_pe.v": "cc50d98c113715a54a14c8bb4377e6a49b7e4524f9143e6e9f1d512d7e8b431d",
+    "pnr_handoff/rtl/npu_activation.v": "8395b1f24cbbc30f5d6f711aa1250a0af62af08dc41c6e65af967a0e79fa1f46",
+    "pnr_handoff/rtl/npu_array.v": "a2b517285ccdbd3dfe68d95ab035ec67d51a1099e3db6dd73f1cd3ece43e7eb6",
+    "pnr_handoff/rtl/npu_top_2x2.v": "30ec1c2a42d013d073dcfa043f3785a1ceca8f313235e4346f448c1a17f43aef",
+    "pnr_handoff/rtl/tt_um_tinyml_npu_2x2.v": "c6c0f1ece572aad545b298d74ccee3ae7d0734c98fa002483f9194754f3e1fd2"
+  },
+  "config_sha256": "fb394038387929e9011bf6ef5ecedeb103d401caa8e02b23521fd28bac183b89",
+  "sdc_sha256": "cf9db0b9863e91a9ff235711a5782c1f67e1cb4d663434a7d33406da3160f015"
+}
