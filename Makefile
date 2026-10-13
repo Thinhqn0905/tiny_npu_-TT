@@ -18,10 +18,11 @@ export COCOTB_RANDOM_SEED := 784736294
 export PYGPI_PYTHON_BIN := $(shell $(PYTHON) -m cocotb_tools.config --python-bin)
 export GPI_USERS := $(shell $(PYTHON) -m cocotb_tools.config --libpython);$(shell $(PYTHON) -m cocotb_tools.config --pygpi-entry-point)
 export REVIEW_OUT := $(CURDIR)/$(REPORTS)
-.PHONY: help preflight lint tb-compile test regression arithmetic release existing legacy standalone synthesis timing integration reports manifest manifest-check ecg-benchmark mutation coverage-baseline coverage-regression coverage-report
+.PHONY: help preflight rtl-preflight lint tb-compile test regression arithmetic release existing legacy standalone synthesis timing integration reports manifest manifest-check ecg-benchmark mutation coverage-baseline coverage-regression coverage-report
 help:
 	@echo 'Run from repository root in Linux/WSL; make -n TARGET shows real commands.'
 	@echo 'preflight: validate frozen copies/config, recover legacy tests, prepare Yosys/STA scripts; saves run_identity.json.'
+	@echo 'rtl-preflight: prepare RTL-only checks without requiring Yosys or OpenSTA; REPORTS=work/ci-results isolates CI outputs.'
 	@echo 'lint: Verilator4.038 -Wall; tb-compile: Icarus11 production and unit harnesses.'
 	@echo 'test TEST_MODULE=test_release TC=ready_back_to_back: one Cocotb2.1 test; test modules: test_arithmetic/test_release/test/test_legacy.'
 	@echo 'regression: all diagnostics, Yosys0.9 generic/IHP mapping, OpenSTA2.0.17, local official docs/structural checks; no physical PnR.'
@@ -33,14 +34,15 @@ help:
 	@echo 'mutation: compile and simulate 18 isolated faults; raw logs/XML and per-REQ detection scores.'
 	@echo 'coverage-baseline/coverage-regression: Verilator --coverage --assert with public-pin integer checks; coverage-report parses native point counts.'
 	@echo 'COVERAGE_MAX_ROUNDS=$(COVERAGE_MAX_ROUNDS) (closure limit after instrumentation/target approval).'
-preflight:
+rtl-preflight:
 	$(PYTHON) scripts/front_end_reports.py prepare
 	mkdir -p work/compile $(REPORTS)
 	verilator --version > $(REPORTS)/tools.log
-	yosys -V >> $(REPORTS)/tools.log
 	iverilog -V >> $(REPORTS)/tools.log 2>&1
 	$(PYTHON) --version >> $(REPORTS)/tools.log
 	cocotb-config --version >> $(REPORTS)/tools.log
+preflight: rtl-preflight
+	yosys -V >> $(REPORTS)/tools.log
 	$(STA) -version >> $(REPORTS)/tools.log
 lint:
 	verilator --lint-only -Wall --top-module tt_um_tinyml_npu_2x2 $(SOURCES) > $(REPORTS)/verilator.log 2>&1

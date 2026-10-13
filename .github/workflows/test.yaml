@@ -11,7 +11,7 @@ jobs:
 
       - name: Install front-end tools
         shell: bash
-        run: sudo apt-get update && sudo apt-get install -y iverilog verilator yosys opensta
+        run: sudo apt-get update && sudo apt-get install -y iverilog verilator
 
       # Set Python up and install cocotb
       - name: Setup python
@@ -25,12 +25,12 @@ jobs:
 
       - name: Run front-end RTL tests
         run: |
-          make preflight lint tb-compile arithmetic release existing legacy standalone generate-network-test sva-compile contract-shell-compile trained-network
+          make REPORTS=work/ci-results rtl-preflight lint tb-compile arithmetic release existing legacy standalone generate-network-test sva-compile contract-shell-compile trained-network
 
       - name: Test Summary
         uses: test-summary/action@v2.3
         with:
-          paths: "evidence/review/final/*.xml"
+          paths: "work/ci-results/*.xml"
         if: always()
 
       - name: upload waveform and test results
@@ -39,5 +39,5 @@ jobs:
         with:
           name: test-results
           path: |
-            evidence/review/final/*.xml
-            evidence/review/final/*.log
+            work/ci-results/*.xml
+            work/ci-results/*.log
